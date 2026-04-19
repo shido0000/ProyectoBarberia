@@ -4396,11 +4396,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\WebApplication1.csproj",
+      "projectPath": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\shido\\.nuget\\packages\\",
-      "outputPath": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\obj\\",
+      "outputPath": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
