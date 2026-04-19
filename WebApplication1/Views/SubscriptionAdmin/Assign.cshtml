@@ -4,107 +4,168 @@
     var barbers = ViewBag.Barbers as List<WebApplication1.Models.ApplicationUser> ?? new List<WebApplication1.Models.ApplicationUser>();
 }
 
-<div class="row mb-4 section-header">
-    <div class="col-12">
-        <h2 class="fw-bold mb-2 text-gradient">
-            <i class="bi bi-person-plus me-2"></i>Asignar Suscripción
-        </h2>
-        <p class="text-muted mb-0">Asigna un plan de suscripción a un barbero</p>
+<!-- Page Header with Animation -->
+<div class="admin-header-section mb-5 animate-fade-in-down">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <div class="icon-wrapper">
+                        <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 64px; height: 64px;">
+                            <i class="bi bi-person-plus text-white" style="font-size: 1.75rem;"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="display-6 fw-bold mb-1 gradient-text">Asignar Suscripción</h1>
+                        <p class="text-muted mb-0">Asigna un plan de suscripción a un barbero</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a asp-controller="SubscriptionAdmin" asp-action="Subscriptions" class="btn btn-outline-secondary btn-lg btn-animated">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
+<!-- Alert Messages -->
 @if (TempData["Success"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container mb-4">
+        <div class="alert alert-success alert-custom alert-dismissible fade show animate-fade-in-up" role="alert">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill fs-5"></i>
+                <span>@TempData["Success"]</span>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </div>
 }
 
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["Error"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="container mb-4">
+        <div class="alert alert-danger alert-custom alert-dismissible fade show animate-fade-in-up" role="alert">
+            <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+                <span>@TempData["Error"]</span>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </div>
 }
 
-<div class="row justify-content-center">
-    <div class="col-lg-8">
-        <div class="card shadow-md border-0">
-            <div class="card-header bg-gradient-primary text-white">
-                <h5 class="mb-0"><i class="bi bi-star me-2"></i>Asignar Plan a Barbero</h5>
-            </div>
-            <div class="card-body">
-                <form asp-controller="SubscriptionAdmin" asp-action="Assign" method="post">
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">
-                            <i class="bi bi-person-badge text-primary me-1"></i> Seleccionar Barbero
-                        </label>
-                        <select name="userId" class="form-select form-select-lg" required>
-                            <option value="">-- Elige un barbero --</option>
-                            @foreach (var barber in barbers)
-                            {
-                                <option value="@barber.Id">@barber.FullName (@barber.Email)</option>
-                            }
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">
-                            <i class="bi bi-layers text-primary me-1"></i> Seleccionar Plan
-                        </label>
-                        <select name="planId" class="form-select form-select-lg" required>
-                            <option value="">-- Elige un plan --</option>
-                            @foreach (var plan in plans)
-                            {
-                                <option value="@plan.Id">@plan.Name - $@plan.MonthlyPrice.ToString("F2")/mes</option>
-                            }
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">
-                            <i class="bi bi-calendar text-primary me-1"></i> Duración (meses)
-                        </label>
-                        <input type="number" name="months" class="form-control form-control-lg" value="1" min="1" max="12" />
-                        <small class="text-muted">La suscripción se activará desde hoy</small>
-                    </div>
-                    
-                    <div class="d-flex gap-3">
-                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1 shadow">
-                            <i class="bi bi-check-circle"></i> Asignar Suscripción
-                        </button>
-                        <a asp-controller="SubscriptionAdmin" asp-action="Index" class="btn btn-outline-secondary btn-lg">
-                            Cancelar
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Current Subscriptions Summary -->
-        @if (barbers.Count > 0)
-        {
-            <div class="card shadow-md mt-4 border-0">
-                <div class="card-header bg-gradient-dark text-white">
-                    <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Barberos Registrados</h6>
+<div class="container pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Main Form Card -->
+            <div class="glass-card border-0 shadow-md animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="card-header bg-gradient-primary text-white py-3">
+                    <h5 class="mb-0"><i class="bi bi-star me-2"></i>Asignar Plan a Barbero</h5>
                 </div>
-                <div class="card-body p-0">
-                    <div class="list-group list-group-flush">
-                        @foreach (var barber in barbers)
-                        {
-                            <div class="list-group-item d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong class="d-block">@barber.FullName</strong>
-                                    <small class="text-muted">@barber.Email</small>
+                <div class="card-body p-4">
+                    <form asp-controller="SubscriptionAdmin" asp-action="Assign" method="post">
+                        <div class="mb-4 form-group-animated">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-person-badge text-primary me-2"></i>Seleccionar Barbero
+                            </label>
+                            <div class="input-group-animated">
+                                <select name="userId" class="form-select form-select-lg" required>
+                                    <option value="">-- Elige un barbero --</option>
+                                    @foreach (var barber in barbers)
+                                    {
+                                        <option value="@barber.Id">@barber.FullName (@barber.Email)</option>
+                                    }
+                                </select>
+                                <div class="input-icon">
+                                    <i class="bi bi-person"></i>
                                 </div>
-                                <span class="badge bg-secondary">Sin suscripción activa</span>
                             </div>
-                        }
-                    </div>
+                        </div>
+                        
+                        <div class="mb-4 form-group-animated">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-layers text-primary me-2"></i>Seleccionar Plan
+                            </label>
+                            <div class="input-group-animated">
+                                <select name="planId" class="form-select form-select-lg" required>
+                                    <option value="">-- Elige un plan --</option>
+                                    @foreach (var plan in plans.Where(p => p.IsActive))
+                                    {
+                                        <option value="@plan.Id">@plan.Name - $@plan.MonthlyPrice.ToString("F2")/mes</option>
+                                    }
+                                </select>
+                                <div class="input-icon">
+                                    <i class="bi bi-stack"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 form-group-animated">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-calendar text-primary me-2"></i>Duración (meses)
+                            </label>
+                            <div class="input-group-animated">
+                                <input type="number" name="months" class="form-control form-control-lg" value="1" min="1" max="12" />
+                                <div class="input-icon">
+                                    <i class="bi bi-calendar-range"></i>
+                                </div>
+                            </div>
+                            <small class="text-muted mt-2 d-block"><i class="bi bi-info-circle me-1"></i>La suscripción se activará desde hoy</small>
+                        </div>
+                        
+                        <hr class="my-4" />
+                        
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary btn-lg flex-grow-1 shadow-glow btn-animated">
+                                <i class="bi bi-check-circle"></i> Asignar Suscripción
+                            </button>
+                            <a asp-controller="SubscriptionAdmin" asp-action="Subscriptions" class="btn btn-outline-secondary btn-lg btn-animated">
+                                Cancelar
+                            </a>
+                        </div>
+                    </form>
                 </div>
             </div>
-        }
+            
+            <!-- Info Card: Registered Barbers -->
+            @if (barbers.Count > 0)
+            {
+                <div class="glass-card border-0 shadow-md mt-4 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="card-header bg-dark text-white py-3">
+                        <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Barberos Registrados (@barbers.Count)</h6>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            @foreach (var barber in barbers.Take(5))
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle bg-primary bg-opacity-10 text-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="bi bi-person-fill"></i>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block">@barber.FullName</strong>
+                                            <small class="text-muted">@barber.Email</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-secondary bg-opacity-10 text-secondary border border-secondary">
+                                        <i class="bi bi-x-circle me-1"></i>Sin suscripción
+                                    </span>
+                                </div>
+                            }
+                            @if (barbers.Count > 5)
+                            {
+                                <div class="list-group-item text-center py-3">
+                                    <small class="text-muted">+@(barbers.Count - 5) barberos más...</small>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
