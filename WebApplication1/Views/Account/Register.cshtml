@@ -3,82 +3,161 @@
     ViewData["Title"] = "Crear Cuenta";
 }
 
-<div class="row justify-content-center py-5">
-    <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6">
-        <div class="card shadow-xl border-0">
-            <div class="card-body p-5">
-                <div class="text-center mb-5">
-                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 100px; height: 100px;">
-                        <i class="bi bi-person-plus text-success" style="font-size: 3.5rem;"></i>
+<!-- Page Background with Animation -->
+<div class="auth-page-wrapper">
+    <div class="auth-background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+    
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center min-vh-80">
+            <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                <!-- Card con animación de entrada -->
+                <div class="card auth-card shadow-2xl border-0 animate-fade-in-up">
+                    <div class="card-body p-0">
+                        <!-- Header decorativo -->
+                        <div class="auth-header text-center p-5 pb-4">
+                            <div class="icon-wrapper mb-4">
+                                <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow pulse-animation" style="width: 100px; height: 100px;">
+                                    <i class="bi bi-person-plus text-success" style="font-size: 3.5rem;"></i>
+                                </div>
+                            </div>
+                            <h2 class="fw-bold mb-2 gradient-text">Crear Cuenta</h2>
+                            <p class="text-muted mb-0">Únete a BarberShop Pro hoy mismo</p>
+                        </div>
+                        
+                        <div class="p-5 pt-4">
+                            <form asp-action="Register" method="post" class="auth-form">
+                                @{
+                                    var hasErrors = ViewData.ModelState.ErrorCount > 0;
+                                    var displayStyle = hasErrors ? "flex" : "none";
+                                }
+                                <div asp-validation-summary="ModelOnly" class="alert alert-danger alert-custom" role="alert" style="display: @displayStyle">
+                                    <i class="bi bi-exclamation-circle me-2"></i>
+                                    <span></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="FullName" class="form-label fw-semibold">
+                                        <i class="bi bi-person text-primary me-2"></i> Nombre Completo
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="FullName" class="form-control form-control-lg" placeholder="Juan Pérez" autofocus />
+                                        <div class="input-icon">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="FullName" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="Email" class="form-label fw-semibold">
+                                        <i class="bi bi-envelope text-primary me-2"></i> Email
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="tu@email.com" autocomplete="email" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-envelope"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Email" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="Password" class="form-label fw-semibold">
+                                        <i class="bi bi-lock text-primary me-2"></i> Contraseña
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Mínimo 6 caracteres" autocomplete="new-password" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-lock"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="ConfirmPassword" class="form-label fw-semibold">
+                                        <i class="bi bi-lock-fill text-primary me-2"></i> Confirmar Contraseña
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg" placeholder="Repite tu contraseña" autocomplete="new-password" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-lock-fill"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="Role" class="form-label fw-semibold">
+                                        <i class="bi bi-briefcase text-primary me-2"></i> Tipo de Usuario
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <select asp-for="Role" class="form-select form-select-lg">
+                                            <option value="">-- Selecciona una opción --</option>
+                                            <option value="Client">🙋 Cliente - Quiero reservar citas</option>
+                                            <option value="Barber">💈 Barbero - Quiero ofrecer servicios</option>
+                                        </select>
+                                        <div class="input-icon">
+                                            <i class="bi bi-briefcase"></i>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="Role" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-lg w-100 mb-4 shadow-glow btn-animated">
+                                    <i class="bi bi-check-circle"></i> Crear Cuenta
+                                </button>
+                            </form>
+                            
+                            <div class="divider my-4">
+                                <span>¿Ya tienes cuenta?</span>
+                            </div>
+                            
+                            <div class="text-center">
+                                <a asp-action="Login" class="btn btn-outline-primary btn-lg w-100 btn-hover-lift">
+                                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                                </a>
+                            </div>
+                            
+                            <!-- Beneficios -->
+                            <div class="benefits-box mt-5 p-4 rounded-3 border animate-fade-in">
+                                <h6 class="fw-bold mb-3 text-center">
+                                    <i class="bi bi-stars text-warning me-2"></i>Beneficios de unirte
+                                </h6>
+                                <div class="benefits-list">
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">
+                                            <i class="bi bi-calendar-check text-primary"></i>
+                                        </div>
+                                        <div class="benefit-text">
+                                            <strong>Reserva fácil:</strong> Agenda citas en segundos
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">
+                                            <i class="bi bi-geo-alt text-success"></i>
+                                        </div>
+                                        <div class="benefit-text">
+                                            <strong>Cerca de ti:</strong> Encuentra barberos en tu zona
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">
+                                            <i class="bi bi-shield-check text-info"></i>
+                                        </div>
+                                        <div class="benefit-text">
+                                            <strong>Seguro:</strong> Tus datos siempre protegidos
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="fw-bold mb-2">Crear Cuenta</h2>
-                    <p class="text-muted">Únete a BarberShop Pro</p>
-                </div>
-                
-                <form asp-action="Register" method="post">
-                    @{
-                        var hasErrors = ViewData.ModelState.ErrorCount > 0;
-                        var displayStyle = hasErrors ? "flex" : "none";
-                    }
-                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert" style="display: @displayStyle">
-                        <i class="bi bi-exclamation-circle"></i>
-                        <span></span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label asp-for="FullName" class="form-label">
-                            <i class="bi bi-person text-primary me-2"></i> Nombre Completo
-                        </label>
-                        <input asp-for="FullName" class="form-control form-control-lg" placeholder="Juan Pérez" autofocus />
-                        <span asp-validation-for="FullName" class="text-danger small"></span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label asp-for="Email" class="form-label">
-                            <i class="bi bi-envelope text-primary me-2"></i> Email
-                        </label>
-                        <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="tu@email.com" autocomplete="email" />
-                        <span asp-validation-for="Email" class="text-danger small"></span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label asp-for="Password" class="form-label">
-                            <i class="bi bi-lock text-primary me-2"></i> Contraseña
-                        </label>
-                        <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Mínimo 6 caracteres" autocomplete="new-password" />
-                        <span asp-validation-for="Password" class="text-danger small"></span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label asp-for="ConfirmPassword" class="form-label">
-                            <i class="bi bi-lock-fill text-primary me-2"></i> Confirmar Contraseña
-                        </label>
-                        <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg" placeholder="Repite tu contraseña" autocomplete="new-password" />
-                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label asp-for="Role" class="form-label">
-                            <i class="bi bi-briefcase text-primary me-2"></i> Tipo de Usuario
-                        </label>
-                        <select asp-for="Role" class="form-select form-select-lg">
-                            <option value="">-- Selecciona una opción --</option>
-                            <option value="Client">🙋 Cliente - Quiero reservar citas</option>
-                            <option value="Barber">💈 Barbero - Quiero ofrecer servicios</option>
-                        </select>
-                        <span asp-validation-for="Role" class="text-danger small"></span>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-lg w-100 mb-4 shadow-glow">
-                        <i class="bi bi-check-circle"></i> Crear Cuenta
-                    </button>
-                </form>
-                
-                <div class="text-center">
-                    <p class="mb-0 text-muted">¿Ya tienes cuenta?</p>
-                    <a asp-action="Login" class="btn btn-outline-primary btn-lg w-100">
-                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
-                    </a>
                 </div>
             </div>
         </div>
@@ -87,4 +166,20 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Animaciones adicionales al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.form-control, .form-select');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+    </script>
 }
