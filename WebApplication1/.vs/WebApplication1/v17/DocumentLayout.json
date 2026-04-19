@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\admin\\appointments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\admin\\appointments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\admin\\barbers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\admin\\barbers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\admin\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\admin\\clients.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|solutionrelative:views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9A6E4BF-9CC2-456C-A758-E5475A49540D}|WebApplication1.csproj|d:\\sistemas personales\\proyectos personales\\proyectos personales\\new folder\\barberia\\githubbarberia\\proyectobarberia\\webapplication1\\views\\booking\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -25,30 +41,90 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 51,
-          "SelectedChildIndex": -1,
-          "Children": []
-        },
-        {
           "DockedWidth": 349,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "Models\\Appointment.cs",
+              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Models\\Appointment.cs",
+              "RelativeToolTip": "Models\\Appointment.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA4wBwAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-19T05:50:21.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Appointments.cshtml",
+              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Appointments.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Appointments.cshtml",
+              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Appointments.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Appointments.cshtml",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAAABgAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T05:45:08.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Barbers.cshtml",
+              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Barbers.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Barbers.cshtml",
+              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Barbers.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Barbers.cshtml",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAAFIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T05:49:52.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Clients.cshtml",
+              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Clients.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Clients.cshtml",
+              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Clients.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Clients.cshtml",
+              "ViewState": "AQIAACoAAAAAAAAAAAAqwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T05:49:27.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Admin\\Index.cshtml",
+              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "Views\\Admin\\Index.cshtml",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAqwI8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-19T05:43:53.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Login.cshtml",
               "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\Login.cshtml",
               "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Account\\Login.cshtml",
               "RelativeToolTip": "Views\\Account\\Login.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAIAwwBYAAAA7AAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAIAwwBoAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-04-19T05:39:35.666Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Booking\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Booking\\Index.cshtml",
@@ -61,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Barber.cshtml",
               "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Booking\\Barber.cshtml",
               "RelativeDocumentMoniker": "Views\\Booking\\Barber.cshtml",
@@ -70,40 +146,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-04-19T05:24:29.355Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "8b849da6-0303-47bc-890d-55beb18ae87a",
-        "Display": 0,
-        "X": 641,
-        "Y": 152,
-        "Width": 201,
-        "Height": 538,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\Register.cshtml",
-              "ToolTip": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\GithubBarberia\\ProyectoBarberia\\WebApplication1\\Views\\Account\\Register.cshtml",
-              "RelativeToolTip": "Views\\Account\\Register.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABcAAACpAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-19T05:41:19.305Z",
               "EditorCaption": ""
             }
           ]
