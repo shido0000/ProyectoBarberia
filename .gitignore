@@ -1,4 +1,30 @@
 ```
 # Build artifacts
-wwwroot/css/site.css
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.nupkg
+*.snupkg
+
+# Dependencies
+packages/
+node_modules/
+
+# Logs
+*.log
+
+# User-specific files
+.vs/
+.vscode/
+*.userprefs
+
+# Environment specific settings
+appsettings.Development.json
+appsettings.Production.json
+
+# OS generated files
+.DS_Store
+Thumbs.db
 ```
