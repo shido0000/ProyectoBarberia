@@ -1,37 +1,63 @@
 ```
-# Compiled and build artifacts
-*.o
-*.obj
-*.exe
+# Build artifacts
+obj/
+bin/
 *.dll
-*.so
-*.a
-*.pyc
-__pycache__/
+*.exe
+*.pdb
+*.config
+*.manifest
+*.cache
+*.lockb
 
 # Dependencies
+packages/
 node_modules/
-venv/
-.venv/
-.env
-.env.local
-.env.*
+bower_components/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
+logs/
 
-# Editors
+# User-specific files
+.vs/
+.vsts/
+.user
+.userosscache
+.ihostsettings
 .vscode/
 .idea/
 
+# Environment specific
+.env
+.env.local
+*.userprefs
+
 # OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# Build directories
-dist/
-build/
-target/
+# Testing
+TestResults/
+
+# IDE
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Compiled source
+*.nupkg
+*.snupkg
 ```

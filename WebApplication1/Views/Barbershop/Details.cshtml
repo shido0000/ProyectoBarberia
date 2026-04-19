@@ -1,0 +1,252 @@
+@model WebApplication1.Models.Barbershop
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+            {
+                <img src="@Model.CoverImageUrl" alt="@Model.Name" class="img-fluid rounded-3 mb-4 w-100" style="max-height: 300px; object-fit: cover;" />
+            }
+            else
+            {
+                <div class="rounded-3 bg-gradient-primary d-flex align-items-center justify-content-center mb-4" style="height: 300px;">
+                    <i class="bi bi-shop display-1 text-white"></i>
+                </div>
+            }
+            
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
+                <div>
+                    <h1 class="display-5 fw-bold mb-2">@Model.Name</h1>
+                    <span class="badge bg-primary fs-6">@Model.Plan.Name</span>
+                    @if (Model.Members.Count() > 0)
+                    {
+                        <span class="badge bg-secondary fs-6 ms-2">
+                            <i class="bi bi-people me-1"></i>@Model.Members.Count() barberos
+                        </span>
+                    }
+                </div>
+                
+                @if (User.IsInRole("Barber"))
+                {
+                    <div class="d-flex gap-2">
+                        @if (ViewBag.IsMember == true)
+                        {
+                            <form asp-action="LeaveBarbershop" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de que quieres dejar esta barbería?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="barbershopId" value="@Model.Id" />
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="bi bi-box-arrow-right me-1"></i>Salir
+                                </button>
+                            </form>
+                        }
+                        else if (ViewBag.CanRequestJoin == true && ViewBag.HasPendingRequest != true)
+                        {
+                            <form asp-action="SendRequest" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="barbershopId" value="@Model.Id" />
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-person-plus me-1"></i>Solicitar Unirme
+                                </button>
+                            </form>
+                        }
+                        else if (ViewBag.HasPendingRequest == true)
+                        {
+                            <form asp-action="CancelRequest" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="requestId" value="@Model.MembershipRequests.FirstOrDefault(r => r.Status == MembershipRequestStatus.Pending)?.Id" />
+                                <button type="submit" class="btn btn-outline-warning">
+                                    <i class="bi bi-x-circle me-1"></i>Cancelar Solicitud
+                                </button>
+                            </form>
+                            <span class="badge bg-warning text-dark">
+                                <i class="bi bi-clock me-1"></i>Solicitud Pendiente
+                            </span>
+                        }
+                        else if (ViewBag.IsMember == false && ViewBag.CanRequestJoin == false)
+                        {
+                            <span class="badge bg-danger">
+                                <i class="bi bi-exclamation-triangle me-1"></i>Lleno - Sin Cupo
+                            </span>
+                        }
+                        
+                        @if (Model.OwnerBarberId == Model.Members.FirstOrDefault(m => m.UserId == User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value)?.Id || User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                                <i class="bi bi-pencil me-1"></i>Editar
+                            </a>
+                            <a asp-action="ManageRequests" asp-route-id="@Model.Id" class="btn btn-outline-info">
+                                <i class="bi bi-inbox me-1"></i>Solicitudes
+                                @if (Model.MembershipRequests.Count(r => r.Status == MembershipRequestStatus.Pending) > 0)
+                                {
+                                    <span class="badge bg-danger">@Model.MembershipRequests.Count(r => r.Status == MembershipRequestStatus.Pending)</span>
+                                }
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-6">
+            <div class="card glass-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><i class="bi bi-info-circle me-2"></i>Información</h5>
+                    
+                    @if (!string.IsNullOrEmpty(Model.Description))
+                    {
+                        <p class="card-text">@Model.Description</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Sin descripción</p>
+                    }
+                    
+                    <hr />
+                    
+                    @if (!string.IsNullOrEmpty(Model.Address))
+                    {
+                        <p class="mb-2">
+                            <i class="bi bi-geo-alt me-2 text-primary"></i>
+                            <strong>Dirección:</strong> @Model.Address
+                        </p>
+                    }
+                    
+                    @if (!string.IsNullOrEmpty(Model.Phone))
+                    {
+                        <p class="mb-2">
+                            <i class="bi bi-telephone me-2 text-primary"></i>
+                            <strong>Teléfono:</strong> @Model.Phone
+                        </p>
+                    }
+                    
+                    <p class="mb-0">
+                        <i class="bi bi-calendar me-2 text-primary"></i>
+                        <strong>Creado:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card glass-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><i class="bi bi-crown me-2"></i>Dueño</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        @if (!string.IsNullOrEmpty(Model.Owner.ProfilePhoto))
+                        {
+                            <img src="@Model.Owner.ProfilePhoto" alt="@Model.Owner.User.FullName" class="rounded-circle" width="80" height="80" style="object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <span class="text-white fs-4 fw-bold">@Model.Owner.User.FullName.Substring(0, 1).ToUpper()</span>
+                            </div>
+                        }
+                        <div>
+                            <h6 class="mb-1">@Model.Owner.User.FullName</h6>
+                            <p class="text-muted small mb-0">@Model.Owner.User.Email</p>
+                            @if (!string.IsNullOrEmpty(Model.Owner.Phone))
+                            {
+                                <p class="text-muted small mb-0">@Model.Owner.Phone</p>
+                            }
+                        </div>
+                    </div>
+                    
+                    <hr />
+                    
+                    <h6 class="mb-3"><i class="bi bi-people me-2"></i>Plan de Suscripción</h6>
+                    <div class="alert alert-primary">
+                        <strong>@Model.Plan.Name</strong> - $@Model.Plan.MonthlyPrice/mes
+                        @if (Model.Plan.MaxBarbers.HasValue)
+                        {
+                            <br />
+                            <small>Máximo @(Model.Plan.MaxBarbers) barberos</small>
+                        }
+                        else
+                        {
+                            <br />
+                            <small>Barberos ilimitados</small>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Members Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card glass-card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><i class="bi bi-people-fill me-2"></i>Barberos (@Model.Members.Count())</h5>
+                    
+                    @if (!Model.Members.Any())
+                    {
+                        <p class="text-muted mb-0">No hay barberos asociados todavía.</p>
+                    }
+                    else
+                    {
+                        <div class="row g-3">
+                            @foreach (var member in Model.Members)
+                            {
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card border-0 bg-transparent">
+                                        <div class="card-body text-center p-3">
+                                            @if (!string.IsNullOrEmpty(member.ProfilePhoto))
+                                            {
+                                                <img src="@member.ProfilePhoto" alt="@member.User.FullName" class="rounded-circle mb-2" width="60" height="60" style="object-fit: cover;" />
+                                            }
+                                            else
+                                            {
+                                                <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                                                    <span class="text-white fs-5 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                </div>
+                                            }
+                                            <h6 class="mb-1">@member.User.FullName</h6>
+                                            <p class="text-muted small mb-1">@member.User.Email</p>
+                                            <span class="badge bg-@(member.Id == Model.OwnerBarberId ? "warning" : "secondary")">
+                                                @(member.Id == Model.OwnerBarberId ? "Dueño" : "Miembro")
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="row">
+        <div class="col-12">
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Volver al Listado
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+</style>
+}

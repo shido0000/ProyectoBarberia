@@ -1,0 +1,219 @@
+@model WebApplication1.Models.Barbershop
+
+@{
+    ViewData["Title"] = "Gestionar Solicitudes";
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-inbox me-2"></i>Solicitudes de Membresía
+            </h1>
+            <p class="text-secondary">@Model.Name</p>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>@TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Pending Requests -->
+    <div class="card glass-card mb-4">
+        <div class="card-header bg-transparent border-0">
+            <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Solicitudes Pendientes</h5>
+        </div>
+        <div class="card-body">
+            @{
+                var pendingRequests = Model.MembershipRequests.Where(r => r.Status == MembershipRequestStatus.Pending).ToList();
+            }
+            
+            @if (!pendingRequests.Any())
+            {
+                <p class="text-muted mb-0">No hay solicitudes pendientes en este momento.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Barbero</th>
+                                <th>Email</th>
+                                <th>Fecha de Solicitud</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var request in pendingRequests)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            @if (!string.IsNullOrEmpty(request.Barber.ProfilePhoto))
+                                            {
+                                                <img src="@request.Barber.ProfilePhoto" alt="@request.Barber.User.FullName" class="rounded-circle" width="40" height="40" style="object-fit: cover;" />
+                                            }
+                                            else
+                                            {
+                                                <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                    <span class="text-white fs-6 fw-bold">@request.Barber.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                </div>
+                                            }
+                                            <span>@request.Barber.User.FullName</span>
+                                        </div>
+                                    </td>
+                                    <td>@request.Barber.User.Email</td>
+                                    <td>@request.RequestDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <form asp-action="AcceptRequest" method="post" class="d-inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="requestId" value="@request.Id" />
+                                                <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('¿Aceptar a @request.Barber.User.FullName como miembro?')">
+                                                    <i class="bi bi-check-lg me-1"></i>Aceptar
+                                                </button>
+                                            </form>
+                                            
+                                            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#rejectModal_@request.Id">
+                                                <i class="bi bi-x-lg me-1"></i>Rechazar
+                                            </button>
+                                            
+                                            <!-- Reject Modal -->
+                                            <div class="modal fade" id="rejectModal_@request.Id" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form asp-action="RejectRequest" method="post">
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="hidden" name="requestId" value="@request.Id" />
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Rechazar Solicitud</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>¿Estás seguro de que quieres rechazar la solicitud de <strong>@request.Barber.User.FullName</strong>?</p>
+                                                                <div class="mb-3">
+                                                                    <label class="form-label">Notas (opcional)</label>
+                                                                    <textarea name="notes" class="form-control" rows="3" placeholder="Motivo del rechazo..."></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                <button type="submit" class="btn btn-danger">Rechazar</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Past Requests -->
+    <div class="card glass-card">
+        <div class="card-header bg-transparent border-0">
+            <h5 class="mb-0"><i class="bi bi-archive me-2"></i>Historial de Solicitudes</h5>
+        </div>
+        <div class="card-body">
+            @{
+                var pastRequests = Model.MembershipRequests.Where(r => r.Status != MembershipRequestStatus.Pending).OrderByDescending(r => r.ResponseDate).ToList();
+            }
+            
+            @if (!pastRequests.Any())
+            {
+                <p class="text-muted mb-0">No hay historial de solicitudes.</p>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th>Barbero</th>
+                                <th>Estado</th>
+                                <th>Fecha de Respuesta</th>
+                                <th>Notas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var request in pastRequests)
+                            {
+                                <tr>
+                                    <td>@request.Barber.User.FullName</td>
+                                    <td>
+                                        @if (request.Status == MembershipRequestStatus.Accepted)
+                                        {
+                                            <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Aceptado</span>
+                                        }
+                                        else if (request.Status == MembershipRequestStatus.Rejected)
+                                        {
+                                            <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Rechazado</span>
+                                        }
+                                        else if (request.Status == MembershipRequestStatus.Cancelled)
+                                        {
+                                            <span class="badge bg-warning text-dark"><i class="bi bi-slash-circle me-1"></i>Cancelado</span>
+                                        }
+                                    </td>
+                                    <td>@request.ResponseDate?.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(request.OwnerNotes))
+                                        {
+                                            <small class="text-muted">@request.OwnerNotes</small>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">-</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Volver a la Barbería
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+</style>
+}

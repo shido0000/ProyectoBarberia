@@ -28,6 +28,12 @@ namespace WebApplication1.Models
         [Display(Name = "Estado")]
         public AppointmentStatus Status { get; set; } = AppointmentStatus.Pending;
         
+        /// <summary>
+        /// ID de la barbería donde se realiza la cita (si el barbero pertenece a una).
+        /// </summary>
+        [Display(Name = "Barbería")]
+        public int? BarbershopId { get; set; }
+        
         [MaxLength(500)]
         [Display(Name = "Notas")]
         public string? Notes { get; set; }
@@ -38,6 +44,7 @@ namespace WebApplication1.Models
         public virtual ApplicationUser Client { get; set; } = null!;
         public virtual BarberProfile BarberProfile { get; set; } = null!;
         public virtual Service Service { get; set; } = null!;
+        public virtual Barbershop? Barbershop { get; set; }
     }
     
     public enum AppointmentStatus

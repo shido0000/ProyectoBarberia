@@ -1,0 +1,115 @@
+@model WebApplication1.Models.Barbershop
+
+@{
+    ViewData["Title"] = "Editar Barbería";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card glass-card">
+                <div class="card-body p-4 p-md-5">
+                    <h1 class="display-6 fw-bold mb-4 text-center">
+                        <i class="bi bi-pencil me-2"></i>Editar Barbería
+                    </h1>
+                    
+                    @if (TempData["Error"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>@TempData["Error"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label"></label>
+                            <input asp-for="Phone" class="form-control" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="LogoUrl" class="form-label"></label>
+                            <input asp-for="LogoUrl" class="form-control" />
+                            <small class="text-muted">Pega la URL de una imagen para el logo</small>
+                            <span asp-validation-for="LogoUrl" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="CoverImageUrl" class="form-label"></label>
+                            <input asp-for="CoverImageUrl" class="form-control" />
+                            <small class="text-muted">Pega la URL de una imagen para la portada</small>
+                            <span asp-validation-for="CoverImageUrl" class="text-danger"></span>
+                        </div>
+                        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="mb-4">
+                                <label asp-for="BarbershopSubscriptionPlanId" class="form-label"></label>
+                                <select asp-for="BarbershopSubscriptionPlanId" class="form-select">
+                                    @foreach (var plan in ViewBag.Plans as List<WebApplication1.Models.BarbershopSubscriptionPlan>)
+                                    {
+                                        <option value="@plan.Id" selected="@(Model.BarbershopSubscriptionPlanId == plan.Id)">
+                                            @plan.Name - $@plan.MonthlyPrice/mes @(plan.MaxBarbers.HasValue ? $"(Máx {plan.MaxBarbers} barberos)" : "(Barberos ilimitados)")
+                                        </option>
+                                    }
+                                </select>
+                                <span asp-validation-for="BarbershopSubscriptionPlanId" class="text-danger"></span>
+                                <small class="text-muted">Solo los administradores pueden cambiar el plan</small>
+                            </div>
+                        }
+                        else
+                        {
+                            <input type="hidden" asp-for="BarbershopSubscriptionPlanId" />
+                        }
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-1"></i>Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle me-1"></i>Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+</style>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

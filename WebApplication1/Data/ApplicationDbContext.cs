@@ -20,6 +20,10 @@ namespace WebApplication1.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<BarberShopImage> BarberShopImages { get; set; }
         public DbSet<ServiceImage> ServiceImages { get; set; }
+        public DbSet<Barbershop> Barbershops { get; set; }
+        public DbSet<BarbershopSubscriptionPlan> BarbershopSubscriptionPlans { get; set; }
+        public DbSet<BarbershopMembershipRequest> BarbershopMembershipRequests { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -85,6 +89,50 @@ namespace WebApplication1.Data
                 .WithMany(s => s.Images)
                 .HasForeignKey(i => i.ServiceId)
                 .OnDelete(DeleteBehavior.Cascade);
+            
+            // Barbershop relationships
+            builder.Entity<Barbershop>()
+                .HasOne(b => b.Plan)
+                .WithMany(p => p.Barbershops)
+                .HasForeignKey(b => b.BarbershopSubscriptionPlanId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Barbershop>()
+                .HasOne(b => b.Owner)
+                .WithMany()
+                .HasForeignKey(b => b.OwnerBarberId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<BarberProfile>()
+                .HasOne(b => b.CurrentBarbershop)
+                .WithMany(bs => bs.Members)
+                .HasForeignKey(b => b.CurrentBarbershopId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
+            builder.Entity<BarbershopMembershipRequest>()
+                .HasOne(r => r.Barbershop)
+                .WithMany(bs => bs.MembershipRequests)
+                .HasForeignKey(r => r.BarbershopId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.Entity<BarbershopMembershipRequest>()
+                .HasOne(r => r.Barber)
+                .WithMany()
+                .HasForeignKey(r => r.BarberId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            builder.Entity<Notification>()
+                .HasOne(n => n.User)
+                .WithMany()
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            // Appointment to Barbershop relationship
+            builder.Entity<Appointment>()
+                .HasOne(a => a.Barbershop)
+                .WithMany(bs => bs.Appointments)
+                .HasForeignKey(a => a.BarbershopId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

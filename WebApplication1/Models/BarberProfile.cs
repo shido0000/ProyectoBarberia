@@ -44,6 +44,12 @@ namespace WebApplication1.Models
         [Display(Name = "Plan de Suscripción")]
         public SubscriptionTier SubscriptionPlan { get; set; } = SubscriptionTier.Free;
         
+        /// <summary>
+        /// ID de la barbería a la que pertenece este barbero (null si es independiente).
+        /// </summary>
+        [Display(Name = "Barbería")]
+        public int? CurrentBarbershopId { get; set; }
+        
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         
         // Navigation properties
@@ -55,6 +61,7 @@ namespace WebApplication1.Models
         public virtual ICollection<BarberSchedule> Schedules { get; set; } = new List<BarberSchedule>();
         public virtual ICollection<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
         public virtual ICollection<ClientNote> ClientNotes { get; set; } = new List<ClientNote>();
+        public virtual Barbershop? CurrentBarbershop { get; set; }
     }
     
     /// <summary>
