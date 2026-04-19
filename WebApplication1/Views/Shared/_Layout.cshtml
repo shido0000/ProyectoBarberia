@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BarberShop Pro - Sistema profesional de reservaciones para barberías" />
+    <title>@ViewData["Title"] | BarberShop Pro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-scissors"></i>
+                    <span class="d-none d-sm-inline">BarberShop Pro</span>
+                    <span class="d-inline d-sm-none">BSP</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-door"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Booking" asp-action="Index">
+                                <i class="bi bi-search"></i>
+                                <span>Barberos</span>
+                            </a>
+                        </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                                    <i class="bi bi-speedometer2"></i>
+                                    <span>Admin</span>
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Barber"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Barber" asp-action="Dashboard">
+                                    <i class="bi bi-briefcase"></i>
+                                    <span>Mi Barbería</span>
+                                </a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Client"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Client" asp-action="MyAppointments">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <span>Mis Reservas</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <button id="theme-toggle" class="btn btn-link nav-link" aria-label="Cambiar tema">
+                                <i id="theme-icon" class="bi bi-moon-stars"></i>
+                            </button>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4 py-5">
+                <!-- Columna 1: Brand & Descripción -->
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="bi bi-scissors fs-2" style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;"></i>
+                        <span class="fw-bold fs-5">BarberShop Pro</span>
+                    </div>
+                    <p class="small text-secondary">
+                        La plataforma moderna para reservar y gestionar barberías. Tecnología de punta para potenciar tu negocio.
+                    </p>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-secondary-hover" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-secondary-hover" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-secondary-hover" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-5"></i></a>
+                        <a href="#" class="text-secondary-hover" aria-label="TikTok"><i class="bi bi-tiktok fs-5"></i></a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces rápidos -->
+                <div class="col-md-2">
+                    <h6 class="fw-bold mb-3">Producto</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a asp-controller="Booking" asp-action="Index" class="text-decoration-none">Reservar</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Features" class="text-decoration-none">Características</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Pricing" class="text-decoration-none">Precios</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Testimonials" class="text-decoration-none">Testimonios</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Soporte -->
+                <div class="col-md-2">
+                    <h6 class="fw-bold mb-3">Soporte</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Help" class="text-decoration-none">Centro de ayuda</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Contact" class="text-decoration-none">Contacto</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Privacidad</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Terms" class="text-decoration-none">Términos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Newsletter / Contacto -->
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-3">Suscríbete</h6>
+                    <p class="small text-secondary">Recibe novedades y ofertas exclusivas.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control form-control-sm bg-transparent border-secondary" placeholder="Tu correo electrónico">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </div>
+                    <p class="small text-muted mt-2">Promociones, nuevos barberos y mucho más.</p>
+                </div>
+            </div>
+
+            <!-- Línea divisoria y copyright -->
+            <div class="row pt-3 pb-4 border-top border-secondary-subtle">
+                <div class="col-12 text-center">
+                    <p class="mb-0 small text-secondary">
+                        <i class="bi bi-scissors me-1"></i>
+                        <strong>BarberShop Pro</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

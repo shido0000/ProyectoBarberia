@@ -1,0 +1,76 @@
+@model WebApplication1.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="row justify-content-center py-5">
+    <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-xl border-0">
+            <div class="card-body p-5">
+                <div class="text-center mb-5">
+                    <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4 shadow-glow" style="width: 100px; height: 100px;">
+                        <i class="bi bi-person-circle text-white" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">¡Bienvenido!</h2>
+                    <p class="text-muted">Ingresa a tu cuenta para continuar</p>
+                </div>
+                
+                <form asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                    @{
+                        var hasErrors = ViewData.ModelState.ErrorCount > 0;
+                        var displayStyle = hasErrors ? "flex" : "none";
+                    }
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert" style="display: @displayStyle">
+                        <i class="bi bi-exclamation-circle"></i>
+                        <span></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="Email" class="form-label">
+                            <i class="bi bi-envelope text-primary me-2"></i> Email
+                        </label>
+                        <input asp-for="Email" class="form-control form-control-lg" placeholder="tu@email.com" autocomplete="email" autofocus />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label asp-for="Password" class="form-label">
+                            <i class="bi bi-lock text-primary me-2"></i> Contraseña
+                        </label>
+                        <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="••••••••" autocomplete="current-password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-4 form-check">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label fw-semibold">Recordarme</label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg w-100 mb-4 shadow-glow">
+                        <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                    </button>
+                </form>
+                
+                <div class="text-center">
+                    <p class="mb-3 text-muted">¿No tienes cuenta?</p>
+                    <a asp-action="Register" class="btn btn-outline-primary btn-lg w-100">
+                        <i class="bi bi-person-plus"></i> Crear Cuenta
+                    </a>
+                </div>
+                
+                <div class="mt-5 p-4 bg-light rounded border">
+                    <small class="text-muted">
+                        <i class="bi bi-info-circle me-2"></i> <strong>Cuentas de prueba:</strong><br>
+                        <span class="d-block mt-2"><strong>Admin:</strong> admin@barbershop.com / Admin123!</span>
+                        <span class="d-block"><strong>Barbero:</strong> barber@barbershop.com / Barber123!</span>
+                        <span class="d-block"><strong>Cliente:</strong> cliente@barbershop.com / Client123!</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

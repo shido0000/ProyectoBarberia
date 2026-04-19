@@ -1,0 +1,289 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApplication1.bundle.scp.css",
+      "PackagePath": "staticwebassets\\WebApplication1.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\uploads\\.gitkeep",
+      "PackagePath": "staticwebassets\\uploads\\.gitkeep"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\uploads\\barbershops\\1c7c18d6-934a-4005-b671-e23c5ce394d3.jpg",
+      "PackagePath": "staticwebassets\\uploads\\barbershops\\1c7c18d6-934a-4005-b671-e23c5ce394d3.jpg"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\uploads\\barbershops\\4eddcb84-4b6c-4fa8-b12e-78953f1cbed4.jpg",
+      "PackagePath": "staticwebassets\\uploads\\barbershops\\4eddcb84-4b6c-4fa8-b12e-78953f1cbed4.jpg"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\uploads\\barbershops\\ad40bbb2-961d-41de-8e69-b8989f83d99b.jpg",
+      "PackagePath": "staticwebassets\\uploads\\barbershops\\ad40bbb2-961d-41de-8e69-b8989f83d99b.jpg"
+    },
+    {
+      "Id": "D:\\Sistemas Personales\\PROYECTOS PERSONALES\\PROYECTOS PERSONALES\\New folder\\Barberia\\WebApplication1\\wwwroot\\uploads\\services\\cf2710e1-81d0-4f90-9060-1bc40d9a7d33.jpg",
+      "PackagePath": "staticwebassets\\uploads\\services\\cf2710e1-81d0-4f90-9060-1bc40d9a7d33.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WebApplication1.props",
+      "PackagePath": "build\\WebApplication1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApplication1.props",
+      "PackagePath": "buildMultiTargeting\\WebApplication1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WebApplication1.props",
+      "PackagePath": "buildTransitive\\WebApplication1.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,101 @@
+/* home.css - Estilos modernos para la página de inicio de BarberShop Pro */
+
+.hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233b82f6" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+}
+
+.floating-card {
+    animation: float 3s ease-in-out infinite;
+    width: 200px;
+    z-index: 10;
+}
+
+.floating-card:first-child {
+    top: 20%;
+    left: -50px;
+}
+
+.floating-card:last-child {
+    bottom: 20%;
+    right: -50px;
+}
+
+/* Keyframes - ahora sin error porque está en archivo .css */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.bg-opacity-10 {
+    --bs-bg-opacity: 0.1;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+
+.step-wrapper:hover .step-number {
+    transform: scale(1.1);
+}
+
+/* Media query - también funciona sin problemas */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    .display-3 {
+        font-size: calc(1.5rem + 2vw);
+    }
+    .floating-card {
+        display: none;
+    }
+}

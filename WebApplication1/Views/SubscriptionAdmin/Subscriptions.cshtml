@@ -1,0 +1,109 @@
+@model List<WebApplication1.Models.Subscription>
+@{
+    ViewData["Title"] = "Suscripciones Activas";
+}
+
+<div class="row mb-4 section-header">
+    <div class="col-md-8">
+        <h2 class="fw-bold mb-2 text-gradient">
+            <i class="bi bi-credit-card me-2"></i>Suscripciones Activas
+        </h2>
+        <p class="text-muted mb-0">Gestiona las suscripciones de los barberos</p>
+    </div>
+    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <a asp-controller="SubscriptionAdmin" asp-action="Assign" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Nueva Suscripción
+        </a>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (Model.Any())
+{
+    <div class="card shadow-md border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th>Barbero</th>
+                            <th>Plan</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sub in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <strong class="d-block">@sub.User.FullName</strong>
+                                    <small class="text-muted">@sub.User.Email</small>
+                                </td>
+                                <td>
+                                    @if (sub.SubscriptionPlan != null)
+                                    {
+                                        <span class="badge bg-primary">@sub.SubscriptionPlan.Name</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Plan personalizado</span>
+                                    }
+                                </td>
+                                <td>@sub.StartDate.ToString("dd/MM/yyyy")</td>
+                                <td>@(sub.EndDate?.ToString("dd/MM/yyyy") ?? "Sin fecha")</td>
+                                <td>
+                                    @if (sub.IsActive && (!sub.EndDate.HasValue || sub.EndDate.Value > DateTime.Now))
+                                    {
+                                        <span class="badge bg-success">Activa</span>
+                                    }
+                                    else if (sub.EndDate.HasValue && sub.EndDate.Value <= DateTime.Now)
+                                    {
+                                        <span class="badge bg-warning text-dark">Vencida</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Inactiva</span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    @if (sub.IsActive)
+                                    {
+                                        <form asp-controller="SubscriptionAdmin" asp-action="CancelSubscription" asp-route-id="@sub.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                    onclick="return confirm('¿Cancelar esta suscripción?')">
+                                                <i class="bi bi-x-circle me-1"></i>Cancelar
+                                            </button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 140px; height: 140px;">
+            <i class="bi bi-credit-card text-muted" style="font-size: 4rem;"></i>
+        </div>
+        <h4 class="text-muted mb-2">No hay suscripciones activas</h4>
+        <p class="text-muted mb-4">Asigna un plan a un barbero para empezar</p>
+        <a asp-controller="SubscriptionAdmin" asp-action="Assign" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle me-2"></i>Asignar Suscripción
+        </a>
+    </div>
+}

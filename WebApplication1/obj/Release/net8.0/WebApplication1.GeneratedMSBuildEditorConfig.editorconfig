@@ -1,0 +1,151 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApplication1
+build_property.RootNamespace = WebApplication1
+build_property.ProjectDir = D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Admin/Appointments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXBwb2ludG1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Admin/Barbers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmFyYmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Admin/Clients.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2xpZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/Appointments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXEFwcG9pbnRtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/CreateService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXENyZWF0ZVNlcnZpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXERhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/EditService.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXEVkaXRTZXJ2aWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/ServiceImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXFNlcnZpY2VJbWFnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXFNlcnZpY2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Barber/ShopImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFyYmVyXFNob3BJbWFnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Booking/Barber.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCYXJiZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Booking/Book.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xCb29rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Booking/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Client/MyAppointments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XE15QXBwb2ludG1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Client/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/SubscriptionAdmin/Assign.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uQWRtaW5cQXNzaWduLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/SubscriptionAdmin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/SubscriptionAdmin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uQWRtaW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/SubscriptionAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/SubscriptionAdmin/Subscriptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3Vic2NyaXB0aW9uQWRtaW5cU3Vic2NyaXB0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Sistemas Personales/PROYECTOS PERSONALES/PROYECTOS PERSONALES/New folder/Barberia/WebApplication1/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-bddmc6yalx

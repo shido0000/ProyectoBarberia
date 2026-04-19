@@ -1,0 +1,203 @@
+@model List<WebApplication1.Models.SubscriptionPlan>
+@{
+    ViewData["Title"] = "Gestionar Planes de Suscripción";
+}
+
+<div class="row mb-4 section-header">
+    <div class="col-md-8">
+        <h2 class="fw-bold mb-2 text-gradient">
+            <i class="bi bi-star me-2"></i>Gestionar Planes de Suscripción
+        </h2>
+        <p class="text-muted mb-0">Administra los planes disponibles para los barberos</p>
+    </div>
+    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <a asp-controller="SubscriptionAdmin" asp-action="Create" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Nuevo Plan
+        </a>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- Stats Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-primary bg-opacity-10 text-primary rounded-3">
+                    <i class="bi bi-layers"></i>
+                </div>
+            </div>
+            <div class="stat-value text-primary">@Model.Count</div>
+            <div class="stat-label">Planes Totales</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-success bg-opacity-10 text-success rounded-3">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+            </div>
+            <div class="stat-value text-success">@Model.Count(p => p.IsActive)</div>
+            <div class="stat-label">Planes Activos</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-warning bg-opacity-10 text-warning rounded-3">
+                    <i class="bi bi-people"></i>
+                </div>
+            </div>
+            <div class="stat-value text-warning">@ViewBag.TotalSubscriptions</div>
+            <div class="stat-label">Suscripciones Activas</div>
+        </div>
+    </div>
+</div>
+
+<!-- Plans Grid -->
+@if (Model.Any())
+{
+    <div class="row g-4">
+        @foreach (var plan in Model)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-md border-0 @(plan.IsDefault ? "border-primary border-2" : "")">
+                    @if (plan.IsDefault)
+                    {
+                        <div class="card-header bg-primary text-white text-center">
+                            <i class="bi bi-star-fill me-1"></i> Plan por Defecto
+                        </div>
+                    }
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h4 class="card-title fw-bold mb-0">@plan.Name</h4>
+                            @if (plan.IsActive)
+                            {
+                                <span class="badge bg-success">Activo</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactivo</span>
+                            }
+                        </div>
+                        
+                        @if (!string.IsNullOrEmpty(plan.Description))
+                        {
+                            <p class="text-muted small mb-3">@plan.Description</p>
+                        }
+                        
+                        <div class="mb-3">
+                            <h3 class="text-primary fw-bold mb-0">
+                                $@plan.MonthlyPrice.ToString("F2")
+                                <small class="text-muted fs-6">/mes</small>
+                            </h3>
+                            @if (plan.AnnualPrice.HasValue)
+                            {
+                                <small class="text-success">$@plan.AnnualPrice.Value.ToString("F2")/año (Ahorra @(((plan.MonthlyPrice * 12 - plan.AnnualPrice.Value) / (plan.MonthlyPrice * 12) * 100)).ToString("F0")%)</small>
+                            }
+                        </div>
+                        
+                        <hr />
+                        
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <small class="text-muted d-block">
+                                    <i class="bi bi-people me-1"></i>
+                                    Barberos: @(plan.MaxBarbers.HasValue ? plan.MaxBarbers.Value.ToString() : "Ilimitados")
+                                </small>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">
+                                    <i class="bi bi-scissors me-1"></i>
+                                    Servicios: @(plan.MaxServicesPerBarber.HasValue ? plan.MaxServicesPerBarber.Value.ToString() : "Ilimitados")
+                                </small>
+                            </div>
+                            <div class="col-12">
+                                <small class="text-muted d-block">
+                                    <i class="bi bi-calendar me-1"></i>
+                                    Duración: @plan.DurationDays días
+                                </small>
+                            </div>
+                        </div>
+                        
+                        <hr />
+                        
+                        <div class="mb-3">
+                            <h6 class="fw-bold mb-2">Características:</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li class="mb-1">
+                                    <i class="bi bi-@(plan.IncludeAnalytics ? "check-circle text-success" : "x-circle text-danger") me-1"></i>
+                                    Analytics
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-@(plan.PrioritySupport ? "check-circle text-success" : "x-circle text-danger") me-1"></i>
+                                    Soporte Prioritario
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-@(plan.CustomBranding ? "check-circle text-success" : "x-circle text-danger") me-1"></i>
+                                    Branding Personalizado
+                                </li>
+                                <li class="mb-1">
+                                    <i class="bi bi-@(plan.AutoReminders ? "check-circle text-success" : "x-circle text-danger") me-1"></i>
+                                    Recordatorios Automáticos
+                                </li>
+                                <li>
+                                    <i class="bi bi-@(plan.ExportReports ? "check-circle text-success" : "x-circle text-danger") me-1"></i>
+                                    Exportar Reportes
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <div class="btn-group">
+                                <a asp-controller="SubscriptionAdmin" asp-action="Edit" asp-route-id="@plan.Id" class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </a>
+                                <form asp-controller="SubscriptionAdmin" asp-action="TogglePlanStatus" asp-route-id="@plan.Id" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm @(plan.IsActive ? "btn-outline-warning" : "btn-outline-success")">
+                                        <i class="bi bi-@(plan.IsActive ? "pause" : "play")-circle"></i> @(plan.IsActive ? "Desactivar" : "Activar")
+                                    </button>
+                                </form>
+                            </div>
+                            <form asp-controller="SubscriptionAdmin" asp-action="Delete" asp-route-id="@plan.Id" method="post">
+                                <button type="submit" class="btn btn-sm btn-outline-danger w-100" 
+                                        onclick="return confirm('¿Estás seguro de eliminar este plan?')">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 140px; height: 140px;">
+            <i class="bi bi-star text-muted" style="font-size: 4rem;"></i>
+        </div>
+        <h4 class="text-muted mb-2">No hay planes de suscripción</h4>
+        <p class="text-muted mb-4">Crea tu primer plan para empezar a ofrecer suscripciones</p>
+        <a asp-controller="SubscriptionAdmin" asp-action="Create" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle me-2"></i>Crear Primer Plan
+        </a>
+    </div>
+}

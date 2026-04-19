@@ -1,0 +1,219 @@
+@model WebApplication1.Models.ViewModels.AppointmentViewModel
+@{
+    ViewData["Title"] = "Reservar Cita";
+    var barber = ViewBag.Barber as WebApplication1.Models.BarberProfile;
+    var services = ViewBag.Services as List<WebApplication1.Models.Service>;
+}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-controller="Booking" asp-action="Index"><i class="bi bi-search"></i> Barberos</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Booking" asp-action="Barber" asp-route-id="@barber.Id">@barber.ShopName</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Reservar</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-9">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-calendar-plus me-2"></i>Reservar Cita
+                </h4>
+            </div>
+            <div class="card-body p-3 p-md-4">
+                <!-- Barber Info -->
+                <div class="alert alert-info mb-4 d-flex align-items-center">
+                    <i class="bi bi-person-badge me-3 flex-shrink-0" style="font-size: 2rem;"></i>
+                    <div>
+                        <strong class="d-block">@barber.ShopName</strong>
+                        @if (!string.IsNullOrEmpty(barber.Address))
+                        {
+                            <small class="d-block">@barber.Address</small>
+                        }
+                    </div>
+                </div>
+                
+                <form asp-action="Book" method="post">
+                    @{
+                        var hasErrors = ViewData.ModelState.ErrorCount > 0;
+                    }
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert" style="display: @(hasErrors ? "flex" : "none")">
+                        <i class="bi bi-exclamation-circle me-2"></i>
+                        <span></span>
+                    </div>
+                    
+                    <input type="hidden" asp-for="BarberProfileId" />
+                    
+                    <!-- Step 1: Service -->
+                    <div class="mb-4">
+                        <label asp-for="ServiceId" class="form-label fw-bold">
+                            <span class="badge bg-primary me-2">1</span>
+                            <i class="bi bi-scissors text-primary me-1"></i> Selecciona un Servicio
+                        </label>
+                        <select asp-for="ServiceId" class="form-select form-select-lg" id="serviceSelect" required>
+                            <option value="">-- Elige un servicio --</option>
+                            @foreach (var service in services)
+                            {
+                                <option value="@service.Id" data-duration="@service.DurationMinutes" data-price="@service.Price">
+                                    @service.Name - $@service.Price.ToString("F2") (@service.DurationMinutes min)
+                                </option>
+                            }
+                        </select>
+                        <span asp-validation-for="ServiceId" class="text-danger small"></span>
+                    </div>
+                    
+                    <!-- Step 2: Date -->
+                    <div class="mb-4">
+                        <label asp-for="Date" class="form-label fw-bold">
+                            <span class="badge bg-success me-2">2</span>
+                            <i class="bi bi-calendar3 text-success me-1"></i> Selecciona una Fecha
+                        </label>
+                        <input asp-for="Date" type="date" class="form-control form-control-lg" id="dateInput" 
+                               min="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                        <span asp-validation-for="Date" class="text-danger small"></span>
+                    </div>
+                    
+                    <!-- Step 3: Time -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">
+                            <span class="badge bg-info me-2">3</span>
+                            <i class="bi bi-clock text-info me-1"></i> Selecciona un Horario
+                        </label>
+                        <div id="timeSlotsContainer" class="row g-2">
+                            <div class="col-12">
+                                <p class="text-muted mb-0">
+                                    <i class="bi bi-info-circle me-1"></i>
+                                    Selecciona un servicio y fecha para ver horarios disponibles
+                                </p>
+                            </div>
+                        </div>
+                        <input type="hidden" asp-for="Time" id="timeInput" required />
+                        <span asp-validation-for="Time" class="text-danger small"></span>
+                    </div>
+                    
+                    <!-- Notes -->
+                    <div class="mb-4">
+                        <label asp-for="Notes" class="form-label">
+                            <i class="bi bi-chat-text text-muted me-1"></i> Notas (Opcional)
+                        </label>
+                        <textarea asp-for="Notes" class="form-control" rows="3" placeholder="¿Alguna solicitud especial?"></textarea>
+                    </div>
+                    
+                    <!-- Summary Box -->
+                    <div id="summaryBox" class="alert alert-success mb-4" style="display: none;">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-receipt me-2"></i>Resumen de la Reserva</h5>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="mb-2"><strong>Servicio:</strong> <span id="summaryService">-</span></p>
+                                <p class="mb-2"><strong>Fecha:</strong> <span id="summaryDate">-</span></p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="mb-2"><strong>Hora:</strong> <span id="summaryTime">-</span></p>
+                                <p class="mb-2"><strong>Duración:</strong> <span id="summaryDuration">-</span></p>
+                            </div>
+                        </div>
+                        <hr />
+                        <h3 class="text-center mb-0"><strong>Total: $<span id="summaryPrice">0.00</span></strong></h3>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-lg w-100" id="submitBtn" disabled>
+                        <i class="bi bi-check-circle me-2"></i>Confirmar Reservación
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            const barberId = @Model.BarberProfileId;
+
+            function loadTimeSlots() {
+                const date = $('#dateInput').val();
+                const serviceId = $('#serviceSelect').val();
+
+                console.log('Loading slots for:', { barberId, date, serviceId });
+
+                if (!date || !serviceId) {
+                    console.log('Missing date or serviceId');
+                    return;
+                }
+
+                $('#timeSlotsContainer').html('<div class="col-12 text-center py-3"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div>');
+
+                $.ajax({
+                    url: '@Url.Action("GetAvailableTimeSlots", "Booking")',
+                    type: 'GET',
+                    data: {
+                        barberId: barberId,
+                        date: date,
+                        serviceId: parseInt(serviceId)
+                    },
+                    success: function(response) {
+                        console.log('Response:', response);
+                        if (response.success && response.slots && response.slots.length > 0) {
+                            let html = '';
+                            response.slots.forEach(slot => {
+                                html += `<div class="col-4 col-sm-3 col-md-2">
+                                    <button type="button" class="btn btn-outline-primary w-100 time-slot-btn" data-time="${slot}">
+                                        ${slot}
+                                    </button>
+                                </div>`;
+                            });
+                            $('#timeSlotsContainer').html(html);
+                        } else {
+                            $('#timeSlotsContainer').html('<div class="col-12"><p class="text-muted mb-0"><i class="bi bi-calendar-x me-1"></i>No hay horarios disponibles para esta fecha</p></div>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error, xhr.responseText);
+                        $('#timeSlotsContainer').html('<div class="col-12"><p class="text-danger mb-0"><i class="bi bi-exclamation-triangle me-1"></i>Error al cargar horarios: ' + error + '</p></div>');
+                    }
+                });
+            }
+
+            $('#serviceSelect, #dateInput').on('change', loadTimeSlots);
+
+            $(document).on('click', '.time-slot-btn', function() {
+                $('.time-slot-btn').removeClass('active btn-primary').addClass('btn-outline-primary');
+                $(this).removeClass('btn-outline-primary').addClass('btn-primary active');
+                $('#timeInput').val($(this).data('time'));
+                updateSummary();
+            });
+
+            function updateSummary() {
+                const serviceSelect = document.getElementById('serviceSelect');
+                const selectedOption = serviceSelect.options[serviceSelect.selectedIndex];
+                const date = $('#dateInput').val();
+                const time = $('#timeInput').val();
+
+                if (selectedOption.value && date && time) {
+                    const serviceName = selectedOption.text.split(' - ')[0];
+                    const price = selectedOption.getAttribute('data-price');
+                    const duration = selectedOption.getAttribute('data-duration');
+
+                    $('#summaryService').text(serviceName);
+                    $('#summaryDate').text(new Date(date + 'T00:00:00').toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+                    $('#summaryTime').text(time);
+                    $('#summaryDuration').text(duration + ' minutos');
+                    $('#summaryPrice').text(parseFloat(price).toFixed(2));
+                    $('#summaryBox').fadeIn();
+                    $('#submitBtn').prop('disabled', false);
+                }
+            }
+
+            $('#serviceSelect, #dateInput').on('change', function() {
+                $('#timeInput').val('');
+                $('#summaryBox').hide();
+                $('#submitBtn').prop('disabled', true);
+            });
+        });
+    </script>
+}

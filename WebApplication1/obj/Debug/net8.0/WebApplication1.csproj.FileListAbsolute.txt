@@ -1,0 +1,269 @@
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\appsettings.Development.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\appsettings.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.staticwebassets.runtime.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.exe
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.deps.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.runtimeconfig.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.dll
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.pdb
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.AssemblyInfoInputs.cache
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.AssemblyInfo.cs
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.csproj.CoreCompileInputs.cache
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.RazorAssemblyInfo.cache
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.RazorAssemblyInfo.cs
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.build.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.development.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.build.WebApplication1.props
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebApplication1.props
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebApplication1.props
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.pack.json
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\bundle\WebApplication1.styles.css
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\projectbundle\WebApplication1.bundle.scp.css
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.dll
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\refint\WebApplication1.dll
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.pdb
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.genruntimeconfig.cache
+E:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\ref\WebApplication1.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.csproj.AssemblyReference.cache
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Humanizer.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Data.Sqlite.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Mono.TextTemplating.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\SQLitePCLRaw.batteries_v2.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\SQLitePCLRaw.core.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\SQLitePCLRaw.provider.e_sqlite3.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.CodeDom.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Convention.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Hosting.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Runtime.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.TypedParts.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\browser-wasm\nativeassets\net8.0\e_sqlite3.a
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-arm\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-arm64\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-armel\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-mips64\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-musl-arm\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-ppc64le\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-s390x\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-x64\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\linux-x86\native\libe_sqlite3.so
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\osx-x64\native\libe_sqlite3.dylib
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-arm\native\e_sqlite3.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
+e:\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebAppli.7D14BD69.Up2Date
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\appsettings.Development.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\appsettings.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.staticwebassets.runtime.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.exe
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.deps.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.runtimeconfig.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\WebApplication1.pdb
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Humanizer.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.CodeDom.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Convention.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Hosting.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.Runtime.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Composition.TypedParts.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.csproj.AssemblyReference.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.AssemblyInfoInputs.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.AssemblyInfo.cs
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.csproj.CoreCompileInputs.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.MvcApplicationPartsAssemblyInfo.cs
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.MvcApplicationPartsAssemblyInfo.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.RazorAssemblyInfo.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.RazorAssemblyInfo.cs
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.build.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.development.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.WebApplication1.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.build.WebApplication1.props
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebApplication1.props
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebApplication1.props
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\bundle\WebApplication1.styles.css
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\scopedcss\projectbundle\WebApplication1.bundle.scp.css
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebAppli.7D14BD69.Up2Date
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\refint\WebApplication1.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.pdb
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\WebApplication1.genruntimeconfig.cache
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\obj\Debug\net8.0\ref\WebApplication1.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Azure.Core.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Azure.Identity.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Drawing.Common.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Memory.Data.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Runtime.Caching.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Security.Permissions.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\System.Windows.Extensions.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Sistemas Personales\PROYECTOS PERSONALES\PROYECTOS PERSONALES\New folder\Barberia\WebApplication1\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll

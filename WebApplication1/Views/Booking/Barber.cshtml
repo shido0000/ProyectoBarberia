@@ -1,0 +1,209 @@
+@model WebApplication1.Models.BarberProfile
+@{
+    ViewData["Title"] = Model.ShopName ?? "Barbería";
+}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb bg-light p-3 rounded">
+        <li class="breadcrumb-item"><a asp-controller="Booking" asp-action="Index" class="text-decoration-none"><i class="bi bi-search"></i> Barberos</a></li>
+        <li class="breadcrumb-item active fw-bold" aria-current="page">@Model.ShopName</li>
+    </ol>
+</nav>
+
+<div class="row g-4">
+    <!-- Barber Info Card -->
+    <div class="col-lg-4">
+        <div class="card shadow-lg sticky-top border-0" style="top: 1rem; z-index: 100;">
+            <div class="card-header bg-gradient-primary text-white text-center py-5">
+                <i class="bi bi-person-badge" style="font-size: 5rem;"></i>
+                <h3 class="mt-3 mb-0 h4 fw-bold">@(Model.ShopName ?? "Barbería Sin Nombre")</h3>
+            </div>
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(Model.Description))
+                {
+                    <p class="text-muted mb-3">@Model.Description</p>
+                }
+                
+                <hr class="my-3" />
+                
+                <div class="mb-3">
+                    @if (!string.IsNullOrEmpty(Model.Address))
+                    {
+                        <p class="mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i> 
+                            <strong>Dirección:</strong><br>
+                            <span class="ms-4 text-muted">@Model.Address</span>
+                        </p>
+                    }
+                    
+                    @if (!string.IsNullOrEmpty(Model.Phone))
+                    {
+                        <p class="mb-3">
+                            <i class="bi bi-telephone-fill text-primary me-2"></i> 
+                            <strong>Teléfono:</strong><br>
+                            <span class="ms-4 text-muted">@Model.Phone</span>
+                        </p>
+                    }
+                    
+                    <p class="mb-0">
+                        <i class="bi bi-clock-fill text-primary me-2"></i> 
+                        <strong>Horario:</strong><br>
+                        <span class="ms-4 text-muted">@Model.StartTime.ToString(@"hh\:mm") - @Model.EndTime.ToString(@"hh\:mm")</span>
+                    </p>
+                </div>
+                
+                <hr class="my-3" />
+                
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Booking" asp-action="Book" asp-route-barberId="@Model.Id" 
+                       class="btn btn-primary btn-lg w-100 shadow-glow">
+                        <i class="bi bi-calendar-plus"></i> Reservar Cita
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg w-100 shadow-glow">
+                        <i class="bi bi-box-arrow-in-right"></i> Inicia sesión para reservar
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <!-- Shop Images Gallery -->
+    <div class="col-lg-8">
+        @{
+            var shopImages = Model.Images.ToList();
+        }
+        
+        @if (shopImages.Any())
+        {
+            <div class="card shadow-md mb-4 border-0">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-camera me-2"></i>Galería de Fotos (@shopImages.Count)</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div id="shopImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                        @if (shopImages.Count > 1)
+                        {
+                            <div class="carousel-indicators">
+                                @for (int idx = 0; idx < shopImages.Count; idx++)
+                                {
+                                    <button type="button" data-bs-target="#shopImageCarousel" data-bs-slide-to="@idx" 
+                                            class="@(idx == 0 ? "active" : "")" aria-current="true"></button>
+                                }
+                            </div>
+                        }
+                        <div class="carousel-inner">
+                            @for (int idx = 0; idx < shopImages.Count; idx++)
+                            {
+                                var img = shopImages[idx];
+                                <div class="carousel-item @(idx == 0 ? "active" : "")">
+                                    <img src="@img.ImageUrl" class="d-block w-100" alt="@img.Description" 
+                                         style="height: 450px; object-fit: cover;" />
+                                    @if (!string.IsNullOrEmpty(img.Description))
+                                    {
+                                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                                            <p class="mb-0 fw-bold">@img.Description</p>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        @if (shopImages.Count > 1)
+                        {
+                            <button class="carousel-control-prev" type="button" data-bs-target="#shopImageCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Anterior</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#shopImageCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Siguiente</span>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        
+        <!-- Services List -->
+        <div class="card shadow-md border-0">
+            <div class="card-header bg-gradient-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-scissors me-2"></i>Servicios Disponibles</h4>
+            </div>
+            <div class="card-body p-0">
+                @if (Model.Services.Any(s => s.IsActive))
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var service in Model.Services.Where(s => s.IsActive))
+                        {
+                            <div class="list-group-item p-4">
+                                <div class="row align-items-center">
+                                    @if (service.Images.Any())
+                                    {
+                                        <div class="col-md-3 mb-3 mb-md-0">
+                                            <img src="@service.Images.First().ImageUrl" alt="@service.Name" 
+                                                 class="img-fluid rounded shadow-sm" style="height: 120px; width: 100%; object-fit: cover;" />
+                                        </div>
+                                        <div class="col-md-5 mb-3 mb-md-0">
+                                            <h5 class="fw-bold mb-2">@service.Name</h5>
+                                            @if (!string.IsNullOrEmpty(service.Description))
+                                            {
+                                                <p class="text-muted small mb-2">@service.Description</p>
+                                            }
+                                            <p class="small mb-0 text-muted">
+                                                <i class="bi bi-clock-fill text-primary me-1"></i>
+                                                Duración: @service.DurationMinutes minutos
+                                            </p>
+                                            @if (service.Images.Count > 1)
+                                            {
+                                                <small class="text-muted">
+                                                    <i class="bi bi-images me-1"></i>@service.Images.Count fotos disponibles
+                                                </small>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-8 mb-3 mb-md-0">
+                                            <h5 class="fw-bold mb-2">@service.Name</h5>
+                                            @if (!string.IsNullOrEmpty(service.Description))
+                                            {
+                                                <p class="text-muted small mb-2">@service.Description</p>
+                                            }
+                                            <p class="small mb-0 text-muted">
+                                                <i class="bi bi-clock-fill text-primary me-1"></i>
+                                                Duración: @service.DurationMinutes minutos
+                                            </p>
+                                        </div>
+                                    }
+                                    <div class="col-md-4 text-md-end">
+                                        <h3 class="text-primary fw-bold mb-2">$@service.Price.ToString("F2")</h3>
+                                        @if (User.Identity?.IsAuthenticated ?? false)
+                                        {
+                                            <a asp-controller="Booking" asp-action="Book" asp-route-barberId="@Model.Id"
+                                               class="btn btn-outline-primary">
+                                                <i class="bi bi-calendar-plus"></i> Reservar
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-5">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3 mx-auto" style="width: 120px; height: 120px;">
+                            <i class="bi bi-scissors text-muted" style="font-size: 3rem;"></i>
+                        </div>
+                        <p class="text-muted mb-0">Este barbero aún no ha configurado sus servicios</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+@model List<WebApplication1.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Gestión de Barberos";
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2><i class="bi bi-people"></i> Gestión de Barberos</h2>
+        <p class="text-muted">Administra todos los barberos registrados</p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        <i class="bi bi-check-circle"></i> @TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="bg-primary text-white">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Barbería</th>
+                        <th>Dirección</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var barber in Model)
+                    {
+                        <tr>
+                            <td><strong>@barber.FullName</strong></td>
+                            <td>@barber.Email</td>
+                            <td>@(barber.BarberProfile?.ShopName ?? "Sin configurar")</td>
+                            <td>@(barber.BarberProfile?.Address ?? "-")</td>
+                            <td>
+                                @if (barber.BarberProfile?.IsActive == true)
+                                {
+                                    <span class="badge bg-success">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Inactivo</span>
+                                }
+                            </td>
+                            <td>
+                                <form asp-controller="Admin" asp-action="ToggleBarberStatus" method="post" class="d-inline">
+                                    <input type="hidden" name="userId" value="@barber.Id" />
+                                    <input type="hidden" name="isActive" value="@((barber.BarberProfile?.IsActive != true).ToString().ToLower())" />
+                                    @if (barber.BarberProfile?.IsActive == true)
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Desactivar este barbero?')">
+                                            <i class="bi bi-x-circle"></i> Desactivar
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" class="btn btn-sm btn-outline-success">
+                                            <i class="bi bi-check-circle"></i> Activar
+                                        </button>
+                                    }
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

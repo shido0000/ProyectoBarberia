@@ -1,0 +1,74 @@
+@model WebApplication1.Models.BarberProfile
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="bi bi-person-gear"></i> Mi Perfil de Barbería</h4>
+            </div>
+            <div class="card-body">
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle"></i> @TempData["Success"]
+                    </div>
+                }
+                
+                <form asp-controller="Barber" asp-action="UpdateProfile" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-shop"></i> Nombre de la Barbería
+                            </label>
+                            <input name="ShopName" value="@Model.ShopName" class="form-control form-control-lg" placeholder="Mi Barbería" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-telephone"></i> Teléfono
+                            </label>
+                            <input name="Phone" value="@Model.Phone" class="form-control form-control-lg" placeholder="+1234567890" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-geo-alt"></i> Dirección
+                            </label>
+                            <input name="Address" value="@Model.Address" class="form-control form-control-lg" placeholder="Calle Principal #123, Ciudad" />
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-chat-text"></i> Descripción
+                            </label>
+                            <textarea name="Description" class="form-control" rows="3" placeholder="Describe tu barbería...">@Model.Description</textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-clock"></i> Hora de Apertura
+                            </label>
+                            <input name="StartTime" type="time" value="@Model.StartTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">
+                                <i class="bi bi-clock-fill"></i> Hora de Cierre
+                            </label>
+                            <input name="EndTime" type="time" value="@Model.EndTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4" />
+                    
+                    <div class="d-flex gap-2 mb-3">
+                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1">
+                            <i class="bi bi-check-circle"></i> Guardar Cambios
+                        </button>
+                        <a asp-controller="Barber" asp-action="ShopImages" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-camera"></i> Fotos
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

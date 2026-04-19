@@ -1,0 +1,413 @@
+/* ============================================
+   LIGHT/DARK MODE - AI-DRIVEN DESIGN SYSTEM
+   Basado en tendencias 2026 y diseño tipo Leonardo.ai
+   ============================================ */
+
+/* Modo claro (por defecto) */
+:root {
+    /* Colores de fondo y superficie */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --bg-navbar: rgba(255, 255, 255, 0.9);
+    
+    /* Colores de texto */
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    /* Colores de acento/branding */
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-light: #60a5fa;
+    --primary-glow: rgba(59, 130, 246, 0.4);
+    
+    --accent: #8b5cf6;
+    --accent-glow: rgba(139, 92, 246, 0.4);
+    
+    /* Bordes y sombras */
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 20px var(--primary-glow);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-blur: 12px;
+}
+
+/* Modo oscuro */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-glass: rgba(15, 23, 42, 0.8);
+    --bg-navbar: rgba(15, 23, 42, 0.95);
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    --border-color: #334155;
+    
+    --glass-bg: rgba(15, 23, 42, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Aplicar colores globales */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: var(--bg-navbar) !important;
+    backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+    transition: background 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--text-primary) !important;
+}
+
+.navbar .nav-link {
+    color: var(--text-secondary) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary) !important;
+}
+
+.navbar-toggler {
+    background-color: var(--bg-glass);
+    border-color: var(--glass-border);
+}
+
+/* ===== FOOTER ===== */
+/* Footer moderno */
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-light);
+    margin-top: 4rem;
+    width: auto;
+}
+.footer a {
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+.footer a:hover {
+    color: var(--primary);
+    transform: translateX(2px);
+}
+.text-secondary-hover {
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+.text-secondary-hover:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+.footer .input-group .form-control {
+    border-color: var(--border-light);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+.footer .input-group .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+}
+.footer .border-secondary-subtle {
+    border-color: var(--border-light) !important;
+}
+
+/* ===== GLASSMORPHISM COMPONENTS ===== */
+.glass-card, .glass-navbar, .glass-footer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: none;
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+    color: white;
+}
+
+.btn-outline-glass {
+    background: transparent;
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--glass-border);
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.btn-outline-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    color: var(--primary);
+}
+
+.btn-light {
+    background-color: white;
+    color: #0f172a;
+}
+
+[data-theme="dark"] .btn-light {
+    background-color: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+}
+
+/* ===== HERO SECTION ===== */
+/* ===== HERO FULL WIDTH ===== */
+.hero-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Ajuste para que el contenido interno respete el ancho deseado */
+.hero-section .container {
+    max-width: 1140px; /* o el valor que uses en tu proyecto */
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Separación del bloque de estadísticas */
+.stats-section {
+    margin-top: 4rem; /* separa del hero */
+    position: relative;
+    z-index: 5;
+}
+
+/* Ajuste responsive */
+@media (max-width: 768px) {
+    .stats-section {
+        margin-top: 2rem;
+    }
+}
+
+.hero-gradient-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, var(--primary-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--accent-glow) 0%, transparent 50%);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+/* ===== STATS CARDS ===== */
+.stat-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-glow);
+    border-color: var(--primary);
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.feature-icon i {
+    font-size: 1.75rem;
+    color: white;
+}
+
+/* ===== TESTIMONIAL CARDS ===== */
+.testimonial-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-dark), var(--accent));
+    border-radius: 2rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.cta-section h2, .cta-section p {
+    color: white;
+}
+
+/* ===== THEME TOGGLE BUTTON ===== */
+#theme-toggle {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+#theme-toggle i {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+/* ===== UTILITIES ===== */
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-secondary) !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .display-large {
+        font-size: 2.5rem;
+    }
+    
+    .feature-card, .testimonial-card, .stat-card {
+        padding: 1rem;
+    }
+}
+
+.section-padding {
+    padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding: 3rem 0;
+    }
+}
+
+.display-large {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .display-large {
+        font-size: 4.5rem;
+    }
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.floating-card {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}

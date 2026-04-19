@@ -1,0 +1,143 @@
+@{
+    ViewData["Title"] = "Panel de Administración";
+}
+
+<!-- Admin Header -->
+<div class="row mb-4 section-header">
+    <div class="col-12">
+        <h2 class="fw-bold mb-2 text-gradient">
+            <i class="bi bi-speedometer2 me-2"></i>Panel de Administración
+        </h2>
+        <p class="text-muted mb-0">Gestiona toda la plataforma BarberShop Pro</p>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- Stats Cards -->
+<div class="row g-4 mb-5">
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-primary bg-opacity-10 text-primary rounded-3">
+                    <i class="bi bi-people"></i>
+                </div>
+            </div>
+            <div class="stat-value text-primary">@ViewBag.TotalBarbers</div>
+            <div class="stat-label">Barberos</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-success bg-opacity-10 text-success rounded-3">
+                    <i class="bi bi-person-check"></i>
+                </div>
+            </div>
+            <div class="stat-value text-success">@ViewBag.TotalClients</div>
+            <div class="stat-label">Clientes</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-info bg-opacity-10 text-info rounded-3">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+            </div>
+            <div class="stat-value text-info">@ViewBag.TotalAppointments</div>
+            <div class="stat-label">Reservas</div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="stat-card">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="stat-icon bg-warning bg-opacity-10 text-warning rounded-3">
+                    <i class="bi bi-star"></i>
+                </div>
+            </div>
+            <div class="stat-value text-warning">@ViewBag.TotalActiveSubscriptions</div>
+            <div class="stat-label">Suscripciones</div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Links -->
+<div class="row g-4">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-md hover-lift border-0 text-center">
+            <div class="card-body p-5">
+                <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px;">
+                    <i class="bi bi-people text-primary" style="font-size: 2.5rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Barberos</h5>
+                <p class="text-muted small mb-4">Gestiona los barberos de la plataforma</p>
+                <a asp-controller="Admin" asp-action="Barbers" class="btn btn-outline-primary btn-lg w-100">
+                    <i class="bi bi-arrow-right"></i> Ver Barberos
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-md hover-lift border-0 text-center">
+            <div class="card-body p-5">
+                <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px;">
+                    <i class="bi bi-person-check text-success" style="font-size: 2.5rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Clientes</h5>
+                <p class="text-muted small mb-4">Lista de todos los clientes registrados</p>
+                <a asp-controller="Admin" asp-action="Clients" class="btn btn-outline-success btn-lg w-100">
+                    <i class="bi bi-arrow-right"></i> Ver Clientes
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-md hover-lift border-0 text-center">
+            <div class="card-body p-5">
+                <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px;">
+                    <i class="bi bi-calendar-check text-info" style="font-size: 2.5rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Reservas</h5>
+                <p class="text-muted small mb-4">Todas las reservaciones del sistema</p>
+                <a asp-controller="Admin" asp-action="Appointments" class="btn btn-outline-info btn-lg w-100">
+                    <i class="bi bi-arrow-right"></i> Ver Reservas
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-md hover-lift border-0 text-center">
+            <div class="card-body p-5">
+                <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px;">
+                    <i class="bi bi-star text-warning" style="font-size: 2.5rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Suscripciones</h5>
+                <p class="text-muted small mb-4">Gestiona los planes y suscripciones</p>
+                <a asp-controller="SubscriptionAdmin" asp-action="Index" class="btn btn-outline-warning btn-lg w-100">
+                    <i class="bi bi-arrow-right"></i> Gestionar Planes
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-md hover-lift border-0 text-center">
+            <div class="card-body p-5">
+                <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 90px; height: 90px;">
+                    <i class="bi bi-credit-card text-info" style="font-size: 2.5rem;"></i>
+                </div>
+                <h5 class="fw-bold mb-3">Suscripciones Activas</h5>
+                <p class="text-muted small mb-4">Ver suscripciones de barberos</p>
+                <a asp-controller="SubscriptionAdmin" asp-action="Subscriptions" class="btn btn-outline-info btn-lg w-100">
+                    <i class="bi bi-arrow-right"></i> Ver Suscripciones
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

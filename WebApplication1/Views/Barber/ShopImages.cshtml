@@ -1,0 +1,174 @@
+@model List<WebApplication1.Models.BarberShopImage>
+@{
+    ViewData["Title"] = "Fotos de la Barbería";
+    var barberProfileId = ViewBag.BarberProfileId;
+}
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2 class="fw-bold mb-2">
+            <i class="bi bi-camera text-primary me-2"></i>Fotos de la Barbería
+        </h2>
+        <p class="text-muted mb-0">Agrega fotos para mostrar tu barbería a los clientes</p>
+    </div>
+    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <a asp-controller="Barber" asp-action="Profile" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle me-2"></i>@TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<!-- Upload Form -->
+<div class="card shadow-sm mb-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0"><i class="bi bi-upload me-2"></i>Subir Nueva Foto</h5>
+    </div>
+    <div class="card-body">
+        <form asp-controller="Barber" asp-action="UploadShopImage" method="post" enctype="multipart/form-data">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">
+                        <i class="bi bi-image me-1"></i> Seleccionar Imagen
+                    </label>
+                    <input type="file" name="imageFile" class="form-control" accept="image/*" required 
+                           id="imageInput" />
+                    <small class="text-muted">Formatos: JPG, PNG, GIF, WEBP. Máximo 5MB</small>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">
+                        <i class="bi bi-chat-text me-1"></i> Descripción (Opcional)
+                    </label>
+                    <input type="text" name="description" class="form-control" placeholder="Ej: Interior del local" maxlength="200" />
+                </div>
+                <div class="col-12">
+                    <!-- Image Preview -->
+                    <div id="imagePreview" class="d-none mb-3">
+                        <img id="previewImg" src="" alt="Preview" class="img-thumbnail" style="max-height: 200px;" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="bi bi-cloud-upload me-2"></i>Subir Foto
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Images Gallery -->
+@if (Model.Any())
+{
+    <div class="row g-3 g-md-4">
+        @foreach (var image in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm hover-lift">
+                    <div class="position-relative">
+                        <img src="@image.ImageUrl" alt="@image.Description" class="card-img-top" 
+                             style="height: 200px; object-fit: cover;" 
+                             data-bs-toggle="modal" data-bs-target="#imageModal" 
+                             data-image="@image.ImageUrl" 
+                             data-description="@image.Description" />
+                        @if (image.IsMain)
+                        {
+                            <span class="badge bg-success position-absolute top-0 start-0 m-2">
+                                <i class="bi bi-star-fill"></i> Principal
+                            </span>
+                        }
+                    </div>
+                    <div class="card-body p-2">
+                        @if (!string.IsNullOrEmpty(image.Description))
+                        {
+                            <p class="small text-muted mb-2 text-truncate">@image.Description</p>
+                        }
+                        <div class="d-flex gap-1">
+                            @if (!image.IsMain)
+                            {
+                                <form asp-controller="Barber" asp-action="SetMainImage" method="post" class="flex-grow-1">
+                                    <input type="hidden" name="imageId" value="@image.Id" />
+                                    <button type="submit" class="btn btn-sm btn-outline-success w-100" title="Establecer como principal">
+                                        <i class="bi bi-star"></i>
+                                    </button>
+                                </form>
+                            }
+                            <form asp-controller="Barber" asp-action="DeleteShopImage" method="post">
+                                <input type="hidden" name="imageId" value="@image.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                        onclick="return confirm('¿Eliminar esta foto?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="text-center py-5">
+        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto" style="width: 120px; height: 120px;">
+            <i class="bi bi-camera text-muted" style="font-size: 4rem;"></i>
+        </div>
+        <h4 class="text-muted mb-2">No hay fotos aún</h4>
+        <p class="text-muted mb-4">Agrega fotos de tu barbería para atraer más clientes</p>
+    </div>
+}
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <img id="modalImage" src="" alt="" class="img-fluid w-100" />
+                <div class="p-3">
+                    <p id="modalDescription" class="mb-0 fw-bold"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Image preview
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('imagePreview').classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Image modal
+        var imageModal = document.getElementById('imageModal');
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var imageUrl = button.getAttribute('data-image');
+            var description = button.getAttribute('data-description');
+            
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('modalDescription').textContent = description || 'Sin descripción';
+        });
+    </script>
+}
