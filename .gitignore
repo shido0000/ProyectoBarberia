@@ -1,27 +1,45 @@
 ```
-# Build artifacts
-wwwroot/css/site.css.map
-wwwroot/css/site.min.css
-wwwroot/dist/
-wwwroot/build/
+# Compiled and build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
 # Dependencies
+bin/
+obj/
+packages/
 node_modules/
+.nuget/
+.nyc_output/
+coverage/
 
 # Logs and temp files
 *.log
 *.tmp
+*.swp
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
 # Editors
 .vscode/
 .idea/
+*.userprefs
 
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Build outputs
+Debug/
+Release/
+x64/
+x86/
+bld/
 ```

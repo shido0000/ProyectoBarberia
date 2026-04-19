@@ -25,6 +25,13 @@ namespace WebApplication1.Data
         public DbSet<BarbershopMembershipRequest> BarbershopMembershipRequests { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         
+        // New entities for Ratings, Products, and Banners
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductReservation> ProductReservations { get; set; }
+        public DbSet<ProductInventoryMovement> ProductInventoryMovements { get; set; }
+        public DbSet<Banner> Banners { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -133,6 +140,71 @@ namespace WebApplication1.Data
                 .WithMany(bs => bs.Appointments)
                 .HasForeignKey(a => a.BarbershopId)
                 .OnDelete(DeleteBehavior.SetNull);
+            
+            // Rating relationships and constraints
+            builder.Entity<Rating>()
+                .HasOne(r => r.Client)
+                .WithMany()
+                .HasForeignKey(r => r.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Rating>()
+                .HasOne(r => r.Barber)
+                .WithMany()
+                .HasForeignKey(r => r.BarberId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
+            builder.Entity<Rating>()
+                .HasOne(r => r.Barbershop)
+                .WithMany()
+                .HasForeignKey(r => r.BarbershopId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
+            // Unique constraint: A client can only rate a barber once
+            builder.Entity<Rating>()
+                .HasIndex(r => new { r.ClientId, r.BarberId })
+                .IsUnique()
+                .HasFilter("[BarberId] IS NOT NULL");
+            
+            // Unique constraint: A client can only rate a barbershop once
+            builder.Entity<Rating>()
+                .HasIndex(r => new { r.ClientId, r.BarbershopId })
+                .IsUnique()
+                .HasFilter("[BarbershopId] IS NOT NULL");
+            
+            // Product relationships
+            builder.Entity<Product>()
+                .HasOne(p => p.Barber)
+                .WithMany()
+                .HasForeignKey(p => p.BarberId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            // ProductReservation relationships
+            builder.Entity<ProductReservation>()
+                .HasOne(pr => pr.Product)
+                .WithMany()
+                .HasForeignKey(pr => pr.ProductId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<ProductReservation>()
+                .HasOne(pr => pr.Client)
+                .WithMany()
+                .HasForeignKey(pr => pr.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            // ProductInventoryMovement relationships
+            builder.Entity<ProductInventoryMovement>()
+                .HasOne(m => m.Product)
+                .WithMany()
+                .HasForeignKey(m => m.ProductId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            // Banner relationships
+            builder.Entity<Banner>()
+                .HasOne(b => b.Barber)
+                .WithMany()
+                .HasForeignKey(b => b.BarberId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -55,6 +55,9 @@ namespace WebApplication1.Models
         public virtual ICollection<BarberProfile> Members { get; set; } = new List<BarberProfile>();
         public virtual ICollection<BarbershopMembershipRequest> MembershipRequests { get; set; } = new List<BarbershopMembershipRequest>();
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+        
+        // New navigation property for Ratings
+        public virtual ICollection<Rating> ReceivedRatings { get; set; } = new List<Rating>();
     }
     
     /// <summary>

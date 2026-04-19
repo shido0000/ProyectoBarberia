@@ -62,6 +62,11 @@ namespace WebApplication1.Models
         public virtual ICollection<InventoryItem> InventoryItems { get; set; } = new List<InventoryItem>();
         public virtual ICollection<ClientNote> ClientNotes { get; set; } = new List<ClientNote>();
         public virtual Barbershop? CurrentBarbershop { get; set; }
+        
+        // New navigation properties for Ratings, Products, and Banners
+        public virtual ICollection<Rating> ReceivedRatings { get; set; } = new List<Rating>();
+        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        public virtual ICollection<Banner> Banners { get; set; } = new List<Banner>();
     }
     
     /// <summary>
