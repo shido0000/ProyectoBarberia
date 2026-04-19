@@ -1,0 +1,189 @@
+@model IEnumerable<WebApplication1.Models.Rating>
+@{
+    ViewData["Title"] = "Testimonios";
+    int currentPage = ViewData["CurrentPage"] as int? ?? 1;
+    int totalPages = ViewData["TotalPages"] as int? ?? 1;
+    int totalItems = ViewData["TotalItems"] as int? ?? 0;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-chat-heart-fill me-2" style="color: var(--primary);"></i>
+                Testimonios de Clientes
+            </h1>
+            <p class="lead text-secondary">
+                Lo que dicen nuestros clientes sobre los barberos y barberías de BarberShop Pro
+            </p>
+            @if (totalItems > 0)
+            {
+                <p class="text-muted small">
+                    <i class="bi bi-star-fill text-warning"></i> 
+                    Mostrando @totalItems testimonio@(totalItems != 1 ? "s" : "")
+                </p>
+            }
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <!-- Empty State -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="glass-card p-5 text-center">
+                    <div class="mb-4">
+                        <i class="bi bi-chat-square-quote fs-1" style="color: var(--primary);"></i>
+                    </div>
+                    <h3 class="fw-bold mb-3">Aún no hay testimonios</h3>
+                    <p class="text-secondary mb-4">
+                        Sé el primero en dejar tu opinión sobre un barbero o barbería. 
+                        Tus comentarios ayudan a otros clientes a tomar mejores decisiones.
+                    </p>
+                    <a asp-controller="Booking" asp-action="Index" class="btn btn-primary">
+                        <i class="bi bi-search me-2"></i>Buscar Barberos
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Testimonials Grid -->
+        <div class="row g-4">
+            @foreach (var rating in Model)
+            {
+                var clientName = !string.IsNullOrEmpty(rating.Client?.FullName) 
+                    ? rating.Client.FullName 
+                    : "Cliente verificado";
+                
+                var targetName = rating.BarberId.HasValue && rating.Barber != null
+                    ? rating.Barber.ShopName ?? $"Barbero #{rating.BarberId}"
+                    : rating.BarbershopId.HasValue && rating.Barbershop != null
+                        ? rating.Barbershop.Name
+                        : "Desconocido";
+                
+                var targetType = rating.BarberId.HasValue ? "barbero" : "barbería";
+                var targetIcon = rating.BarberId.HasValue ? "bi-person" : "bi-shop";
+                var targetUrl = rating.BarberId.HasValue 
+                    ? Url.Action("Details", "Booking", new { id = rating.BarberId })
+                    : Url.Action("BarbershopDetail", "Barbershop", new { id = rating.BarbershopId });
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="testimonial-card h-100">
+                        <!-- Header con cliente y fecha -->
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="rounded-circle bg-primary-subtle d-flex align-items-center justify-content-center" 
+                                     style="width: 40px; height: 40px;">
+                                    <i class="bi bi-person-circle text-primary"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-semibold">@clientName</h6>
+                                    <small class="text-muted">
+                                        <i class="bi bi-calendar3 me-1"></i>
+                                        @rating.CreatedAt.ToString("dd MMM yyyy")
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estrellas -->
+                        <div class="mb-3">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= rating.Score)
+                                {
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-star text-muted"></i>
+                                }
+                            }
+                        </div>
+
+                        <!-- Comentario -->
+                        <p class="text-secondary mb-3" style="line-height: 1.6;">
+                            "@rating.Comment"
+                        </p>
+
+                        <!-- Target (barbero/barbería) -->
+                        <div class="pt-3 border-top border-secondary-subtle">
+                            <a href="@targetUrl" class="text-decoration-none">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="bi @targetIcon" style="color: var(--accent);"></i>
+                                    <div>
+                                        <small class="text-muted d-block">Calificó a este @targetType</small>
+                                        <span class="fw-medium" style="color: var(--accent);">@targetName</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        @if (totalPages > 1)
+        {
+            <div class="row mt-5">
+                <div class="col-12">
+                    <nav aria-label="Navegación de testimonios">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                                <a class="page-link" asp-action="Testimonials" asp-route-page="@(currentPage - 1)" aria-label="Anterior">
+                                    <i class="bi bi-chevron-left"></i>
+                                </a>
+                            </li>
+                            
+                            @for (int i = 1; i <= totalPages; i++)
+                            {
+                                <li class="page-item @(i == currentPage ? "active" : "")">
+                                    <a class="page-link" asp-action="Testimonials" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+                            
+                            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                                <a class="page-link" asp-action="Testimonials" asp-route-page="@(currentPage + 1)" aria-label="Siguiente">
+                                    <i class="bi bi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@section Styles {
+    <style>
+        .testimonial-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .page-link {
+            color: var(--primary);
+            border-color: var(--border-color);
+            background: var(--bg-primary);
+        }
+        
+        .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-color: transparent;
+        }
+        
+        .page-link:hover {
+            background: var(--bg-tertiary);
+            color: var(--primary-dark);
+        }
+    </style>
+}

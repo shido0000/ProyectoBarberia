@@ -1,0 +1,835 @@
+@{
+    ViewData["Title"] = "Centro de Ayuda";
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-life-preserver me-2" style="color: var(--primary);"></i>
+                Centro de Ayuda
+            </h1>
+            <p class="lead text-secondary">
+                Encuentra respuestas y guías paso a paso para sacar el máximo provecho de BarberShop Pro
+            </p>
+        </div>
+    </div>
+
+    <!-- Navegación por Roles (Tabs) -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+            <ul class="nav nav-pills justify-content-center gap-2 flex-wrap" id="helpTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active d-flex align-items-center gap-2" 
+                            id="client-tab" data-bs-toggle="pill" data-bs-target="#client" 
+                            type="button" role="tab">
+                        <i class="bi bi-person"></i>
+                        <span>Clientes</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link d-flex align-items-center gap-2" 
+                            id="barber-tab" data-bs-toggle="pill" data-bs-target="#barber" 
+                            type="button" role="tab">
+                        <i class="bi bi-scissors"></i>
+                        <span>Barberos</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link d-flex align-items-center gap-2" 
+                            id="barbershop-tab" data-bs-toggle="pill" data-bs-target="#barbershop" 
+                            type="button" role="tab">
+                        <i class="bi bi-shop"></i>
+                        <span>Dueños de Barberías</span>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link d-flex align-items-center gap-2" 
+                            id="admin-tab" data-bs-toggle="pill" data-bs-target="#admin" 
+                            type="button" role="tab">
+                        <i class="bi bi-gear"></i>
+                        <span>Administradores</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contenido de Tabs -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="glass-card p-4 p-md-5">
+                <div class="tab-content" id="helpTabsContent">
+                    
+                    <!-- ==================== CLIENTES ==================== -->
+                    <div class="tab-pane fade show active" id="client" role="tabpanel">
+                        <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-person-circle" style="color: var(--primary);"></i>
+                            Guía para Clientes
+                        </h3>
+
+                        <!-- Acordeón para Clientes -->
+                        <div class="accordion" id="accordionClient">
+                            
+                            <!-- Registro -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse1">
+                                        <i class="bi bi-person-plus-fill me-2" style="color: var(--primary);"></i>
+                                        <strong>¿Cómo registrarme en la plataforma?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Haz clic en el botón <strong>"Registrarse"</strong> en la esquina superior derecha.</li>
+                                            <li>Selecciona el tipo de cuenta <strong>"Cliente"</strong>.</li>
+                                            <li>Completa el formulario con:
+                                                <ul>
+                                                    <li>Nombre completo</li>
+                                                    <li>Correo electrónico</li>
+                                                    <li>Contraseña segura (mínimo 8 caracteres)</li>
+                                                    <li>Número de teléfono (opcional pero recomendado)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Acepta los Términos y Condiciones y la Política de Privacidad.</li>
+                                            <li>Haz clic en <strong>"Crear Cuenta"</strong>.</li>
+                                            <li>Verifica tu correo electrónico haciendo clic en el enlace que recibirás.</li>
+                                        </ol>
+                                        <div class="alert alert-info mt-3 mb-0">
+                                            <i class="bi bi-info-circle me-2"></i>
+                                            También puedes registrarte usando tu cuenta de Google o Facebook si está disponible.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Búsqueda -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse2">
+                                        <i class="bi bi-search me-2" style="color: var(--primary);"></i>
+                                        <strong>¿Cómo buscar barberos o barberías?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Navega a la sección <strong>"Barberos"</strong> desde el menú principal.</li>
+                                            <li>Utiliza los filtros disponibles:
+                                                <ul>
+                                                    <li><strong>Ubicación:</strong> Ingresa tu ciudad o código postal</li>
+                                                    <li><strong>Especialidad:</strong> Cortes, barba, color, etc.</li>
+                                                    <li><strong>Calificación:</strong> Filtra por número de estrellas</li>
+                                                    <li><strong>Rango de precios:</strong> Ajusta según tu presupuesto</li>
+                                                    <li><strong>Disponibilidad:</strong> Selecciona fecha y hora preferida</li>
+                                                </ul>
+                                            </li>
+                                            <li>Explora los perfiles para ver:
+                                                <ul>
+                                                    <li>Fotos de trabajos anteriores</li>
+                                                    <li>Servicios ofrecidos y precios</li>
+                                                    <li>Reseñas de otros clientes</li>
+                                                    <li>Horarios disponibles</li>
+                                                </ul>
+                                            </li>
+                                            <li>Haz clic en <strong>"Reservar"</strong> cuando encuentres al barbero ideal.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Agendar Cita -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse3">
+                                        <i class="bi bi-calendar-check me-2" style="color: var(--primary);"></i>
+                                        <strong>¿Cómo agendar una cita?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Desde el perfil del barbero, selecciona el <strong>servicio deseado</strong>.</li>
+                                            <li>Elige la <strong>fecha y hora</strong> disponibles en el calendario interactivo.</li>
+                                            <li>Agrega notas especiales (opcional), como preferencias de estilo.</li>
+                                            <li>Revisa el resumen de tu cita:
+                                                <ul>
+                                                    <li>Servicio seleccionado</li>
+                                                    <li>Duración estimada</li>
+                                                    <li>Precio total</li>
+                                                    <li>Ubicación del barbero/barbería</li>
+                                                </ul>
+                                            </li>
+                                            <li>Confirma la reserva haciendo clic en <strong>"Agendar Cita"</strong>.</li>
+                                            <li>Recibirás un correo de confirmación con todos los detalles.</li>
+                                        </ol>
+                                        <div class="alert alert-warning mt-3 mb-0">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>
+                                            Algunas citas pueden requerir una seña o pago anticipado según la política del barbero.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Calificar -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse4">
+                                        <i class="bi bi-star-fill me-2" style="color: var(--warning);"></i>
+                                        <strong>¿Cómo calificar y dejar un comentario?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Ve a <strong>"Mis Reservas"</strong> desde tu menú de usuario.</li>
+                                            <li>Encuentra la cita completada (estado: "Finalizada").</li>
+                                            <li>Haz clic en el botón <strong>"Dejar Reseña"</strong>.</li>
+                                            <li>Selecciona la calificación de 1 a 5 estrellas.</li>
+                                            <li>Escribe tu comentario detallando tu experiencia.</li>
+                                            <li>Opcionalmente, sube fotos del resultado (si está disponible).</li>
+                                            <li>Envía tu reseña. Será publicada después de moderación.</li>
+                                        </ol>
+                                        <p class="mt-3 mb-0 text-secondary">
+                                            Tu opinión ayuda a otros clientes y motiva a los barberos a mantener la calidad.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Historial -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse5">
+                                        <i class="bi bi-clock-history me-2" style="color: var(--primary);"></i>
+                                        <strong>¿Cómo ver mi historial de citas?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Inicia sesión en tu cuenta.</li>
+                                            <li>Haz clic en tu nombre y selecciona <strong>"Mis Reservas"</strong>.</li>
+                                            <li>Verás pestañas para filtrar:
+                                                <ul>
+                                                    <li><strong>Próximas:</strong> Citas programadas</li>
+                                                    <li><strong>Completadas:</strong> Historial de servicios</li>
+                                                    <li><strong>Canceladas:</strong> Citas canceladas</li>
+                                                </ul>
+                                            </li>
+                                            <li>Haz clic en cualquier cita para ver detalles completos.</li>
+                                            <li>Desde allí puedes:
+                                                <ul>
+                                                    <li>Reagendar la misma cita</li>
+                                                    <li>Dejar una reseña</li>
+                                                    <li>Descargar comprobante (si aplica)</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Productos -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#client-collapse6">
+                                        <i class="bi bi-bag me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo reservar productos?</strong>
+                                    </button>
+                                </h2>
+                                <div id="client-collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionClient">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Navega al perfil del barbero o barbería.</li>
+                                            <li>Busca la sección <strong>"Productos"</strong> o "Tienda".</li>
+                                            <li>Explora el catálogo de productos disponibles.</li>
+                                            <li>Selecciona el producto y la cantidad deseada.</li>
+                                            <li>Haz clic en <strong>"Reservar"</strong> o "Añadir al carrito".</li>
+                                            <li>Elige si deseas recoger en tienda o envío a domicilio (según disponibilidad).</li>
+                                            <li>Completa el proceso de pago.</li>
+                                            <li>Recibirás confirmación de tu reserva.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ==================== BARBEROS ==================== -->
+                    <div class="tab-pane fade" id="barber" role="tabpanel">
+                        <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-scissors" style="color: var(--accent);"></i>
+                            Guía para Barberos
+                        </h3>
+
+                        <div class="accordion" id="accordionBarber">
+                            
+                            <!-- Perfil -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse1">
+                                        <i class="bi bi-person-badge me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo gestionar mi perfil profesional?</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede a tu panel desde <strong>"Mi Barbería"</strong> en el menú.</li>
+                                            <li>Ve a la sección <strong>"Perfil"</strong> o "Configuración".</li>
+                                            <li>Completa o actualiza:
+                                                <ul>
+                                                    <li>Foto de perfil profesional</li>
+                                                    <li>Descripción de tu experiencia y especialidades</li>
+                                                    <li>Ubicación de tu espacio de trabajo</li>
+                                                    <li>Teléfono de contacto</li>
+                                                    <li>Enlaces a redes sociales</li>
+                                                </ul>
+                                            </li>
+                                            <li>Sube fotos de tus mejores trabajos en la galería.</li>
+                                            <li>Guarda los cambios.</li>
+                                        </ol>
+                                        <div class="alert alert-success mt-3 mb-0">
+                                            <i class="bi bi-check-circle me-2"></i>
+                                            Un perfil completo atrae hasta 3 veces más clientes.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Agenda -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse2">
+                                        <i class="bi bi-calendar-range me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo gestionar mi agenda y disponibilidad?</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>En tu panel, ve a <strong>"Agenda"</strong> o "Calendario".</li>
+                                            <li>Configura tu horario regular:
+                                                <ul>
+                                                    <li>Días de trabajo (Lunes a Domingo)</li>
+                                                    <li>Horas de inicio y fin</li>
+                                                    <li>Tiempo de descanso entre citas</li>
+                                                </ul>
+                                            </li>
+                                            <li>Bloquea fechas específicas:
+                                                <ul>
+                                                    <li>Vacaciones</li>
+                                                    <li>Días libres</li>
+                                                    <li>Citas personales</li>
+                                                </ul>
+                                            </li>
+                                            <li>Ajusta la duración predeterminada de cada servicio.</li>
+                                            <li>Activa/desactiva la aceptación de citas con poca anticipación.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Servicios -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse3">
+                                        <i class="bi bi-list-check me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo crear y editar servicios?</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Navega a <strong>"Servicios"</strong> en tu panel.</li>
+                                            <li>Haz clic en <strong>"Nuevo Servicio"</strong>.</li>
+                                            <li>Completa la información:
+                                                <ul>
+                                                    <li>Nombre del servicio (ej. "Corte Clásico")</li>
+                                                    <li>Descripción detallada</li>
+                                                    <li>Duración estimada (minutos)</li>
+                                                    <li>Precio</li>
+                                                    <li>Categoría (corte, barba, color, etc.)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Sube imágenes referenciales (opcional).</li>
+                                            <li>Guarda y publica el servicio.</li>
+                                            <li>Para editar o eliminar, usa los botones de acción junto a cada servicio.</li>
+                                        </ol>
+                                        <div class="alert alert-info mt-3 mb-0">
+                                            <i class="bi bi-lightbulb me-2"></i>
+                                            El plan Free tiene límite de servicios. Actualiza tu suscripción para más.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Citas -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse4">
+                                        <i class="bi bi-calendar-check me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo aceptar o rechazar citas?</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Recibe notificaciones de nuevas solicitudes de cita.</li>
+                                            <li>Ve a <strong>"Citas Pendientes"</strong> en tu panel.</li>
+                                            <li>Revisa los detalles: cliente, servicio, fecha/hora.</li>
+                                            <li>Decide:
+                                                <ul>
+                                                    <li><strong>Aceptar:</strong> Confirma la cita inmediatamente</li>
+                                                    <li><strong>Rechazar:</strong> Proporciona una razón opcional</li>
+                                                    <li><strong>Proponer otro horario:</strong> Sugiere alternativa</li>
+                                                </ul>
+                                            </li>
+                                            <li>El cliente será notificado de tu respuesta.</li>
+                                        </ol>
+                                        <p class="mt-3 mb-0 text-secondary">
+                                            <strong>Tip:</strong> Responde rápidamente para mejorar tu tasa de conversión.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Estadísticas -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse5">
+                                        <i class="bi bi-graph-up me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo ver mis estadísticas? (Planes Media/Premium)</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede a la sección <strong>"Estadísticas"</strong> o "Analytics".</li>
+                                            <li>Visualiza métricas clave:
+                                                <ul>
+                                                    <li>Citas totales (diarias, semanales, mensuales)</li>
+                                                    <li>Ingresos generados</li>
+                                                    <li>Servicios más populares</li>
+                                                    <li>Calificación promedio</li>
+                                                    <li>Clientes nuevos vs. recurrentes</li>
+                                                </ul>
+                                            </li>
+                                            <li>Filtra por rango de fechas personalizado.</li>
+                                            <li>Exporta reportes en PDF o Excel (Premium).</li>
+                                            <li>Compara períodos para identificar tendencias.</li>
+                                        </ol>
+                                        <div class="alert alert-warning mt-3 mb-0">
+                                            <i class="bi bi-crown me-2"></i>
+                                            Estadísticas avanzadas disponibles solo en planes Media y Premium.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Productos -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barber-collapse6">
+                                        <i class="bi bi-box-seam me-2" style="color: var(--accent);"></i>
+                                        <strong>¿Cómo gestionar inventario de productos? (Premium)</strong>
+                                    </button>
+                                </h2>
+                                <div id="barber-collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionBarber">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Ve a <strong>"Productos"</strong> o "Inventario" en tu panel.</li>
+                                            <li>Haz clic en <strong>"Agregar Producto"</strong>.</li>
+                                            <li>Ingresa:
+                                                <ul>
+                                                    <li>Nombre y descripción</li>
+                                                    <li>Precio de venta</li>
+                                                    <li>Stock inicial</li>
+                                                    <li>Categoría</li>
+                                                    <li>Imágenes del producto</li>
+                                                </ul>
+                                            </li>
+                                            <li>Configura alertas de stock bajo.</li>
+                                            <li>Registra movimientos de entrada/salida.</li>
+                                            <li>Genera reportes de ventas de productos.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ==================== DUEÑOS DE BARBERÍAS ==================== -->
+                    <div class="tab-pane fade" id="barbershop" role="tabpanel">
+                        <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-shop" style="color: var(--success);"></i>
+                            Guía para Dueños de Barberías
+                        </h3>
+
+                        <div class="accordion" id="accordionBarbershop">
+                            
+                            <!-- Crear Barbería -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#shop-collapse1">
+                                        <i class="bi bi-plus-circle me-2" style="color: var(--success);"></i>
+                                        <strong>¿Cómo crear una barbería?</strong>
+                                    </button>
+                                </h2>
+                                <div id="shop-collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionBarbershop">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Inicia sesión como barbero (debes tener cuenta verificada).</li>
+                                            <li>Ve a <strong>"Barberías"</strong> > "Crear Nueva".</li>
+                                            <li>Completa el formulario:
+                                                <ul>
+                                                    <li>Nombre comercial de la barbería</li>
+                                                    <li>Dirección física completa</li>
+                                                    <li>Teléfono de contacto</li>
+                                                    <li>Descripción del establecimiento</li>
+                                                    <li>Logo y foto de portada</li>
+                                                </ul>
+                                            </li>
+                                            <li>Selecciona un plan de suscripción para barberías.</li>
+                                            <li>Realiza el pago (si aplica).</li>
+                                            <li>Espera la aprobación del administrador (24-48 horas).</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Gestionar Miembros -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shop-collapse2">
+                                        <i class="bi bi-people me-2" style="color: var(--success);"></i>
+                                        <strong>¿Cómo gestionar solicitudes de barberos?</strong>
+                                    </button>
+                                </h2>
+                                <div id="shop-collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionBarbershop">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede al panel de tu barbería.</li>
+                                            <li>Ve a <strong>"Miembros"</strong> > "Solicitudes Pendientes".</li>
+                                            <li>Revisa cada solicitud:
+                                                <ul>
+                                                    <li>Perfil del barbero</li>
+                                                    <li>Experiencia y especialidades</li>
+                                                    <li>Calificación promedio</li>
+                                                </ul>
+                                            </li>
+                                            <li>Decide:
+                                                <ul>
+                                                    <li><strong>Aceptar:</strong> El barbero se une a tu equipo</li>
+                                                    <li><strong>Rechazar:</strong> Envía una razón opcional</li>
+                                                </ul>
+                                            </li>
+                                            <li>Los miembros aceptados aparecerán en tu lista de equipo.</li>
+                                        </ol>
+                                        <div class="alert alert-info mt-3 mb-0">
+                                            <i class="bi bi-info-circle me-2"></i>
+                                            Puedes establecer límites de miembros según tu plan de suscripción.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Estadísticas -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shop-collapse3">
+                                        <i class="bi bi-pie-chart me-2" style="color: var(--success);"></i>
+                                        <strong>¿Cómo ver estadísticas de la barbería?</strong>
+                                    </button>
+                                </h2>
+                                <div id="shop-collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionBarbershop">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>En el panel de la barbería, ve a <strong>"Estadísticas"</strong>.</li>
+                                            <li>Visualiza métricas generales:
+                                                <ul>
+                                                    <li>Citas totales de todos los miembros</li>
+                                                    <li>Ingresos combinados</li>
+                                                    <li>Barberos más activos</li>
+                                                    <li>Servicios más solicitados</li>
+                                                    <li>Calificación promedio de la barbería</li>
+                                                </ul>
+                                            </li>
+                                            <li>Compara rendimiento entre miembros del equipo.</li>
+                                            <li>Identifica horas pico y días más ocupados.</li>
+                                            <li>Exporta reportes para análisis financiero.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Configuración -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#shop-collapse4">
+                                        <i class="bi bi-gear me-2" style="color: var(--success);"></i>
+                                        <strong>¿Cómo configurar la barbería?</strong>
+                                    </button>
+                                </h2>
+                                <div id="shop-collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionBarbershop">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede a <strong>"Configuración"</strong> en el panel.</li>
+                                            <li>Actualiza información básica:
+                                                <ul>
+                                                    <li>Horarios de apertura/cierre</li>
+                                                    <li>Días festivos o cierres temporales</li>
+                                                    <li>Políticas de cancelación</li>
+                                                    <li>Métodos de pago aceptados</li>
+                                                </ul>
+                                            </li>
+                                            <li>Personaliza la apariencia:
+                                                <ul>
+                                                    <li>Colores de marca</li>
+                                                    <li>Logotipo visible para clientes</li>
+                                                </ul>
+                                            </li>
+                                            <li>Configura notificaciones automáticas.</li>
+                                            <li>Establece reglas para reservas (anticipación mínima, etc.).</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ==================== ADMINISTRADORES ==================== -->
+                    <div class="tab-pane fade" id="admin" role="tabpanel">
+                        <h3 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                            <i class="bi bi-gear-fill" style="color: var(--danger);"></i>
+                            Guía para Administradores
+                        </h3>
+
+                        <div class="accordion" id="accordionAdmin">
+                            
+                            <!-- Suscripciones -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#admin-collapse1">
+                                        <i class="bi bi-credit-card-2-front me-2" style="color: var(--danger);"></i>
+                                        <strong>¿Cómo asignar suscripciones?</strong>
+                                    </button>
+                                </h2>
+                                <div id="admin-collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionAdmin">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede al <strong>Panel de Administración</strong>.</li>
+                                            <li>Navega a <strong>"Suscripciones"</strong> > "Gestionar".</li>
+                                            <li>Busca al usuario (barbero o barbería) por nombre o email.</li>
+                                            <li>Selecciona el plan adecuado:
+                                                <ul>
+                                                    <li>Para barberos: Free, Media, Premium</li>
+                                                    <li>Para barberías: Inicial, Profesional, Empresarial</li>
+                                                </ul>
+                                            </li>
+                                            <li>Establece la fecha de inicio y duración.</li>
+                                            <li>Aplica descuentos o promociones si corresponde.</li>
+                                            <li>Confirma y notifica al usuario.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Banners -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#admin-collapse2">
+                                        <i class="bi bi-image me-2" style="color: var(--danger);"></i>
+                                        <strong>¿Cómo gestionar banners promocionales?</strong>
+                                    </button>
+                                </h2>
+                                <div id="admin-collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionAdmin">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Ve a <strong>"Contenido"</strong> > "Banners".</li>
+                                            <li>Haz clic en <strong>"Nuevo Banner"</strong>.</li>
+                                            <li>Configura:
+                                                <ul>
+                                                    <li>Imagen o diseño del banner</li>
+                                                    <li>Texto principal y secundario</li>
+                                                    <li>Enlace de destino (URL)</li>
+                                                    <li>Fecha de inicio y fin de publicación</li>
+                                                    <li>Prioridad de visualización</li>
+                                                </ul>
+                                            </li>
+                                            <li>Selecciona dónde se mostrará (home, booking, etc.).</li>
+                                            <li>Activa/desactiva según necesites.</li>
+                                            <li>Monitorea clicks y rendimiento.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Testimonios -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#admin-collapse3">
+                                        <i class="bi bi-chat-quote me-2" style="color: var(--danger);"></i>
+                                        <strong>¿Cómo moderar testimonios?</strong>
+                                    </button>
+                                </h2>
+                                <div id="admin-collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionAdmin">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Accede a <strong>"Moderación"</strong> > "Testimonios".</li>
+                                            <li>Revisa las reseñas reportadas o pendientes.</li>
+                                            <li>Evalúa según criterios:
+                                                <ul>
+                                                    <li>Lenguaje apropiado</li>
+                                                    <li>Contenido verídico</li>
+                                                    <li>Sin spam o publicidad</li>
+                                                    <li>Sin información personal sensible</li>
+                                                </ul>
+                                            </li>
+                                            <li>Acciones disponibles:
+                                                <ul>
+                                                    <li><strong>Aprobar:</strong> Publica el testimonio</li>
+                                                    <li><strong>Rechazar:</strong> Elimina con razón</li>
+                                                    <li><strong>Solicitar edición:</strong> Pide cambios al autor</li>
+                                                </ul>
+                                            </li>
+                                            <li>Marca como revisado para seguimiento.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Usuarios -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#admin-collapse4">
+                                        <i class="bi bi-people-fill me-2" style="color: var(--danger);"></i>
+                                        <strong>¿Cómo gestionar usuarios?</strong>
+                                    </button>
+                                </h2>
+                                <div id="admin-collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionAdmin">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Ve a <strong>"Usuarios"</strong> en el panel admin.</li>
+                                            <li>Busca por nombre, email o rol.</li>
+                                            <li>Acciones disponibles:
+                                                <ul>
+                                                    <li>Ver perfil completo</li>
+                                                    <li>Editar información</li>
+                                                    <li>Cambiar rol (Cliente, Barbero, Admin)</li>
+                                                    <li>Activar/desactivar cuenta</li>
+                                                    <li>Eliminar usuario (con confirmación)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Revisa historial de actividad.</li>
+                                            <li>Gestiona permisos especiales si es necesario.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Reportes -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#admin-collapse5">
+                                        <i class="bi bi-file-earmark-bar-graph me-2" style="color: var(--danger);"></i>
+                                        <strong>¿Cómo generar reportes del sistema?</strong>
+                                    </button>
+                                </h2>
+                                <div id="admin-collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionAdmin">
+                                    <div class="accordion-body">
+                                        <ol class="mb-0">
+                                            <li>Navega a <strong>"Reportes"</strong> o "Analytics".</li>
+                                            <li>Selecciona el tipo de reporte:
+                                                <ul>
+                                                    <li>Usuarios registrados (por período)</li>
+                                                    <li>Citas totales y ingresos</li>
+                                                    <li>Suscripciones activas</li>
+                                                    <li>Barberos/barberías más populares</li>
+                                                </ul>
+                                            </li>
+                                            <li>Filtra por rango de fechas.</li>
+                                            <li>Elige formato de exportación (PDF, Excel, CSV).</li>
+                                            <li>Programa envíos automáticos por email.</li>
+                                            <li>Visualiza gráficas y tendencias.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto Soporte -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="glass-card p-4 text-center">
+                <h4 class="fw-bold mb-3">¿No encontraste lo que buscabas?</h4>
+                <p class="text-secondary mb-4">
+                    Nuestro equipo de soporte está disponible para ayudarte con cualquier duda o problema técnico.
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a asp-controller="Home" asp-action="Contact" class="btn btn-primary">
+                        <i class="bi bi-envelope me-2"></i>Contactar Soporte
+                    </a>
+                    <a href="mailto:soporte@barbershoppro.com" class="btn btn-outline-glass">
+                        <i class="bi bi-send me-2"></i>Enviar Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .nav-pills .nav-link {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: all var(--transition-fast);
+        }
+        
+        .nav-pills .nav-link.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .nav-pills .nav-link:hover:not(.active) {
+            background: var(--bg-primary);
+            color: var(--primary);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background: var(--bg-tertiary);
+            color: var(--primary);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem var(--primary-glow);
+        }
+        
+        .accordion-item {
+            background: var(--bg-primary);
+            border-color: var(--border-color);
+        }
+        
+        @@media (max-width: 768px) {
+            .nav-pills .nav-link span {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+}
