@@ -5,8 +5,9 @@ obj/
 *.dll
 *.exe
 *.pdb
-*.nupkg
-*.snupkg
+*.config
+web.config
+appsettings*.json
 
 # Dependencies
 packages/
@@ -15,14 +16,16 @@ node_modules/
 # Logs
 *.log
 
-# User-specific files
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
 .vs/
 .vscode/
+.idea/
 *.userprefs
-
-# Environment specific settings
-appsettings.Development.json
-appsettings.Production.json
 
 # OS generated files
 .DS_Store
