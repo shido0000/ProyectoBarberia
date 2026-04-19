@@ -4,61 +4,102 @@
     var selectedDate = (DateTime)ViewData["SelectedDate"];
 }
 
-<div class="row mb-4">
-    <div class="col-md-8">
-        <h2><i class="bi bi-calendar-check"></i> Todas las Citas</h2>
-        <p class="text-muted">Gestiona todas tus citas</p>
+<div class="container py-4 animate-fade-in-up">
+    <!-- Page Header -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="glass-card p-4 p-md-5">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-gradient-primary rounded-circle d-flex align-items-center justify-content-center shadow-glow" 
+                             style="width: 70px; height: 70px; min-width: 70px;">
+                            <i class="bi bi-calendar-check text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <div>
+                            <h1 class="fw-bold mb-1 gradient-text display-6">Todas las Citas</h1>
+                            <p class="text-muted mb-0 fs-5">Gestiona todas tus reservas de manera eficiente</p>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-controller="Barber" asp-action="Dashboard" class="btn btn-animated btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4 text-end">
-        <a asp-controller="Barber" asp-action="Dashboard" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i> Volver al Dashboard
-        </a>
-    </div>
-</div>
 
-<!-- Date Filter -->
-<div class="row mb-4">
-    <div class="col-md-6">
-        <form asp-controller="Barber" asp-action="Appointments" method="get" class="d-flex gap-2">
-            <input type="date" name="date" value="@selectedDate.ToString("yyyy-MM-dd")" class="form-control" />
-            <button type="submit" class="btn btn-primary">
-                <i class="bi bi-search"></i> Filtrar
-            </button>
-            <a asp-controller="Barber" asp-action="Appointments" class="btn btn-outline-secondary">
-                <i class="bi bi-x-circle"></i> Hoy
-            </a>
-        </form>
+    <!-- Date Filter -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="glass-card p-4">
+                <form asp-controller="Barber" asp-action="Appointments" method="get" class="d-flex flex-wrap gap-3">
+                    <div class="flex-grow-1">
+                        <label class="form-label fw-semibold small text-muted mb-1">
+                            <i class="bi bi-calendar3 me-1"></i> Filtrar por fecha
+                        </label>
+                        <input type="date" name="date" value="@selectedDate.ToString("yyyy-MM-dd")" class="form-control form-control-lg" />
+                    </div>
+                    <div class="d-flex align-items-end gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-search"></i> Filtrar
+                        </button>
+                        <a asp-controller="Barber" asp-action="Appointments" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-x-circle"></i> Hoy
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
-@if (Model.Any())
-{
-    <div class="card shadow-sm">
-        <div class="card-body p-0">
+    @if (Model.Any())
+    {
+        <!-- Appointments Table -->
+        <div class="glass-card border-0 overflow-hidden">
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="bg-primary text-white">
+                <table class="table table-hover mb-0 align-middle">
+                    <thead class="bg-gradient-primary text-white">
                         <tr>
-                            <th>Cliente</th>
+                            <th class="ps-4">Cliente</th>
                             <th>Servicio</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Estado</th>
-                            <th>Acciones</th>
+                            <th class="text-center pe-4">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var appt in Model)
                         {
-                            <tr>
-                                <td>
-                                    <strong>@appt.Client.FullName</strong>
-                                    <br />
-                                    <small class="text-muted">@appt.Client.Email</small>
+                            <tr class="hover-lift">
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" 
+                                             style="width: 45px; height: 45px; min-width: 45px;">
+                                            <i class="bi bi-person-fill text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block">@appt.Client.FullName</strong>
+                                            <small class="text-muted">@appt.Client.Email</small>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td>@appt.Service.Name</td>
-                                <td>@appt.Date.ToString("dd/MM/yyyy")</td>
-                                <td><span class="badge bg-primary">@appt.Time.ToString(@"hh\:mm")</span></td>
+                                <td>
+                                    <span class="fw-semibold">@appt.Service.Name</span>
+                                </td>
+                                <td>
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-calendar3 text-muted"></i>
+                                        @appt.Date.ToString("dd/MM/yyyy")
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-gradient-primary px-3 py-2 rounded-pill">
+                                        <i class="bi bi-clock me-1"></i>@appt.Time.ToString(@"hh\:mm")
+                                    </span>
+                                </td>
                                 <td>
                                     @{
                                         var badgeClass = appt.Status switch
@@ -70,6 +111,15 @@
                                             WebApplication1.Models.AppointmentStatus.Cancelled => "bg-secondary",
                                             _ => "bg-secondary"
                                         };
+                                        var statusIcon = appt.Status switch
+                                        {
+                                            WebApplication1.Models.AppointmentStatus.Pending => "bi-clock",
+                                            WebApplication1.Models.AppointmentStatus.Confirmed => "bi-check-circle",
+                                            WebApplication1.Models.AppointmentStatus.InProgress => "bi-play-circle",
+                                            WebApplication1.Models.AppointmentStatus.Completed => "bi-check-all-circle",
+                                            WebApplication1.Models.AppointmentStatus.Cancelled => "bi-x-circle",
+                                            _ => "bi-question-circle"
+                                        };
                                         var statusText = appt.Status switch
                                         {
                                             WebApplication1.Models.AppointmentStatus.Pending => "Pendiente",
@@ -80,49 +130,53 @@
                                             _ => "Desconocido"
                                         };
                                     }
-                                    <span class="badge @badgeClass">@statusText</span>
+                                    <span class="badge @badgeClass px-3 py-2 rounded-pill">
+                                        <i class="bi @statusIcon me-1"></i>@statusText
+                                    </span>
                                 </td>
-                                <td>
-                                    @if (appt.Status == WebApplication1.Models.AppointmentStatus.Pending)
-                                    {
-                                        <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
-                                            <input type="hidden" name="id" value="@appt.Id" />
-                                            <input type="hidden" name="status" value="Confirmed" />
-                                            <button class="btn btn-sm btn-success" title="Confirmar">
-                                                <i class="bi bi-check-lg"></i> Confirmar
-                                            </button>
-                                        </form>
-                                    }
-                                    @if (appt.Status == WebApplication1.Models.AppointmentStatus.Confirmed)
-                                    {
-                                        <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
-                                            <input type="hidden" name="id" value="@appt.Id" />
-                                            <input type="hidden" name="status" value="InProgress" />
-                                            <button class="btn btn-sm btn-primary" title="Iniciar">
-                                                <i class="bi bi-play-fill"></i> Iniciar
-                                            </button>
-                                        </form>
-                                    }
-                                    @if (appt.Status == WebApplication1.Models.AppointmentStatus.InProgress)
-                                    {
-                                        <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
-                                            <input type="hidden" name="id" value="@appt.Id" />
-                                            <input type="hidden" name="status" value="Completed" />
-                                            <button class="btn btn-sm btn-success" title="Completar">
-                                                <i class="bi bi-check-circle"></i> Completar
-                                            </button>
-                                        </form>
-                                    }
-                                    @if (appt.Status != WebApplication1.Models.AppointmentStatus.Cancelled && appt.Status != WebApplication1.Models.AppointmentStatus.Completed)
-                                    {
-                                        <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline ms-1">
-                                            <input type="hidden" name="id" value="@appt.Id" />
-                                            <input type="hidden" name="status" value="Cancelled" />
-                                            <button class="btn btn-sm btn-outline-danger" title="Cancelar" onclick="return confirm('¿Cancelar esta cita?')">
-                                                <i class="bi bi-x-circle"></i>
-                                            </button>
-                                        </form>
-                                    }
+                                <td class="text-center pe-4">
+                                    <div class="btn-group" role="group">
+                                        @if (appt.Status == WebApplication1.Models.AppointmentStatus.Pending)
+                                        {
+                                            <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="@appt.Id" />
+                                                <input type="hidden" name="status" value="Confirmed" />
+                                                <button class="btn btn-sm btn-success" title="Confirmar">
+                                                    <i class="bi bi-check-lg"></i> Confirmar
+                                                </button>
+                                            </form>
+                                        }
+                                        @if (appt.Status == WebApplication1.Models.AppointmentStatus.Confirmed)
+                                        {
+                                            <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="@appt.Id" />
+                                                <input type="hidden" name="status" value="InProgress" />
+                                                <button class="btn btn-sm btn-primary" title="Iniciar">
+                                                    <i class="bi bi-play-fill"></i> Iniciar
+                                                </button>
+                                            </form>
+                                        }
+                                        @if (appt.Status == WebApplication1.Models.AppointmentStatus.InProgress)
+                                        {
+                                            <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline">
+                                                <input type="hidden" name="id" value="@appt.Id" />
+                                                <input type="hidden" name="status" value="Completed" />
+                                                <button class="btn btn-sm btn-success" title="Completar">
+                                                    <i class="bi bi-check-circle"></i> Completar
+                                                </button>
+                                            </form>
+                                        }
+                                        @if (appt.Status != WebApplication1.Models.AppointmentStatus.Cancelled && appt.Status != WebApplication1.Models.AppointmentStatus.Completed)
+                                        {
+                                            <form asp-controller="Barber" asp-action="UpdateAppointmentStatus" method="post" class="d-inline ms-1">
+                                                <input type="hidden" name="id" value="@appt.Id" />
+                                                <input type="hidden" name="status" value="Cancelled" />
+                                                <button class="btn btn-sm btn-outline-danger" title="Cancelar" onclick="return confirm('¿Cancelar esta cita?')">
+                                                    <i class="bi bi-x-circle"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -130,13 +184,22 @@
                 </table>
             </div>
         </div>
-    </div>
-}
-else
-{
-    <div class="text-center py-5">
-        <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
-        <h4 class="text-muted mt-3">No hay citas para esta fecha</h4>
-        <p class="text-muted">Selecciona otra fecha o vuelve al dashboard</p>
-    </div>
-}
+    }
+    else
+    {
+        <!-- Empty State -->
+        <div class="glass-card border-0 p-5 text-center">
+            <div class="py-5">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" 
+                     style="width: 140px; height: 140px;">
+                    <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
+                </div>
+                <h4 class="text-muted mb-2">No hay citas para esta fecha</h4>
+                <p class="text-muted mb-4">Selecciona otra fecha o vuelve al dashboard</p>
+                <a asp-controller="Barber" asp-action="Dashboard" class="btn btn-primary btn-lg">
+                    <i class="bi bi-speedometer2 me-2"></i>Ir al Dashboard
+                </a>
+            </div>
+        </div>
+    }
+</div>
