@@ -2,40 +2,409 @@
     ViewData["Title"] = "Política de Privacidad";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-10">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="bi bi-shield-check"></i> Política de Privacidad</h4>
+<!-- Privacy Policy Page -->
+<section class="privacy-section py-5">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <div class="animate-fade-in-up">
+                    <div class="glass-card d-inline-flex align-items-center gap-2 px-4 py-2 mb-4">
+                        <i class="bi bi-shield-check text-primary fs-4"></i>
+                        <span class="fw-semibold small">Privacidad y Seguridad</span>
+                    </div>
+                    <h1 class="display-5 fw-bold mb-3 gradient-text">
+                        Política de Privacidad
+                    </h1>
+                    <p class="lead text-secondary mb-0">
+                        Tu privacidad es nuestra prioridad. Conoce cómo protegemos y gestionamos tu información personal.
+                    </p>
+                </div>
             </div>
-            <div class="card-body">
-                <h5>1. Información que Recopilamos</h5>
-                <p>En BarberShop Pro, recopilamos información necesaria para brindar nuestros servicios de reservación, incluyendo:</p>
-                <ul>
-                    <li>Nombre completo y datos de contacto</li>
-                    <li>Dirección de correo electrónico</li>
-                    <li>Información de perfil para barberos</li>
-                    <li>Historial de reservaciones</li>
-                </ul>
-                
-                <h5>2. Cómo Usamos tu Información</h5>
-                <p>Utilizamos la información recopilada para:</p>
-                <ul>
-                    <li>Procesar y gestionar reservaciones</li>
-                    <li>Comunicarte con tu barbero</li>
-                    <li>Mejorar nuestros servicios</li>
-                    <li>Enviar notificaciones relevantes</li>
-                </ul>
-                
-                <h5>3. Protección de Datos</h5>
-                <p>Implementamos medidas de seguridad para proteger tu información personal contra acceso no autorizado.</p>
-                
-                <h5>4. Contacto</h5>
-                <p>Si tienes preguntas sobre esta política, contáctanos en <strong>privacidad@barbershop.com</strong></p>
-                
-                <hr />
-                <p class="text-muted small"><em>Última actualización: @DateTime.Now.ToString("dd/MM/yyyy")</em></p>
+        </div>
+
+        <!-- Main Content Card -->
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card modern-card shadow-lg border-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="card-body p-4 p-md-5">
+                        
+                        <!-- Section 1 -->
+                        <div class="privacy-section-item mb-5">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="privacy-icon-wrapper flex-shrink-0">
+                                    <div class="privacy-icon bg-gradient-primary rounded-circle d-flex align-items-center justify-content-center shadow-glow">
+                                        <i class="bi bi-person-badge text-white fs-4"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="h4 fw-bold mb-3 text-primary">1. Información que Recopilamos</h2>
+                                    <p class="text-secondary mb-3">
+                                        En <strong>BarberShop Pro</strong>, recopilamos información necesaria para brindar nuestros servicios de reservación de manera eficiente y segura:
+                                    </p>
+                                    <div class="info-grid row g-3">
+                                        <div class="col-md-6">
+                                            <div class="info-item glass-card p-3 h-100">
+                                                <div class="d-flex align-items-center gap-2 mb-2">
+                                                    <i class="bi bi-person-check-fill text-primary"></i>
+                                                    <span class="fw-semibold">Datos Personales</span>
+                                                </div>
+                                                <small class="text-muted">Nombre completo y datos de contacto</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item glass-card p-3 h-100">
+                                                <div class="d-flex align-items-center gap-2 mb-2">
+                                                    <i class="bi bi-envelope-check-fill text-primary"></i>
+                                                    <span class="fw-semibold">Contacto</span>
+                                                </div>
+                                                <small class="text-muted">Dirección de correo electrónico</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item glass-card p-3 h-100">
+                                                <div class="d-flex align-items-center gap-2 mb-2">
+                                                    <i class="bi bi-briefcase-fill text-primary"></i>
+                                                    <span class="fw-semibold">Perfil Profesional</span>
+                                                </div>
+                                                <small class="text-muted">Información de perfil para barberos</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="info-item glass-card p-3 h-100">
+                                                <div class="d-flex align-items-center gap-2 mb-2">
+                                                    <i class="bi bi-calendar-check-fill text-primary"></i>
+                                                    <span class="fw-semibold">Historial</span>
+                                                </div>
+                                                <small class="text-muted">Historial de reservaciones</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 border-secondary-subtle" />
+
+                        <!-- Section 2 -->
+                        <div class="privacy-section-item mb-5">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="privacy-icon-wrapper flex-shrink-0">
+                                    <div class="privacy-icon bg-gradient-accent rounded-circle d-flex align-items-center justify-content-center shadow-glow">
+                                        <i class="bi bi-gear-wide-connected text-white fs-4"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="h4 fw-bold mb-3 text-accent">2. Cómo Usamos tu Información</h2>
+                                    <p class="text-secondary mb-3">
+                                        Utilizamos la información recopilada exclusivamente para los siguientes propósitos:
+                                    </p>
+                                    <div class="usage-list">
+                                        <div class="usage-item d-flex align-items-start gap-3 mb-3 p-3 rounded-3 glass-card animate-fade-in">
+                                            <div class="usage-icon flex-shrink-0">
+                                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-semibold mb-1">Procesar y gestionar reservaciones</h6>
+                                                <small class="text-muted">Para asegurar una experiencia de reserva fluida y sin errores.</small>
+                                            </div>
+                                        </div>
+                                        <div class="usage-item d-flex align-items-start gap-3 mb-3 p-3 rounded-3 glass-card animate-fade-in">
+                                            <div class="usage-icon flex-shrink-0">
+                                                <i class="bi bi-chat-dots-fill text-primary fs-5"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-semibold mb-1">Comunicarte con tu barbero</h6>
+                                                <small class="text-muted">Facilitar la comunicación entre clientes y profesionales.</small>
+                                            </div>
+                                        </div>
+                                        <div class="usage-item d-flex align-items-start gap-3 mb-3 p-3 rounded-3 glass-card animate-fade-in">
+                                            <div class="usage-icon flex-shrink-0">
+                                                <i class="bi bi-graph-up-arrow text-info fs-5"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-semibold mb-1">Mejorar nuestros servicios</h6>
+                                                <small class="text-muted">Analizar datos para optimizar continuamente la plataforma.</small>
+                                            </div>
+                                        </div>
+                                        <div class="usage-item d-flex align-items-start gap-3 mb-3 p-3 rounded-3 glass-card animate-fade-in">
+                                            <div class="usage-icon flex-shrink-0">
+                                                <i class="bi bi-bell-fill text-warning fs-5"></i>
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-semibold mb-1">Enviar notificaciones relevantes</h6>
+                                                <small class="text-muted">Recordatorios de citas y actualizaciones importantes.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 border-secondary-subtle" />
+
+                        <!-- Section 3 -->
+                        <div class="privacy-section-item mb-5">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="privacy-icon-wrapper flex-shrink-0">
+                                    <div class="privacy-icon bg-gradient-success rounded-circle d-flex align-items-center justify-content-center shadow-glow">
+                                        <i class="bi bi-lock-fill text-white fs-4"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h2 class="h4 fw-bold mb-3 text-success">3. Protección de Datos</h2>
+                                    <div class="security-box glass-card p-4 rounded-3 border">
+                                        <div class="row g-4">
+                                            <div class="col-md-8">
+                                                <p class="text-secondary mb-3">
+                                                    Implementamos medidas de seguridad de última generación para proteger tu información personal contra acceso no autorizado, uso indebido o divulgación:
+                                                </p>
+                                                <ul class="list-unstyled mb-0">
+                                                    <li class="mb-2"><i class="bi bi-shield-check text-success me-2"></i>Encriptación SSL/TLS de extremo a extremo</li>
+                                                    <li class="mb-2"><i class="bi bi-shield-check text-success me-2"></i>Servidores seguros con certificación ISO 27001</li>
+                                                    <li class="mb-2"><i class="bi bi-shield-check text-success me-2"></i>Acceso restringido solo al personal autorizado</li>
+                                                    <li class="mb-0"><i class="bi bi-shield-check text-success me-2"></i>Monitoreo continuo de seguridad 24/7</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-4 text-center">
+                                                <div class="security-badge glass-card p-3">
+                                                    <i class="bi bi-patch-check-fill text-success fs-1"></i>
+                                                    <div class="mt-2">
+                                                        <small class="fw-bold d-block">100% Seguro</small>
+                                                        <small class="text-muted">Tus datos están protegidos</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4 border-secondary-subtle" />
+
+                        <!-- Section 4 - Contact -->
+                        <div class="privacy-section-item mb-4">
+                            <div class="d-flex align-items-start gap-3 mb-3">
+                                <div class="privacy-icon-wrapper flex-shrink-0">
+                                    <div class="privacy-icon bg-gradient-info rounded-circle d-flex align-items-center justify-content-center shadow-glow">
+                                        <i class="bi bi-envelope-open-heart text-white fs-4"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h2 class="h4 fw-bold mb-3 text-info">4. Contacto</h2>
+                                    <p class="text-secondary mb-4">
+                                        Si tienes preguntas, inquietudes o solicitudes relacionadas con esta política de privacidad o el tratamiento de tus datos personales, no dudes en contactarnos:
+                                    </p>
+                                    <div class="contact-box glass-card p-4 rounded-3">
+                                        <div class="row g-3 align-items-center">
+                                            <div class="col-md-8">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="contact-icon bg-primary bg-opacity-10 rounded-circle p-3">
+                                                        <i class="bi bi-envelope-at-fill text-primary fs-3"></i>
+                                                    </div>
+                                                    <div>
+                                                        <small class="text-muted d-block mb-1">Correo electrónico de privacidad:</small>
+                                                        <a href="mailto:privacidad@barbershop.com" class="fw-bold text-primary fs-5 hover-link">
+                                                            privacidad@barbershop.com
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-md-end">
+                                                <a href="mailto:privacidad@barbershop.com" class="btn btn-primary btn-lift">
+                                                    <i class="bi bi-send me-2"></i>Enviar Mensaje
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Info -->
+                        <div class="privacy-footer mt-5 pt-4 border-top">
+                            <div class="row align-items-center g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center gap-2 text-muted">
+                                        <i class="bi bi-clock-history text-primary"></i>
+                                        <small><strong>Última actualización:</strong> @DateTime.Now.ToString("dd 'de' MMMM 'de' yyyy")</small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-md-end">
+                                    <div class="d-flex align-items-center justify-content-md-end gap-2">
+                                        <i class="bi bi-file-earmark-text text-primary"></i>
+                                        <small class="text-muted">Versión 1.0</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Back Button -->
+                <div class="text-center mt-4 animate-fade-in">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-glass btn-lift">
+                        <i class="bi bi-arrow-left me-2"></i>Volver al Inicio
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
+
+@section Styles {
+    <style>
+        /* Privacy Page Specific Styles */
+        .privacy-section {
+            min-height: calc(100vh - 200px);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .modern-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border) !important;
+            border-radius: var(--radius-2xl);
+            transition: all var(--transition-base);
+        }
+
+        .modern-card:hover {
+            box-shadow: var(--shadow-glow);
+        }
+
+        .privacy-icon-wrapper {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .privacy-icon {
+            width: 64px;
+            height: 64px;
+            transition: transform var(--transition-bounce);
+        }
+
+        .privacy-section-item:hover .privacy-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .bg-gradient-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        }
+
+        .bg-gradient-success {
+            background: linear-gradient(135deg, var(--success), #047857);
+        }
+
+        .bg-gradient-info {
+            background: linear-gradient(135deg, var(--info), #0e7490);
+        }
+
+        .info-item {
+            transition: all var(--transition-base);
+            cursor: default;
+        }
+
+        .info-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .usage-item {
+            transition: all var(--transition-base);
+        }
+
+        .usage-item:hover {
+            transform: translateX(8px);
+            background: var(--bg-tertiary);
+        }
+
+        .security-badge {
+            animation: pulse-animation 2s ease-in-out infinite;
+        }
+
+        .hover-link {
+            transition: all var(--transition-fast);
+        }
+
+        .hover-link:hover {
+            color: var(--accent) !important;
+            text-decoration: underline;
+        }
+
+        .btn-lift {
+            transition: all var(--transition-base);
+        }
+
+        .btn-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Animations */
+        @keyframes animate-fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: animate-fade-in-up 0.6s ease-out forwards;
+        }
+
+        @keyframes animate-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: animate-fade-in 0.5s ease-out forwards;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .privacy-icon-wrapper {
+                width: 48px;
+                height: 48px;
+            }
+
+            .privacy-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .privacy-icon i {
+                font-size: 1.25rem !important;
+            }
+
+            .privacy-section-item .h4 {
+                font-size: 1.25rem;
+            }
+
+            .info-grid .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+}
