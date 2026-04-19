@@ -1,0 +1,354 @@
+@{
+    ViewData["Title"] = "Planes y Precios";
+    var barberPlans = ViewBag.BarberPlans as List<WebApplication1.Models.SubscriptionPlan>;
+    var barbershopPlans = ViewBag.BarbershopSubscriptionPlans as List<WebApplication1.Models.BarbershopSubscriptionPlan>;
+}
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-piggy-bank-fill me-2" style="color: var(--primary);"></i>
+                Planes y Precios
+            </h1>
+            <p class="lead text-secondary">
+                Elige el plan perfecto para tu negocio. Sin costos ocultos, cancela cuando quieras.
+            </p>
+        </div>
+    </div>
+
+    <!-- Planes para Barberos -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-person-badge" style="color: var(--accent);"></i>
+                Planes para Barberos Individuales
+            </h2>
+        </div>
+
+        @if (barberPlans == null || !barberPlans.Any())
+        {
+            <div class="col-12">
+                <div class="glass-card p-4 text-center">
+                    <p class="text-muted mb-0">No hay planes disponibles en este momento.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var plan in barberPlans)
+            {
+                var isPopular = plan.Name.Contains("Media", StringComparison.OrdinalIgnoreCase);
+                var isFree = plan.MonthlyPrice == 0;
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="glass-card h-100 @(isPopular ? "border-primary border-2" : "")" style="position: relative;">
+                        @if (isPopular)
+                        {
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill">Más Popular</span>
+                            </div>
+                        }
+                        
+                        <div class="p-4">
+                            <!-- Header del plan -->
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-2">@plan.Name</h3>
+                                @if (!string.IsNullOrEmpty(plan.Description))
+                                {
+                                    <p class="text-muted small mb-3">@plan.Description</p>
+                                }
+                                
+                                <div class="mb-3">
+                                    @if (isFree)
+                                    {
+                                        <span class="display-6 fw-bold" style="color: var(--success);">Gratuito</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="display-4 fw-bold" style="color: var(--primary);">$@plan.MonthlyPrice.ToString("F2")</span>
+                                        <span class="text-muted">/mes</span>
+                                    }
+                                }
+                                
+                                @if (plan.AnnualPrice.HasValue && plan.AnnualPrice > 0)
+                                {
+                                    <p class="text-muted small">
+                                        <i class="bi bi-calendar-heart me-1"></i>
+                                        $@plan.AnnualPrice.Value.ToString("F2") anual (ahorra @((1 - plan.AnnualPrice.Value / (plan.MonthlyPrice * 12)) * 100).ToString("F0")%)
+                                    </p>
+                                }
+                            </div>
+
+                            <!-- Características -->
+                            <ul class="list-unstyled mb-4">
+                                @if (isFree)
+                                {
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                        <span>Perfil público visible</span>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                        <span>Servicios básicos</span>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                        <span>Aparición en búsquedas</span>
+                                    </li>
+                                }
+                                else
+                                {
+                                    @if (plan.MaxServicesPerBarber.HasValue)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Hasta @plan.MaxServicesPerBarber.Value servicios</span>
+                                        </li>
+                                    }
+                                    @if (plan.IncludeAnalytics)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Estadísticas y analytics</span>
+                                        </li>
+                                    }
+                                    @if (plan.AutoReminders)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Recordatorios automáticos</span>
+                                        </li>
+                                    }
+                                    @if (plan.PrioritySupport)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Soporte prioritario</span>
+                                        </li>
+                                    }
+                                    @if (plan.CustomBranding)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Branding personalizado</span>
+                                        </li>
+                                    }
+                                    @if (plan.ExportReports)
+                                    {
+                                        <li class="mb-3 d-flex align-items-start gap-2">
+                                            <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                            <span>Exportar reportes</span>
+                                        </li>
+                                    }
+                                    <!-- Características adicionales genéricas -->
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                        <span>Gestión de agenda completa</span>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-check-circle-fill text-success mt-1"></i>
+                                        <span>Citas ilimitadas</span>
+                                    </li>
+                                }
+                            </ul>
+
+                            <!-- CTA Button -->
+                            <div class="d-grid">
+                                <a asp-area="Identity" asp-page="/Account/Register" class="btn @(isFree ? "btn-outline-primary" : "btn-primary") btn-lg">
+                                    @if (isFree)
+                                    {
+                                        <span>Comenzar Gratis</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Elegir @plan.Name</span>
+                                    }
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <hr class="my-5" />
+
+    <!-- Planes para Barberías -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="fw-bold mb-4 d-flex align-items-center gap-2">
+                <i class="bi bi-shop" style="color: var(--accent);"></i>
+                Planes para Barberías
+            </h2>
+        </div>
+
+        @if (barbershopPlans == null || !barbershopPlans.Any())
+        {
+            <div class="col-12">
+                <div class="glass-card p-4 text-center">
+                    <p class="text-muted mb-0">No hay planes disponibles en este momento.</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var plan in barbershopPlans)
+            {
+                var isPro = plan.Name.Contains("Profesional", StringComparison.OrdinalIgnoreCase) || 
+                           plan.Name.Contains("Pro", StringComparison.OrdinalIgnoreCase);
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="glass-card h-100 @(isPro ? "border-accent border-2" : "")" style="position: relative;">
+                        @if (isPro)
+                        {
+                            <div class="position-absolute top-0 start-50 translate-middle">
+                                <span class="badge" style="background: var(--accent); color: white;" px-3 py-2 rounded-pill>Recomendado</span>
+                            </div>
+                        }
+                        
+                        <div class="p-4">
+                            <!-- Header del plan -->
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold mb-2">@plan.Name</h3>
+                                @if (!string.IsNullOrEmpty(plan.Description))
+                                {
+                                    <p class="text-muted small mb-3">@plan.Description</p>
+                                }
+                                
+                                <div class="mb-3">
+                                    <span class="display-4 fw-bold" style="color: var(--accent);">$@plan.MonthlyPrice.ToString("F2")</span>
+                                    <span class="text-muted">/mes</span>
+                                </div>
+                            </div>
+
+                            <!-- Características -->
+                            <ul class="list-unstyled mb-4">
+                                @if (plan.MaxBarbers.HasValue)
+                                {
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-people-fill" style="color: var(--accent);"></i>
+                                        <span>Hasta @plan.MaxBarbers.Value barberos</span>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-people-fill" style="color: var(--accent);"></i>
+                                        <span>Barberos ilimitados</span>
+                                    </li>
+                                }
+                                <li class="mb-3 d-flex align-items-start gap-2">
+                                    <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                    <span>Gestión de miembros</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start gap-2">
+                                    <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                    <span>Estadísticas de la barbería</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start gap-2">
+                                    <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                    <span>Aprobar/rechazar solicitudes</span>
+                                </li>
+                                <li class="mb-3 d-flex align-items-start gap-2">
+                                    <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
+                                    <span>Perfil corporativo</span>
+                                </li>
+                                @if (!string.IsNullOrEmpty(plan.FeaturesJson))
+                                {
+                                    <!-- Parsear características adicionales si existen -->
+                                    <li class="mb-3 d-flex align-items-start gap-2">
+                                        <i class="bi bi-star-fill" style="color: var(--warning);"></i>
+                                        <span>Características premium incluidas</span>
+                                    </li>
+                                }
+                            </ul>
+
+                            <!-- CTA Button -->
+                            <div class="d-grid">
+                                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg" style="background: var(--accent); color: white;">
+                                    <span>Elegir @plan.Name</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="row mt-5 pt-4">
+        <div class="col-12">
+            <h3 class="fw-bold mb-4 text-center">Preguntas Frecuentes</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-2">
+                            <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
+                            ¿Puedo cambiar de plan?
+                        </h5>
+                        <p class="text-secondary mb-0">
+                            Sí, puedes actualizar o disminuir tu plan en cualquier momento desde tu panel de administración.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-2">
+                            <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
+                            ¿Hay período de prueba?
+                        </h5>
+                        <p class="text-secondary mb-0">
+                            Ofrecemos 14 días de prueba gratuita en todos los planes de pago. Sin tarjeta de crédito requerida.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-2">
+                            <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
+                            ¿Puedo cancelar cuando quiera?
+                        </h5>
+                        <p class="text-secondary mb-0">
+                            Absolutely. No hay contratos a largo plazo ni penalizaciones por cancelación.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="glass-card p-4">
+                        <h5 class="fw-bold mb-2">
+                            <i class="bi bi-question-circle me-2" style="color: var(--primary);"></i>
+                            ¿Qué métodos de pago aceptan?
+                        </h5>
+                        <p class="text-secondary mb-0">
+                            Aceptamos tarjetas de crédito/débito, PayPal y transferencias bancarias para planes anuales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .glass-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .badge {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
+}
