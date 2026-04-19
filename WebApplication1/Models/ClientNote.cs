@@ -15,7 +15,8 @@ namespace WebApplication1.Models
         
         [Required]
         public string ClientId { get; set; } = string.Empty;
-        
+        //public int ClientId { get; set; }
+
         [Required]
         [MaxLength(1000)]
         [Display(Name = "Nota")]

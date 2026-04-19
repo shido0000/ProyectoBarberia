@@ -10,7 +10,8 @@ namespace WebApplication1.Models
         
         [Required]
         public string UserId { get; set; } = string.Empty;
-        
+        //public int UserId { get; set; } 
+
         [Display(Name = "Plan de Suscripción")]
         public int? SubscriptionPlanId { get; set; }
         

@@ -1,0 +1,2 @@
+Add-Migration migracion1 -Context ApplicationDbContext
+Update-Database

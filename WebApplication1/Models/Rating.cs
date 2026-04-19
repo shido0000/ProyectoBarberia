@@ -10,9 +10,9 @@ namespace WebApplication1.Models
     {
         [Key]
         public int Id { get; set; }
-        
+
         [Required]
-        public int ClientId { get; set; }
+        public string ClientId { get; set; } = string.Empty;
         
         [Display(Name = "Cliente")]
         public virtual ApplicationUser Client { get; set; } = null!;

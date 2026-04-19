@@ -205,6 +205,13 @@ namespace WebApplication1.Data
                 .WithMany()
                 .HasForeignKey(b => b.BarberId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Configuración para ClientNote
+            builder.Entity<ClientNote>()
+                     .HasOne(cn => cn.BarberProfile)
+                    .WithMany(bp => bp.ClientNotes) // Ajusta el nombre de la colección si existe
+                    .HasForeignKey(cn => cn.BarberProfileId)
+                    .OnDelete(DeleteBehavior.Restrict); // ? Evita la cascada
         }
     }
 }

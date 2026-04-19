@@ -9,6 +9,7 @@ namespace WebApplication1.Models
         
         [Required]
         public string UserId { get; set; } = string.Empty;
+        //public int UserId { get; set; } 
         
         [Display(Name = "Nombre de la Barbería")]
         [MaxLength(100)]

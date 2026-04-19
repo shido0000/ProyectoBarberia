@@ -9,7 +9,8 @@ namespace WebApplication1.Models
         
         [Required]
         public string UserId { get; set; } = string.Empty;
-        
+        //public int UserId { get; set; }
+
         [Required]
         [Display(Name = "Monto")]
         public decimal Amount { get; set; }
