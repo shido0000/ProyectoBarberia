@@ -1,63 +1,27 @@
 ```
 # Build artifacts
-obj/
-bin/
-*.dll
-*.exe
-*.pdb
-*.config
-*.manifest
-*.cache
-*.lockb
+wwwroot/css/site.css.map
+wwwroot/css/site.min.css
+wwwroot/dist/
+wwwroot/build/
 
 # Dependencies
-packages/
 node_modules/
-bower_components/
 
-# Logs
+# Logs and temp files
 *.log
-logs/
+*.tmp
 
-# User-specific files
-.vs/
-.vsts/
-.user
-.userosscache
-.ihostsettings
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
 .vscode/
 .idea/
 
-# Environment specific
-.env
-.env.local
-*.userprefs
-
 # OS generated files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
-desktop.ini
-
-# Testing
-TestResults/
-
-# IDE
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Database
-*.db
-*.db-shm
-*.db-wal
-
-# Compiled source
-*.nupkg
-*.snupkg
 ```
