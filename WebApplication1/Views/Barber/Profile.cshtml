@@ -3,72 +3,145 @@
     ViewData["Title"] = "Mi Perfil";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-10">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="bi bi-person-gear"></i> Mi Perfil de Barbería</h4>
+<!-- Page Header with Animation -->
+<div class="container py-4 animate-fade-in-down">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <!-- Decorative Header Card -->
+            <div class="glass-card p-4 mb-4 text-center">
+                <div class="icon-wrapper mb-3">
+                    <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 90px; height: 90px;">
+                        <i class="bi bi-person-gear text-white" style="font-size: 3rem;"></i>
+                    </div>
+                </div>
+                <h2 class="fw-bold mb-2 gradient-text">Mi Perfil de Barbería</h2>
+                <p class="text-muted mb-0">Configura la información de tu negocio</p>
             </div>
-            <div class="card-body">
-                @if (TempData["Success"] != null)
-                {
-                    <div class="alert alert-success">
-                        <i class="bi bi-check-circle"></i> @TempData["Success"]
-                    </div>
-                }
-                
-                <form asp-controller="Barber" asp-action="UpdateProfile" method="post">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-shop"></i> Nombre de la Barbería
-                            </label>
-                            <input name="ShopName" value="@Model.ShopName" class="form-control form-control-lg" placeholder="Mi Barbería" />
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-custom mb-4 animate-fade-in-up">
+                    <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+                </div>
+            }
+
+            <!-- Form Card -->
+            <div class="glass-card shadow-2xl border-0 animate-fade-in-up">
+                <div class="card-body p-5">
+                    <form asp-controller="Barber" asp-action="UpdateProfile" method="post" class="auth-form">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-shop text-primary me-2"></i>Nombre de la Barbería
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input name="ShopName" value="@Model.ShopName" class="form-control form-control-lg" placeholder="Mi Barbería" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-shop"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-telephone text-primary me-2"></i>Teléfono
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input name="Phone" value="@Model.Phone" class="form-control form-control-lg" placeholder="+1234567890" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-telephone"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i>Dirección
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input name="Address" value="@Model.Address" class="form-control form-control-lg" placeholder="Calle Principal #123, Ciudad" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-geo-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-chat-text text-primary me-2"></i>Descripción
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <textarea name="Description" class="form-control form-control-lg" rows="4" placeholder="Describe tu barbería...">@Model.Description</textarea>
+                                        <div class="input-icon">
+                                            <i class="bi bi-chat-text"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-clock text-primary me-2"></i>Hora de Apertura
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input name="StartTime" type="time" value="@Model.StartTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-clock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group-animated">
+                                    <label class="form-label fw-semibold">
+                                        <i class="bi bi-clock-fill text-primary me-2"></i>Hora de Cierre
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input name="EndTime" type="time" value="@Model.EndTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
+                                        <div class="input-icon">
+                                            <i class="bi bi-clock-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-telephone"></i> Teléfono
-                            </label>
-                            <input name="Phone" value="@Model.Phone" class="form-control form-control-lg" placeholder="+1234567890" />
+
+                        <hr class="my-4 border-secondary opacity-25" />
+
+                        <div class="d-flex gap-3 flex-column flex-sm-row">
+                            <button type="submit" class="btn btn-primary btn-lg flex-grow-1 shadow-glow btn-animated">
+                                <i class="bi bi-check-circle me-2"></i>Guardar Cambios
+                            </button>
+                            <a asp-controller="Barber" asp-action="ShopImages" class="btn btn-outline-glass btn-lg">
+                                <i class="bi bi-camera me-2"></i>Fotos
+                            </a>
                         </div>
-                        <div class="col-12">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-geo-alt"></i> Dirección
-                            </label>
-                            <input name="Address" value="@Model.Address" class="form-control form-control-lg" placeholder="Calle Principal #123, Ciudad" />
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-chat-text"></i> Descripción
-                            </label>
-                            <textarea name="Description" class="form-control" rows="3" placeholder="Describe tu barbería...">@Model.Description</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-clock"></i> Hora de Apertura
-                            </label>
-                            <input name="StartTime" type="time" value="@Model.StartTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">
-                                <i class="bi bi-clock-fill"></i> Hora de Cierre
-                            </label>
-                            <input name="EndTime" type="time" value="@Model.EndTime.ToString(@"hh\:mm")" class="form-control form-control-lg" />
-                        </div>
-                    </div>
-                    
-                    <hr class="my-4" />
-                    
-                    <div class="d-flex gap-2 mb-3">
-                        <button type="submit" class="btn btn-primary btn-lg flex-grow-1">
-                            <i class="bi bi-check-circle"></i> Guardar Cambios
-                        </button>
-                        <a asp-controller="Barber" asp-action="ShopImages" class="btn btn-outline-secondary btn-lg">
-                            <i class="bi bi-camera"></i> Fotos
-                        </a>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Animaciones adicionales al cargar
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.form-control, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.classList.add('focused');
+                });
+                input.addEventListener('blur', function () {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+    </script>
+}

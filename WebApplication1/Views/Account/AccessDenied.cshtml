@@ -2,16 +2,64 @@
     ViewData["Title"] = "Acceso Denegado";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-6 text-center">
-        <div class="card shadow-sm">
-            <div class="card-body py-5">
-                <i class="bi bi-x-circle text-danger" style="font-size: 5rem;"></i>
-                <h2 class="mt-3">Acceso Denegado</h2>
-                <p class="text-muted">No tienes permiso para acceder a esta página</p>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg mt-3">
-                    <i class="bi bi-house-door"></i> Volver al Inicio
-                </a>
+<!-- Page Background with Animation -->
+<div class="auth-page-wrapper">
+    <div class="auth-background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row justify-content-center align-items-center min-vh-80">
+            <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <!-- Card con animación de entrada -->
+                <div class="card auth-card shadow-2xl border-0 animate-fade-in-up">
+                    <div class="card-body p-0">
+                        <!-- Header decorativo -->
+                        <div class="auth-header text-center p-5 pb-4">
+                            <div class="icon-wrapper mb-4">
+                                <div class="bg-gradient-danger rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow pulse-animation" style="width: 100px; height: 100px;">
+                                    <i class="bi bi-x-circle text-white" style="font-size: 3.5rem;"></i>
+                                </div>
+                            </div>
+                            <h2 class="fw-bold mb-2 gradient-text text-danger">Acceso Denegado</h2>
+                            <p class="text-muted mb-4">No tienes permiso para acceder a esta página</p>
+
+                            <div class="info-box mt-4 p-4 rounded-3 border animate-fade-in">
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="info-icon me-3">
+                                        <i class="bi bi-info-circle-fill text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-2">¿Por qué veo esto?</h6>
+                                        <p class="small text-muted mb-0">Es posible que hayas intentado acceder a una sección restringida o que tu sesión haya expirado.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 pt-4">
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg w-100 mb-3 shadow-glow btn-animated">
+                                <i class="bi bi-house-door me-2"></i>Volver al Inicio
+                            </a>
+
+                            @if (User.Identity?.IsAuthenticated ?? false)
+                            {
+                                <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-glass btn-lg w-100">
+                                    <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
+                                </a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="Login" class="btn btn-outline-glass btn-lg w-100">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

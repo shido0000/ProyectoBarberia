@@ -3,48 +3,103 @@
     ViewData["Title"] = "Mi Perfil";
 }
 
-<div class="row justify-content-center">
-    <div class="col-md-8">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0"><i class="bi bi-person"></i> Mi Perfil</h4>
-            </div>
-            <div class="card-body">
-                @if (TempData["Success"] != null)
-                {
-                    <div class="alert alert-success">
-                        <i class="bi bi-check-circle"></i> @TempData["Success"]
+<!-- Page Header with Animation -->
+<div class="container py-4 animate-fade-in-down">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Decorative Header Card -->
+            <div class="glass-card p-4 mb-4 text-center">
+                <div class="icon-wrapper mb-3">
+                    <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 90px; height: 90px;">
+                        <i class="bi bi-person text-white" style="font-size: 3rem;"></i>
                     </div>
-                }
-                
-                <div class="text-center mb-4">
-                    <i class="bi bi-person-circle text-primary" style="font-size: 5rem;"></i>
-                    <h3 class="mt-3">@Model.FullName</h3>
-                    <p class="text-muted">@Model.Email</p>
                 </div>
-                
-                <form asp-controller="Client" asp-action="UpdateProfile" method="post">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Nombre Completo</label>
-                        <input type="text" name="fullName" value="@Model.FullName" class="form-control form-control-lg" required />
+                <h2 class="fw-bold mb-2 gradient-text">Mi Perfil</h2>
+                <p class="text-muted mb-0">Gestiona tu información personal</p>
+            </div>
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-custom mb-4 animate-fade-in-up">
+                    <i class="bi bi-check-circle me-2"></i>@TempData["Success"]
+                </div>
+            }
+
+            <!-- Form Card -->
+            <div class="glass-card shadow-2xl border-0 animate-fade-in-up">
+                <div class="card-body p-5">
+                    <!-- User Avatar Section -->
+                    <div class="text-center mb-4 pb-4 border-bottom border-secondary opacity-25">
+                        <div class="bg-gradient-light rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow mb-3" style="width: 120px; height: 120px;">
+                            <i class="bi bi-person-circle text-primary" style="font-size: 5rem;"></i>
+                        </div>
+                        <h3 class="fw-bold mb-1">@Model.FullName</h3>
+                        <p class="text-muted mb-0">@Model.Email</p>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Email</label>
-                        <input type="email" value="@Model.Email" class="form-control form-control-lg" disabled />
-                        <small class="text-muted">El email no se puede cambiar</small>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">Teléfono</label>
-                        <input type="tel" name="phone" value="@Model.PhoneNumber" class="form-control form-control-lg" placeholder="+1234567890" />
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-lg w-100">
-                        <i class="bi bi-check-circle"></i> Guardar Cambios
-                    </button>
-                </form>
+
+                    <form asp-controller="Client" asp-action="UpdateProfile" method="post" class="auth-form">
+                        <div class="mb-4 form-group-animated">
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-person text-primary me-2"></i>Nombre Completo
+                            </label>
+                            <div class="input-group-animated">
+                                <input type="text" name="fullName" value="@Model.FullName" class="form-control form-control-lg" required />
+                                <div class="input-icon">
+                                    <i class="bi bi-person"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 form-group-animated">
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-envelope text-primary me-2"></i>Email
+                            </label>
+                            <div class="input-group-animated">
+                                <input type="email" value="@Model.Email" class="form-control form-control-lg" disabled />
+                                <div class="input-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                            </div>
+                            <small class="text-muted"><i class="bi bi-info-circle me-1"></i>El email no se puede cambiar</small>
+                        </div>
+
+                        <div class="mb-5 form-group-animated">
+                            <label class="form-label fw-semibold">
+                                <i class="bi bi-telephone text-primary me-2"></i>Teléfono
+                            </label>
+                            <div class="input-group-animated">
+                                <input type="tel" name="phone" value="@Model.PhoneNumber" class="form-control form-control-lg" placeholder="+1234567890" />
+                                <div class="input-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 shadow-glow btn-animated">
+                            <i class="bi bi-check-circle me-2"></i>Guardar Cambios
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        // Animaciones adicionales al cargar
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.classList.add('focused');
+                });
+                input.addEventListener('blur', function () {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+        });
+    </script>
+}
