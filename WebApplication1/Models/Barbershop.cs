@@ -78,9 +78,8 @@ namespace WebApplication1.Models
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Precio Mensual")]
         public decimal MonthlyPrice { get; set; }
-        
-        [Display(Name = "Máximo de Barberos")]
-        [DisplayDescription("Dejar en null para ilimitado")]
+
+        [Display(Name = "Máximo de Barberos", Description = "Dejar en null para ilimitado")]
         public int? MaxBarbers { get; set; }
         
         [MaxLength(1000)]
