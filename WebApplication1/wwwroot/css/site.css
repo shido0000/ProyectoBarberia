@@ -155,6 +155,8 @@ body {
 main.main-content {
     flex: 1;
     padding-top: 1rem;
+    position: relative; /* Necesario para el contexto de apilamiento */
+    z-index: 1; /* Asegurar que el contenido principal no interfiera con dropdowns */
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -186,6 +188,23 @@ a:hover {
     border-bottom: 1px solid var(--glass-border);
     transition: all var(--transition-base);
     padding: 0.75rem 0;
+}
+
+/* Header con posición relativa para contexto de apilamiento */
+header {
+    position: relative;
+    z-index: 1040; /* Mismo valor que Bootstrap para navbar */
+}
+
+/* Navbar container - asegurar que los dropdowns no se recorten */
+.navbar .container {
+    position: relative;
+    overflow: visible; /* Permitir que los dropdowns se extiendan sin recortarse */
+}
+
+/* Navbar collapse - overflow visible para dropdowns */
+.navbar-collapse {
+    overflow: visible !important;
 }
 
 .navbar-brand {
@@ -268,6 +287,29 @@ a:hover {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-xl);
     padding: 0.5rem;
+    z-index: 1055 !important; /* Aumentado para estar por encima de todo el contenido */
+}
+
+/* Navbar dropdowns - Z-index fix para evitar solapamiento */
+.navbar .dropdown-menu {
+    z-index: 1060 !important; /* Más alto que cualquier contenido de la página */
+}
+
+/* Asegurar que el navbar tenga el contexto de apilamiento correcto */
+.navbar {
+    position: relative;
+    z-index: 1040; /* Por defecto en Bootstrap, pero lo explicitamos */
+}
+
+/* Dropdown toggle en navbar - asegurar que el menú se muestre correctamente */
+.navbar .dropdown-toggle::after {
+    vertical-align: middle;
+}
+
+/* Fix para dropdowns anidados o múltiples dropdowns abiertos */
+.dropdown.show > .dropdown-menu {
+    display: block;
+    z-index: 1060 !important;
 }
 
 .dropdown-item {
@@ -346,6 +388,11 @@ a:hover {
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-lg);
     transition: all var(--transition-base);
+}
+
+/* Dropdown con clase glass-card - z-index adicional */
+.dropdown-menu.glass-card {
+    z-index: 1060 !important;
 }
 
 .stat-card {
@@ -651,7 +698,7 @@ a:hover {
 
 .table-responsive {
     border-radius: var(--radius-xl);
-    overflow: hidden;
+    overflow: auto; /* Cambiado de hidden a auto para no interferir con dropdowns */
     box-shadow: var(--shadow-md);
 }
 
@@ -2091,7 +2138,7 @@ a:hover {
 /* ===== TABLES ENHANCED ===== */
 .table-responsive {
     border-radius: var(--radius-xl);
-    overflow: hidden;
+    overflow: auto; /* Cambiado de hidden a auto para no interferir con dropdowns */
     box-shadow: var(--shadow-lg);
     border: 1px solid var(--border-color);
 }
