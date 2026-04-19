@@ -1,13 +1,12 @@
 ```
 # Build artifacts
-bin/
 obj/
+bin/
 *.dll
 *.exe
 *.pdb
 *.config
-web.config
-appsettings*.json
+*.csproj.user
 
 # Dependencies
 packages/
@@ -22,10 +21,11 @@ node_modules/
 *.env.*
 
 # Editors
-.vs/
 .vscode/
 .idea/
 *.userprefs
+*.suo
+*.user
 
 # OS generated files
 .DS_Store

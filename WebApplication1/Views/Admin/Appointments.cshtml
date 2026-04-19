@@ -3,78 +3,163 @@
     ViewData["Title"] = "Todas las Reservas";
 }
 
-<div class="row mb-4">
-    <div class="col-md-8">
-        <h2><i class="bi bi-calendar-check"></i> Todas las Reservas</h2>
-        <p class="text-muted">Historial completo de reservaciones</p>
-    </div>
-    <div class="col-md-4 text-end">
-        <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i> Volver
-        </a>
-    </div>
-</div>
-
-@if (Model.Any())
-{
-    <div class="card shadow-sm">
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="bg-info text-white">
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Barbero</th>
-                            <th>Servicio</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var appt in Model)
-                        {
-                            <tr>
-                                <td><strong>@appt.Client.FullName</strong></td>
-                                <td>@appt.BarberProfile.ShopName</td>
-                                <td>@appt.Service.Name</td>
-                                <td>@appt.Date.ToString("dd/MM/yyyy")</td>
-                                <td><span class="badge bg-primary">@appt.Time.ToString(@"hh\:mm")</span></td>
-                                <td>
-                                    @{
-                                        var badgeClass = appt.Status switch
-                                        {
-                                            WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-dark",
-                                            WebApplication1.Models.AppointmentStatus.Confirmed => "bg-info",
-                                            WebApplication1.Models.AppointmentStatus.InProgress => "bg-primary",
-                                            WebApplication1.Models.AppointmentStatus.Completed => "bg-success",
-                                            WebApplication1.Models.AppointmentStatus.Cancelled => "bg-secondary",
-                                            _ => "bg-secondary"
-                                        };
-                                        var statusText = appt.Status switch
-                                        {
-                                            WebApplication1.Models.AppointmentStatus.Pending => "Pendiente",
-                                            WebApplication1.Models.AppointmentStatus.Confirmed => "Confirmada",
-                                            WebApplication1.Models.AppointmentStatus.InProgress => "En Progreso",
-                                            WebApplication1.Models.AppointmentStatus.Completed => "Completada",
-                                            WebApplication1.Models.AppointmentStatus.Cancelled => "Cancelada",
-                                            _ => "Desconocido"
-                                        };
-                                    }
-                                    <span class="badge @badgeClass">@statusText</span>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+<!-- Header Section -->
+<div class="container py-4">
+    <div class="row mb-4 align-items-center">
+        <div class="col-lg-8">
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 56px; height: 56px;">
+                    <i class="bi bi-calendar-check text-info fs-4"></i>
+                </div>
+                <div>
+                    <h1 class="display-6 fw-bold mb-1 gradient-text">Todas las Reservas</h1>
+                    <p class="text-muted mb-0">Historial completo de reservaciones del sistema</p>
+                </div>
             </div>
         </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-outline-glass">
+                <i class="bi bi-arrow-left me-2"></i>Volver al Panel
+            </a>
+        </div>
     </div>
-}
-else
-{
-    <div class="text-center py-5">
-        <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
-        <h4 class="text-muted mt-3">No hay reservas registradas</h4>
-    </div>
-}
+
+    @if (Model.Any())
+    {
+        <!-- Stats Summary -->
+        <div class="row g-4 mb-4">
+            <div class="col-sm-6 col-lg-3">
+                <div class="glass-card p-3 text-center">
+                    <div class="stat-number text-info" style="font-size: 2rem;">@Model.Count</div>
+                    <div class="stat-label">Total Reservas</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="glass-card p-3 text-center">
+                    <div class="stat-number text-warning" style="font-size: 2rem;">@Model.Count(a => a.Status == WebApplication1.Models.AppointmentStatus.Pending)</div>
+                    <div class="stat-label">Pendientes</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="glass-card p-3 text-center">
+                    <div class="stat-number text-success" style="font-size: 2rem;">@Model.Count(a => a.Status == WebApplication1.Models.AppointmentStatus.Completed)</div>
+                    <div class="stat-label">Completadas</div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="glass-card p-3 text-center">
+                    <div class="stat-number text-danger" style="font-size: 2rem;">@Model.Count(a => a.Status == WebApplication1.Models.AppointmentStatus.Cancelled)</div>
+                    <div class="stat-label">Canceladas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="glass-card">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-info bg-gradient text-white">
+                            <tr>
+                                <th class="ps-4">Cliente</th>
+                                <th>Barbero</th>
+                                <th>Servicio</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th class="text-center">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var appt in Model.OrderByDescending(a => a.Date).ThenBy(a => a.Time))
+                            {
+                                var badgeClass = appt.Status switch
+                                {
+                                    WebApplication1.Models.AppointmentStatus.Pending => "bg-warning bg-opacity-10 text-warning",
+                                    WebApplication1.Models.AppointmentStatus.Confirmed => "bg-info bg-opacity-10 text-info",
+                                    WebApplication1.Models.AppointmentStatus.InProgress => "bg-primary bg-opacity-10 text-primary",
+                                    WebApplication1.Models.AppointmentStatus.Completed => "bg-success bg-opacity-10 text-success",
+                                    WebApplication1.Models.AppointmentStatus.Cancelled => "bg-secondary bg-opacity-10 text-secondary",
+                                    _ => "bg-secondary bg-opacity-10 text-secondary"
+                                };
+                                var statusText = appt.Status switch
+                                {
+                                    WebApplication1.Models.AppointmentStatus.Pending => "Pendiente",
+                                    WebApplication1.Models.AppointmentStatus.Confirmed => "Confirmada",
+                                    WebApplication1.Models.AppointmentStatus.InProgress => "En Progreso",
+                                    WebApplication1.Models.AppointmentStatus.Completed => "Completada",
+                                    WebApplication1.Models.AppointmentStatus.Cancelled => "Cancelada",
+                                    _ => "Desconocido"
+                                };
+                                var statusIcon = appt.Status switch
+                                {
+                                    WebApplication1.Models.AppointmentStatus.Pending => "bi-clock",
+                                    WebApplication1.Models.AppointmentStatus.Confirmed => "bi-check-circle",
+                                    WebApplication1.Models.AppointmentStatus.InProgress => "bi-play-circle",
+                                    WebApplication1.Models.AppointmentStatus.Completed => "bi-check-all-circle",
+                                    WebApplication1.Models.AppointmentStatus.Cancelled => "bi-x-circle",
+                                    _ => "bi-question-circle"
+                                };
+
+                                <tr class="animate-fade-in">
+                                    <td class="ps-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px; flex-shrink: 0;">
+                                                <i class="bi bi-person-circle text-primary fs-5"></i>
+                                            </div>
+                                            <div>
+                                                <strong class="d-block">@appt.Client.FullName</strong>
+                                                <small class="text-muted">@appt.Client.Email</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-scissors text-muted small"></i>
+                                            <span>@appt.BarberProfile.ShopName</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-light text-dark border">
+                                            <i class="bi bi-scissors me-1"></i>@appt.Service.Name
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="text-secondary small">
+                                            <i class="bi bi-calendar-event me-1"></i>@appt.Date.ToString("dd/MM/yyyy")
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary px-3 py-2 rounded-pill">
+                                            <i class="bi bi-clock me-1"></i>@appt.Time.ToString(@"hh\:mm")
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge @badgeClass px-3 py-2 rounded-pill">
+                                            <i class="bi @statusIcon me-1"></i>@statusText
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Empty State -->
+        <div class="glass-card p-5 text-center">
+            <div class="mb-4">
+                <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+                    <i class="bi bi-calendar-x text-muted" style="font-size: 4rem;"></i>
+                </div>
+            </div>
+            <h3 class="fw-bold mb-2">No hay reservas registradas</h3>
+            <p class="text-muted mb-4">Las reservas aparecerán aquí una vez que los clientes comiencen a agendar citas.</p>
+            <a asp-controller="Booking" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="bi bi-calendar-plus me-2"></i>Ver Disponibilidad
+            </a>
+        </div>
+    }
+</div>
