@@ -224,3 +224,163 @@ if (navbar) {
         lastScroll = currentScroll;
     });
 }
+// ===== NOTIFICATIONS SYSTEM =====
+(function() {
+    // Only initialize if user is authenticated (notification bell exists)
+    const notificationBell = document.getElementById('notification-bell');
+    if (!notificationBell) return;
+    
+    const notificationBadge = document.getElementById('notification-badge');
+    const notificationsList = document.getElementById('notifications-list');
+    const notificationsLoading = document.getElementById('notifications-loading');
+    const notificationsEmpty = document.getElementById('notifications-empty');
+    
+    let notificationPollInterval;
+    
+    // Load notifications from server
+    async function loadNotifications() {
+        try {
+            const response = await fetch('/Notifications/GetNotifications?count=5');
+            if (!response.ok) throw new Error('Failed to fetch notifications');
+            
+            const data = await response.json();
+            renderNotifications(data.notifications, data.unreadCount);
+        } catch (error) {
+            console.error('Error loading notifications:', error);
+        }
+    }
+    
+    // Render notifications in dropdown
+    function renderNotifications(notifications, unreadCount) {
+        // Update badge
+        if (unreadCount > 0) {
+            notificationBadge.textContent = unreadCount > 9 ? '9+' : unreadCount;
+            notificationBadge.classList.remove('d-none');
+        } else {
+            notificationBadge.classList.add('d-none');
+        }
+        
+        // Hide loading
+        notificationsLoading.classList.add('d-none');
+        
+        // Show empty state or notifications
+        if (notifications.length === 0) {
+            notificationsList.classList.add('d-none');
+            notificationsEmpty.classList.remove('d-none');
+        } else {
+            notificationsEmpty.classList.add('d-none');
+            notificationsList.classList.remove('d-none');
+            
+            // Build notification items
+            let html = '';
+            notifications.forEach(n => {
+                const iconClass = getNotificationIcon(n.type);
+                const colorClass = getNotificationColor(n.type);
+                const fontWeight = n.isRead ? '' : 'fw-semibold';
+                
+                html += `
+                    <li>
+                        <a href="${n.relatedUrl || '#'}" class="dropdown-item py-2 ${!n.isRead ? 'bg-primary bg-opacity-10' : ''}" onclick="markAsRead(${n.id}); event.stopPropagation();">
+                            <div class="d-flex align-items-start gap-2">
+                                <i class="bi ${iconClass} ${colorClass} mt-1"></i>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 small ${fontWeight}">${escapeHtml(n.message)}</p>
+                                    <small class="text-muted">${n.createdAt}</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                `;
+            });
+            
+            notificationsList.innerHTML = html;
+        }
+    }
+    
+    // Get icon class based on notification type
+    function getNotificationIcon(type) {
+        const icons = {
+            'NewMembershipRequest': 'bi-person-plus',
+            'RequestAccepted': 'bi-check-circle',
+            'RequestRejected': 'bi-x-circle',
+            'BarberLeft': 'bi-box-arrow-right',
+            'AppointmentReminder': 'bi-calendar-event',
+            'Info': 'bi-info-circle',
+            'System': 'bi-gear'
+        };
+        return icons[type] || 'bi-bell';
+    }
+    
+    // Get color class based on notification type
+    function getNotificationColor(type) {
+        const colors = {
+            'NewMembershipRequest': 'text-primary',
+            'RequestAccepted': 'text-success',
+            'RequestRejected': 'text-danger',
+            'BarberLeft': 'text-warning',
+            'AppointmentReminder': 'text-info',
+            'Info': 'text-secondary',
+            'System': 'text-muted'
+        };
+        return colors[type] || 'text-secondary';
+    }
+    
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    // Mark single notification as read
+    window.markAsRead = async function(id) {
+        try {
+            await fetch(`/Notifications/MarkAsRead?id=${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            // Reload notifications after marking as read
+            setTimeout(() => loadNotifications(), 500);
+        } catch (error) {
+            console.error('Error marking notification as read:', error);
+        }
+    };
+    
+    // Mark all notifications as read
+    window.markAllAsRead = async function() {
+        try {
+            await fetch('/Notifications/MarkAllAsRead', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            // Reload notifications
+            loadNotifications();
+        } catch (error) {
+            console.error('Error marking all notifications as read:', error);
+        }
+    };
+    
+    // Load notifications when dropdown is opened
+    notificationBell.addEventListener('click', function() {
+        loadNotifications();
+    });
+    
+    // Initial load
+    loadNotifications();
+    
+    // Poll for new notifications every 30 seconds
+    notificationPollInterval = setInterval(loadNotifications, 30000);
+    
+    // Clean up interval when page unloads
+    window.addEventListener('beforeunload', () => {
+        if (notificationPollInterval) {
+            clearInterval(notificationPollInterval);
+        }
+    });
+})();

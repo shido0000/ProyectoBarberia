@@ -1,0 +1,212 @@
+@model WebApplication1.Models.Barbershop
+
+@{
+    ViewData["Title"] = "Mi Barbería";
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-shop me-2"></i>Mi Barbería
+            </h1>
+            <p class="text-secondary">Panel de administración de tu barbería</p>
+        </div>
+    </div>
+
+    @if (Model == null)
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-shop display-1 text-muted"></i>
+            <h3 class="mt-3">No tienes una barbería</h3>
+            <p class="text-secondary mb-4">Crea tu propia barbería y comienza a gestionar tu equipo</p>
+            <a asp-action="Create" class="btn btn-primary btn-lg">
+                <i class="bi bi-plus-circle me-1"></i>Crear Barbería
+            </a>
+        </div>
+    }
+    else
+    {
+        <!-- Summary Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card glass-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people display-4 text-primary mb-3"></i>
+                        <h3 class="fw-bold">@Model.Members.Count()</h3>
+                        <p class="text-muted mb-0">Barberos en tu equipo</p>
+                        @if (Model.Plan.MaxBarbers.HasValue)
+                        {
+                            <small class="text-muted">Máximo: @Model.Plan.MaxBarbers</small>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card glass-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-inbox display-4 text-warning mb-3"></i>
+                        <h3 class="fw-bold">@Model.MembershipRequests.Count(r => r.Status == MembershipRequestStatus.Pending)</h3>
+                        <p class="text-muted mb-0">Solicitudes pendientes</p>
+                        <a asp-action="ManageRequests" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-warning mt-2">
+                            Ver solicitudes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card glass-card h-100">
+                    <div class="card-body text-center">
+                        <i class="bi bi-crown display-4 text-success mb-3"></i>
+                        <h5 class="fw-bold">@Model.Plan.Name</h5>
+                        <p class="text-muted mb-0">$@Model.Plan.MonthlyPrice/mes</p>
+                        @if (Model.Plan.MaxBarbers.HasValue)
+                        {
+                            <small class="text-muted">Máx @(Model.Plan.MaxBarbers) barberos</small>
+                        }
+                        else
+                        {
+                            <small class="text-muted">Barberos ilimitados</small>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card glass-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3"><i class="bi bi-lightning me-2"></i>Acciones Rápidas</h5>
+                        <div class="d-grid gap-2">
+                            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+                                <i class="bi bi-eye me-1"></i>Ver Página Pública
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-secondary">
+                                <i class="bi bi-pencil me-1"></i>Editar Información
+                            </a>
+                            <a asp-action="ManageRequests" asp-route-id="@Model.Id" class="btn btn-outline-info">
+                                <i class="bi bi-inbox me-1"></i>Gestionar Solicitudes
+                                @if (Model.MembershipRequests.Count(r => r.Status == MembershipRequestStatus.Pending) > 0)
+                                {
+                                    <span class="badge bg-danger">@Model.MembershipRequests.Count(r => r.Status == MembershipRequestStatus.Pending)</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card glass-card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3"><i class="bi bi-info-circle me-2"></i>Información</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2">
+                                <strong>Nombre:</strong> @Model.Name
+                            </li>
+                            @if (!string.IsNullOrEmpty(Model.Address))
+                            {
+                                <li class="mb-2">
+                                    <strong>Dirección:</strong> @Model.Address
+                                </li>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.Phone))
+                            {
+                                <li class="mb-2">
+                                    <strong>Teléfono:</strong> @Model.Phone
+                                </li>
+                            }
+                            <li class="mb-2">
+                                <strong>Creado:</strong> @Model.CreatedAt.ToString("dd/MM/yyyy")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Members -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card glass-card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-3"><i class="bi bi-people-fill me-2"></i>Equipo (@Model.Members.Count())</h5>
+                        
+                        @if (!Model.Members.Any())
+                        {
+                            <p class="text-muted mb-0">Aún no tienes barberos en tu equipo. Comparte la página de tu barbería para recibir solicitudes.</p>
+                        }
+                        else
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Barbero</th>
+                                            <th>Email</th>
+                                            <th>Rol</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var member in Model.Members)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        @if (!string.IsNullOrEmpty(member.ProfilePhoto))
+                                                        {
+                                                            <img src="@member.ProfilePhoto" alt="@member.User.FullName" class="rounded-circle" width="40" height="40" style="object-fit: cover;" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                                <span class="text-white fs-6 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                            </div>
+                                                        }
+                                                        <span>@member.User.FullName</span>
+                                                    </div>
+                                                </td>
+                                                <td>@member.User.Email</td>
+                                                <td>
+                                                    @if (member.Id == Model.OwnerBarberId)
+                                                    {
+                                                        <span class="badge bg-warning text-dark">
+                                                            <i class="bi bi-crown me-1"></i>Dueño
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge bg-secondary">Miembro</span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+</style>
+}

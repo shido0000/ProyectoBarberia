@@ -1,0 +1,20 @@
+@model WebApplication1.Models.Barbershop
+
+@{
+    ViewData["Title"] = "NoBarbershop";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+            <i class="bi bi-shop display-1 text-muted mb-4"></i>
+            <h2 class="mb-3">No tienes una barbería</h2>
+            <p class="text-secondary mb-4">
+                Para gestionar solicitudes y miembros, primero debes crear una barbería.
+            </p>
+            <a asp-action="Create" class="btn btn-primary btn-lg">
+                <i class="bi bi-plus-circle me-1"></i>Crear Barbería
+            </a>
+        </div>
+    </div>
+</div>

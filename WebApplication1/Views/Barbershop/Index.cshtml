@@ -1,0 +1,154 @@
+@model IEnumerable<WebApplication1.Models.Barbershop>
+
+@{
+    ViewData["Title"] = "Barberías";
+}
+
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="bi bi-shop me-2"></i>Barberías
+            </h1>
+            <p class="text-secondary">Encuentra las mejores barberías y únete a ellas</p>
+        </div>
+        @if (User.IsInRole("Barber"))
+        {
+            <div class="col-md-4 text-end">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-1"></i>Crear Barbería
+                </a>
+            </div>
+        }
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="card glass-card mb-4">
+        <div class="card-body">
+            <form asp-action="Index" method="get" class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Buscar</label>
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Nombre, descripción o ubicación" value="@ViewBag.SearchTerm" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Filtrar por Plan</label>
+                    <select name="planId" class="form-select">
+                        <option value="">Todos los planes</option>
+                        @foreach (var plan in ViewBag.Plans as List<WebApplication1.Models.BarbershopSubscriptionPlan>)
+                        {
+                            <option value="@plan.Id" selected="@(ViewBag.SelectedPlanId == plan.Id)">@plan.Name - $@plan.MonthlyPrice/mes</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-shop display-1 text-muted"></i>
+            <h3 class="mt-3">No hay barberías registradas</h3>
+            <p class="text-secondary">Sé el primero en crear una barbería</p>
+            @if (User.IsInRole("Barber"))
+            {
+                <a asp-action="Create" class="btn btn-primary mt-3">
+                    <i class="bi bi-plus-circle me-1"></i>Crear Barbería
+                </a>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var barbershop in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 glass-card hover-lift">
+                        @if (!string.IsNullOrEmpty(barbershop.CoverImageUrl))
+                        {
+                            <img src="@barbershop.CoverImageUrl" class="card-img-top" alt="@barbershop.Name" style="height: 200px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="bi bi-shop display-1 text-white"></i>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title mb-0">@barbershop.Name</h5>
+                                <span class="badge bg-primary">@barbershop.Plan.Name</span>
+                            </div>
+                            
+                            @if (!string.IsNullOrEmpty(barbershop.Description))
+                            {
+                                <p class="card-text text-secondary small">@barbershop.Description</p>
+                            }
+                            
+                            <div class="mb-3">
+                                @if (!string.IsNullOrEmpty(barbershop.Address))
+                                {
+                                    <p class="small mb-1">
+                                        <i class="bi bi-geo-alt me-1"></i>@barbershop.Address
+                                    </p>
+                                }
+                                @if (!string.IsNullOrEmpty(barbershop.Phone))
+                                {
+                                    <p class="small mb-0">
+                                        <i class="bi bi-telephone me-1"></i>@barbershop.Phone
+                                    </p>
+                                }
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="bi bi-people me-1"></i>
+                                    @barbershop.Members.Count() 
+                                    @(barbershop.Plan.MaxBarbers.HasValue ? $"/ {barbershop.Plan.MaxBarbers}" : "+") barberos
+                                </small>
+                                <small class="text-muted">
+                                    <i class="bi bi-person me-1"></i>Dueño: @barbershop.Owner.User.FullName
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent border-0 pb-3">
+                            <a asp-action="Details" asp-route-id="@barbershop.Id" class="btn btn-outline-primary w-100">
+                                Ver Detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+</style>
+}
