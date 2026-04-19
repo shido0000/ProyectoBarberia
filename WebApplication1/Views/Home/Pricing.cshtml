@@ -37,11 +37,11 @@
         }
         else
         {
-            @foreach (var plan in barberPlans)
+            foreach (var plan in barberPlans)
             {
                 var isPopular = plan.Name.Contains("Media", StringComparison.OrdinalIgnoreCase);
                 var isFree = plan.MonthlyPrice == 0;
-                
+
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="glass-card h-100 @(isPopular ? "border-primary border-2" : "")" style="position: relative;">
                         @if (isPopular)
@@ -50,7 +50,7 @@
                                 <span class="badge bg-primary px-3 py-2 rounded-pill">Más Popular</span>
                             </div>
                         }
-                        
+
                         <div class="p-4">
                             <!-- Header del plan -->
                             <div class="text-center mb-4">
@@ -59,7 +59,7 @@
                                 {
                                     <p class="text-muted small mb-3">@plan.Description</p>
                                 }
-                                
+
                                 <div class="mb-3">
                                     @if (isFree)
                                     {
@@ -70,13 +70,14 @@
                                         <span class="display-4 fw-bold" style="color: var(--primary);">$@plan.MonthlyPrice.ToString("F2")</span>
                                         <span class="text-muted">/mes</span>
                                     }
-                                }
-                                
+                                </div>
+
                                 @if (plan.AnnualPrice.HasValue && plan.AnnualPrice > 0)
                                 {
+                                    var savingsPercent = (1 - plan.AnnualPrice.Value / (plan.MonthlyPrice * 12)) * 100;
                                     <p class="text-muted small">
                                         <i class="bi bi-calendar-heart me-1"></i>
-                                        $@plan.AnnualPrice.Value.ToString("F2") anual (ahorra @((1 - plan.AnnualPrice.Value / (plan.MonthlyPrice * 12)) * 100).ToString("F0")%)
+                                        $@plan.AnnualPrice.Value.ToString("F2") anual (ahorra @savingsPercent.ToString("F0")%)
                                     </p>
                                 }
                             </div>
@@ -195,42 +196,42 @@
         }
         else
         {
-            @foreach (var plan in barbershopPlans)
+            foreach (var shopPlan in barbershopPlans)
             {
-                var isPro = plan.Name.Contains("Profesional", StringComparison.OrdinalIgnoreCase) || 
-                           plan.Name.Contains("Pro", StringComparison.OrdinalIgnoreCase);
-                
+                var isPro = shopPlan.Name.Contains("Profesional", StringComparison.OrdinalIgnoreCase) ||
+                shopPlan.Name.Contains("Pro", StringComparison.OrdinalIgnoreCase);
+
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="glass-card h-100 @(isPro ? "border-accent border-2" : "")" style="position: relative;">
                         @if (isPro)
                         {
                             <div class="position-absolute top-0 start-50 translate-middle">
-                                <span class="badge" style="background: var(--accent); color: white;" px-3 py-2 rounded-pill>Recomendado</span>
+                                <span class="badge" style="background: var(--accent); color: white; padding: 0.5rem 1rem; border-radius: 50px;">Recomendado</span>
                             </div>
                         }
-                        
+
                         <div class="p-4">
                             <!-- Header del plan -->
                             <div class="text-center mb-4">
-                                <h3 class="fw-bold mb-2">@plan.Name</h3>
-                                @if (!string.IsNullOrEmpty(plan.Description))
+                                <h3 class="fw-bold mb-2">@shopPlan.Name</h3>
+                                @if (!string.IsNullOrEmpty(shopPlan.Description))
                                 {
-                                    <p class="text-muted small mb-3">@plan.Description</p>
+                                    <p class="text-muted small mb-3">@shopPlan.Description</p>
                                 }
-                                
+
                                 <div class="mb-3">
-                                    <span class="display-4 fw-bold" style="color: var(--accent);">$@plan.MonthlyPrice.ToString("F2")</span>
+                                    <span class="display-4 fw-bold" style="color: var(--accent);">$@shopPlan.MonthlyPrice.ToString("F2")</span>
                                     <span class="text-muted">/mes</span>
                                 </div>
                             </div>
 
                             <!-- Características -->
                             <ul class="list-unstyled mb-4">
-                                @if (plan.MaxBarbers.HasValue)
+                                @if (shopPlan.MaxBarbers.HasValue)
                                 {
                                     <li class="mb-3 d-flex align-items-start gap-2">
                                         <i class="bi bi-people-fill" style="color: var(--accent);"></i>
-                                        <span>Hasta @plan.MaxBarbers.Value barberos</span>
+                                        <span>Hasta @shopPlan.MaxBarbers.Value barberos</span>
                                     </li>
                                 }
                                 else
@@ -256,9 +257,8 @@
                                     <i class="bi bi-check-circle-fill" style="color: var(--success);"></i>
                                     <span>Perfil corporativo</span>
                                 </li>
-                                @if (!string.IsNullOrEmpty(plan.FeaturesJson))
+                                @if (!string.IsNullOrEmpty(shopPlan.FeaturesJson))
                                 {
-                                    <!-- Parsear características adicionales si existen -->
                                     <li class="mb-3 d-flex align-items-start gap-2">
                                         <i class="bi bi-star-fill" style="color: var(--warning);"></i>
                                         <span>Características premium incluidas</span>
@@ -269,7 +269,7 @@
                             <!-- CTA Button -->
                             <div class="d-grid">
                                 <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-lg" style="background: var(--accent); color: white;">
-                                    <span>Elegir @plan.Name</span>
+                                    <span>Elegir @shopPlan.Name</span>
                                 </a>
                             </div>
                         </div>
@@ -313,7 +313,7 @@
                             ¿Puedo cancelar cuando quiera?
                         </h5>
                         <p class="text-secondary mb-0">
-                            Absolutely. No hay contratos a largo plazo ni penalizaciones por cancelación.
+                            Por supuesto. No hay contratos a largo plazo ni penalizaciones por cancelación.
                         </p>
                     </div>
                 </div>
@@ -338,12 +338,12 @@
         .glass-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .glass-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        
+
+            .glass-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-xl);
+            }
+
         .badge {
             font-weight: 600;
             text-transform: uppercase;
