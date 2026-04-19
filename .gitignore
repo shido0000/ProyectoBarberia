@@ -1,41 +1,90 @@
-```
-# Build artifacts
-obj/
-bin/
-*.dll
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
 *.exe
-*.pdb
-*.config
-*.manifest
-*.nupkg
-packages/
+*.dll
+*.so
+*.class
+*.out
 
-# Logs
-*.log
-
-# Environment specific files
+# Dependencies
+node_modules/
+venv/
+.venv/
 .env
 .env.local
-*.user
-*.userosscache
-*.suo
+.env.*
 
-# User-specific files
-.vs/
+# Build outputs
+dist/
+build/
+target/
+*.log
+*.tmp
+*.swp
+
+# Editors
 .vscode/
-*.userprefs
+.idea/
 
 # OS generated files
 .DS_Store
 Thumbs.db
-ehthumbs.db
-Icon?
-desktop.ini
 
-# Testing
-TestResults/
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
 
-# NuGet Packages
-*.nupkg
-*.snupkg
-```
+# Python specific
+*.pyo
+*.pyd
+*.egg-info/
+.Python
+*.so
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Web application specific
+obj/
+bin/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
