@@ -6,28 +6,36 @@ bin/
 *.exe
 *.pdb
 *.config
-*.csproj.user
-
-# Dependencies
+*.manifest
+*.nupkg
 packages/
-node_modules/
 
 # Logs
 *.log
 
-# Environment
+# Environment specific files
 .env
 .env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-*.userprefs
-*.suo
 *.user
+*.userosscache
+*.suo
+
+# User-specific files
+.vs/
+.vscode/
+*.userprefs
 
 # OS generated files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# Testing
+TestResults/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
 ```
