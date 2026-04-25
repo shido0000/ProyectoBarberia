@@ -152,10 +152,11 @@
                                 </h3>
                                 @if (plan.AnnualPrice.HasValue)
                                 {
+                                    var savings = plan.MonthlyPrice > 0 ? ((plan.MonthlyPrice * 12 - plan.AnnualPrice.Value) / (plan.MonthlyPrice * 12) * 100) : 0;
                                     <div class="mt-2">
                                         <small class="text-success fw-semibold">$@plan.AnnualPrice.Value.ToString("F2")/año</small>
                                         <span class="badge bg-success bg-opacity-10 text-success ms-2">
-                                            Ahorra @(((plan.MonthlyPrice * 12 - plan.AnnualPrice.Value) / (plan.MonthlyPrice * 12) * 100)).ToString("F0")%
+                                            Ahorra @savings.ToString("F0")%
                                         </span>
                                     </div>
                                 }
