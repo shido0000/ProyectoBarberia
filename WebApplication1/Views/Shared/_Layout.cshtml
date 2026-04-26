@@ -118,64 +118,67 @@
         <div class="container">
             <div class="row g-4 py-5">
                 <!-- Columna 1: Brand & Descripción -->
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                     <div class="d-flex align-items-center gap-2 mb-3 footer-brand">
                         <img src="~/images/logo/Isotipo.png" alt="CitaCorte" class="footer-logo-isotipo" />
                         <img src="~/images/logo/Logotipo.png" alt="CitaCorte" class="footer-logo-text" />
                     </div>
-                    <p class="small text-secondary">
+                    <p class="small text-secondary mb-3">
                         La plataforma moderna para reservar y gestionar barberías. Tecnología de punta para potenciar tu negocio.
                     </p>
-                    <div class="d-flex gap-3 mt-3">
+                    <div class="d-flex gap-3">
                         <a href="#" class="text-secondary-hover" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
                         <a href="#" class="text-secondary-hover" aria-label="Instagram"><i class="bi bi-instagram fs-5"></i></a>
                         <a href="#" class="text-secondary-hover" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-5"></i></a>
                         <a href="#" class="text-secondary-hover" aria-label="TikTok"><i class="bi bi-tiktok fs-5"></i></a>
                     </div>
+                </div>
 
                 <!-- Columna 2: Enlaces rápidos -->
-                <div class="col-md-2">
-                    <h6 class="fw-bold mb-3">Producto</h6>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3 footer-heading">Producto</h6>
                     <ul class="list-unstyled small">
-                        <li class="mb-2"><a asp-controller="Booking" asp-action="Index" class="text-decoration-none">Reservar</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Features" class="text-decoration-none">Características</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Pricing" class="text-decoration-none">Precios</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Testimonials" class="text-decoration-none">Testimonios</a></li>
+                        <li class="mb-2"><a asp-controller="Booking" asp-action="Index" class="text-decoration-none footer-link">Reservar</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Features" class="text-decoration-none footer-link">Características</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Pricing" class="text-decoration-none footer-link">Precios</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Testimonials" class="text-decoration-none footer-link">Testimonios</a></li>
                     </ul>
                 </div>
 
                 <!-- Columna 3: Soporte -->
-                <div class="col-md-2">
-                    <h6 class="fw-bold mb-3">Soporte</h6>
+                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3 footer-heading">Soporte</h6>
                     <ul class="list-unstyled small">
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Help" class="text-decoration-none">Centro de ayuda</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Contact" class="text-decoration-none">Contacto</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Privacidad</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Terms" class="text-decoration-none">Términos</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Help" class="text-decoration-none footer-link">Centro de ayuda</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Contact" class="text-decoration-none footer-link">Contacto</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-decoration-none footer-link">Privacidad</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Terms" class="text-decoration-none footer-link">Términos</a></li>
                     </ul>
                 </div>
 
                 <!-- Columna 4: Newsletter / Contacto -->
-                <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Suscríbete</h6>
-                    <p class="small text-secondary">Recibe novedades y ofertas exclusivas.</p>
-                    <div class="input-group">
+                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                    <h6 class="fw-bold mb-3 footer-heading">Suscríbete</h6>
+                    <p class="small text-secondary mb-3">Recibe novedades y ofertas exclusivas.</p>
+                    <div class="input-group mb-2">
                         <input type="email" class="form-control form-control-sm bg-transparent border-secondary" placeholder="Tu correo electrónico">
                         <button class="btn btn-primary btn-sm" type="button">
                             <i class="bi bi-send"></i>
                         </button>
                     </div>
-                    <p class="small text-muted mt-2">Promociones, nuevos barberos y mucho más.</p>
+                    <p class="small text-muted mb-0">Promociones, nuevos barberos y mucho más.</p>
                 </div>
+            </div>
 
             <!-- Línea divisoria y copyright -->
-            <div class="row pt-3 pb-4 border-top border-secondary-subtle">
+            <div class="row pt-4 pb-3 border-top border-secondary-subtle">
                 <div class="col-12 text-center">
-                    <p class="mb-0 small text-secondary">
+                    <p class="mb-0 small text-secondary d-flex align-items-center justify-content-center gap-2">
                         <img src="~/images/logo/Icono.png" alt="CitaCorte" class="footer-icon" />
-                        <strong>CitaCorte</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.
+                        <span><strong>CitaCorte</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.</span>
                     </p>
                 </div>
+            </div>
         </div>
     </footer>
 
