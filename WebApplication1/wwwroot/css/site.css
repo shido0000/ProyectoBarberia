@@ -74,7 +74,7 @@
     --shadow-float: 0 20px 40px -10px rgba(212, 175, 55, 0.3);
     
     /* Glassmorphism */
-    --glass-bg: rgba(250, 247, 242, 0.85);
+    --glass-bg: rgba(0, 0, 0, 0.95);
     --glass-border: rgba(212, 175, 55, 0.3);
     --glass-blur: 20px;
     --glass-shadow: 0 8px 32px 0 rgba(13, 13, 13, 0.15);
@@ -97,47 +97,43 @@
 
 /* Modo oscuro premium */
 [data-theme="dark"] {
-    --bg-primary: var(--navy);
-    --bg-secondary: var(--black);
+    --bg-primary: var(--black);
+    /*--bg-secondary: var(--black);*/
+    --bg-secondary: rgba(0, 0, 0, 0.95);
     --bg-tertiary: #1A1A1A;
     --bg-gradient-start: var(--navy);
     --bg-gradient-end: var(--black);
     --bg-glass: rgba(30, 42, 55, 0.9);
-    --bg-navbar: rgba(30, 42, 55, 0.95);
+    /*--bg-navbar: rgba(30, 42, 55, 0.95);*/
+    --bg-navbar: rgba(0, 0, 0, 0.95);
     --bg-card-hover: rgba(51, 51, 51, 0.95);
-    
     --text-primary: var(--cream);
     --text-secondary: var(--off-white);
     --text-muted: #9CA3AF;
     --text-inverse: var(--navy);
     --text-gold: var(--gold);
-    
     --primary: var(--gold);
     --primary-dark: #B8962E;
     --primary-light: #E5C552;
     --primary-glow: rgba(212, 175, 55, 0.5);
     --primary-gradient: linear-gradient(135deg, var(--gold) 0%, #E5C552 100%);
-    
     --accent: var(--gold);
     --accent-dark: #B8962E;
     --accent-light: #E5C552;
     --accent-glow: rgba(212, 175, 55, 0.5);
     --accent-gradient: linear-gradient(135deg, var(--gold) 0%, var(--brown) 100%);
-    
     --border-color: rgba(212, 175, 55, 0.2);
     --border-light: rgba(212, 175, 55, 0.15);
-    
-    --glass-bg: rgba(30, 42, 55, 0.85);
+    /*--glass-bg: rgba(30, 42, 55, 0.85);*/
+    --glass-bg: rgba(0, 0, 0, 0.95);
     --glass-border: rgba(212, 175, 55, 0.3);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    
     --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     --shadow-float: 0 20px 40px -10px rgba(212, 175, 55, 0.4);
-    
     --success: #34D399;
     --success-bg: rgba(52, 211, 153, 0.15);
     --warning: var(--gold);
@@ -498,7 +494,7 @@ header {
 
 [data-theme="dark"] .hero-section::before {
     background: transparent;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(10px);
 }
 
@@ -572,6 +568,7 @@ header {
 }
 
 .stat-card {
+    /*background: var(--glass-bg);*/
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
@@ -848,7 +845,7 @@ header {
 
 /* ===== CTA SECTION ===== */
 .cta-section {
-    background: linear-gradient(135deg, var(--navy), var(--brown));
+    background: linear-gradient(135deg, var(--gold), var(--black));
     border-radius: var(--radius-2xl);
     padding: 3rem;
     text-align: center;
@@ -1252,3 +1249,16 @@ header {
         max-width: 160px;
     }
 }
+
+/* ===== AUTH CARD GOLD BORDER ===== */
+.auth-card {
+    border: 2px solid var(--gold) !important; /* Borde dorado sólido */
+    border-radius: var(--radius-xl); /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); /* Resplandor dorado sutil */
+    transition: all var(--transition-base);
+}
+
+    .auth-card:hover {
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); /* Más brillo al pasar el mouse */
+        transform: translateY(-2px);
+    }
