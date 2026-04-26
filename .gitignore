@@ -1,34 +1,885 @@
-```
-# Build artifacts
-bin/
-obj/
-*.dll
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
 *.exe
-*.pdb
-*.config
-*.csproj.user
+*.dll
+*.so
+*.a
+*.out
 
 # Dependencies
-packages/
 node_modules/
-
-# Logs
-*.log
-
-# Environment
+venv/
+.venv/
 .env
 .env.local
-*.env.*
+.env.*
 
-# Editors
-.vscode/
-.idea/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
+# Build directories
+dist/
+build/
+target/
+
+# Python specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+.PyInstaller/
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
 
 # OS generated files
 .DS_Store
 Thumbs.db
-```
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Gradle
+.gradle/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# C/C++
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ruby
+*.gem
+*.rbc
+cachepath
+.bundle/
+vendor/bundle/
+
+# Rust
+target/
+
+# Julia
+.julia/
+
+# Zig
+zig-cache/
+zig-out/
+
+# Docker
+.dockerignore
+Dockerfile.*
+
+# Coverage reports
+coverage/
+*.lcov
+*.profdata
+*.gcda
+*.gcno
+
+# IDE specific
+.vs/
+.vscode/
+.idea/
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+nbproject/
+
+# Environment variables
+.env
+.env.local
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Database
+*.db
+*.db-journal
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Lock files
+package-lock.json
+composer.lock
+Gemfile.lock
+Pipfile.lock
+yarn.lock
+Cargo.lock
+poetry.lock
+
+# CI/CD
+.github/
+.gitlab/
+
+# Documentation
+docs/_build/
+.sphinx/
+
+# Testing
+.pytest_cache/
+.nyc_output/
+coverage/
+
+# Web specific
+*.min.js
+*.min.css
+public/assets/
+static/dist/
+
+# Mobile
+platforms/
+plugins/
+ionic_*/
+
+# ML/AI
+*.model
+*.pb
+*.tflite
+*.onnx
+wandb/
+mlruns/
+
+# Configuration
+config/local.*
+!config/local.example.*
+
+# Secrets
+secrets/
+.secret*
+
+# Cache
+.cache/
+.node_cache/
+.pip_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.ENV/
+
+# Output of tools
+output/
+results/
+exports/
+
+# Generated files
+gen/
+generated/
+.autotools/
+.autoconf/
+
+# Binary files
+*.bin
+*.dat
+*.hex
+*.bin.*
+
+# Archives
+*.tar.*
+*.zip.*
+*.rar.*
+*.7z.*
+
+# Thumbnails
+.THM/
+thumbs.db
+
+# Sync tools
+.dropbox/
+.google-drive/
+.onedrive/
+
+# Temporary build outputs
+tmp/
+temp/
+.build/
+.artifacts/
+
+# IDE and editor backups
+*~
+.#*
+*.bak
+.backup
+
+# System files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+desktop.ini
+
+# Local configuration
+local.properties
+gradle.properties
+settings.gradle
+
+# Version control
+.git/
+.hg/
+.svn/
+.cvs/
+
+# Package managers
+node_modules/
+bower_components/
+jspm_packages/
+web_modules/
+
+# Python virtual envs
+.venv/
+venv/
+env/
+ENV/
+.ENV/
+
+# Ruby
+.bundle/
+vendor/bundle/
+
+# PHP
+vendor/
+
+# Java/Maven
+.m2/
+target/
+
+# .NET
+bin/
+obj/
+packages/
+_TestResults/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Android
+*.apk
+*.aab
+*.ap_
+build/
+.externalNativeBuild/
+.gradle/
+.local.properties
+
+# iOS
+*.ipa
+*.app
+*.mobileprovision
+build/
+*.xcodeproj/
+*.xcworkspace/
+
+# Electron
+release/
+dist_electron/
+
+# Webpack
+webpack.config.js
+.webpack/
+
+# Babel
+.babelrc
+.babelrc.js
+
+# ESLint
+.eslintcache
+.eslintignore
+
+# Prettier
+.prettierrc
+.prettierignore
+
+# TypeScript
+.tsbuildinfo
+*.tsbuildinfo
+
+# Vue
+.vuepress/dist/
+
+# React
+.next/
+.nuxt/
+dist/
+
+# Angular
+.angular/
+
+# Svelte
+.svelte-kit/
+
+# Astro
+.astrowatch
+astro/
+
+# Remix
+.remix/
+
+# Gatsby
+.public/
+.cache/
+
+# Next.js
+.next/
+out/
+
+# Nuxt
+.output/
+.nuxt/
+dist/
+
+# Expo
+.expo/
+.expo-shared/
+
+# Capacitor
+capacitor.config.json
+ios/
+android/
+
+# Ionic
+ionic.config.json
+resources/
+
+# Cordova
+config.xml
+platforms/
+plugins/
+
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+ios/.symlinks/
+flutter/
+packages/flutter_tools/.last_build_id
+
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+*.pidb
+*.pdb
+*.meta
+*.unitypackage
+
+# Unreal Engine
+Binaries/
+Intermediate/
+Saved/
+*.VC.db
+*.VC.VC.opendb
+
+# Godot
+.import/
+.export/
+.godot/
+
+# GameMaker Studio
+.yyp/
+.yymps/
+.yyt/
+
+# Construct 3
+.project/
+export/
+
+# Stencyl
+game/
+logs/
+
+# Ren'Py
+screenshots/
+downloads/
+
+# Twine
+build/
+
+# Inno Setup
+Output/
+
+# NSIS
+*.nsi
+*.nsh
+
+# WiX
+*.wxs
+*.wxi
+*.wxl
+
+# Advanced Installer
+*.aip
+
+# InstallShield
+*.ism
+
+# InstallJammer
+*.prj
+
+# BitRock InstallBuilder
+*.xml
+
+# IzPack
+*.xml
+
+# Launch4j
+*.l4j.ini
+
+# JSmooth
+*.jsmooth
+
+# Excelsior JET
+*.jet
+
+# GCJ
+*.o
+*.so
+*.exe
+
+# MinGW
+*.exe
+*.dll
+*.a
+*.lib
+
+# Cygwin
+*.exe
+*.dll
+*.a
+*.lib
+
+# MSYS2
+*.exe
+*.dll
+*.a
+*.lib
+
+# WSL
+*.exe
+*.dll
+*.a
+*.lib
+
+# Docker
+.docker/
+docker-compose*.yml
+!docker-compose.yml
+!docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+.kube/
+
+# Helm
+charts/
+helm/
+*.tgz
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfvars
+*.auto.tfvars
+*.lock.hcl
+
+# Ansible
+*.retry
+.ansible/
+.ansible-lint
+
+# Puppet
+*.pp
+manifests/
+modules/
+
+# Chef
+*.rb
+cookbooks/
+roles/
+
+# Salt
+*.sls
+salt/
+srv/
+
+# Vagrant
+.vagrant/
+*.box
+
+# Packer
+*.json
+*.log
+
+# Consul
+*.hcl
+*.json
+
+# Vault
+*.hcl
+*.json
+
+# Nomad
+*.hcl
+*.json
+
+# Boundary
+*.hcl
+*.json
+
+# Waypoint
+.waypoint/
+
+# OpenTofu
+.opentofu/
+*.tfstate
+*.tfvars
+*.auto.tfvars
+*.lock.hcl
+
+# Pulumi
+.pulumi/
+*.yaml
+*.yml
+
+# AWS
+.aws/
+.aws-sam/
+.sam/
+
+# Azure
+.azure/
+azure/
+
+# Google Cloud
+.gcloud/
+.gcp/
+
+# Firebase
+.firebase/
+firebase/
+
+# Netlify
+.netlify/
+
+# Vercel
+.vercel/
+.now/
+
+# Cloudflare
+.cloudflare/
+
+# DigitalOcean
+.doctl/
+
+# Heroku
+.heroku/
+Procfile*
+
+# Railway
+.railway/
+
+# Render
+.render/
+
+# Supabase
+.supabase/
+
+# PlanetScale
+.pscale/
+
+# Fly.io
+fly.toml
+.fly/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+.railway/
+
+# Railway
+......
