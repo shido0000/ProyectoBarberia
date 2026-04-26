@@ -10,31 +10,27 @@
             <div class="col-lg-8">
                 <div class="d-flex align-items-center gap-3 mb-3">
                     <div class="icon-wrapper">
-                        <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 64px; height: 64px;">
-                            <i class="bi bi-plus-circle text-white" style="font-size: 1.75rem;"></i>
+                        <div class="bg-theme-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 64px; height: 64px;">
+                            <i class="bi bi-plus-circle text-theme-inverse" style="font-size: 1.75rem;"></i>
                         </div>
-                    </div>
                     <div>
                         <h1 class="display-6 fw-bold mb-1 gradient-text">Crear Plan de Suscripción</h1>
-                        <p class="text-muted mb-0">Define un nuevo plan para los barberos</p>
+                        <p class="text-muted mb-0">Define un nuevo plan para barberos o barberías</p>
                     </div>
-                </div>
             </div>
             <div class="col-lg-4 text-lg-end">
                 <a asp-controller="SubscriptionAdmin" asp-action="Index" class="btn btn-outline-secondary btn-lg btn-animated">
                     <i class="bi bi-arrow-left"></i> Volver
                 </a>
             </div>
-        </div>
     </div>
-</div>
 
 <div class="container pb-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <!-- Main Form Card -->
             <div class="glass-card border-0 shadow-md animate-fade-in-up" style="animation-delay: 0.1s;">
-                <div class="card-header bg-gradient-primary text-white py-3">
+                <div class="card-header bg-theme-primary text-theme-inverse py-3">
                     <h5 class="mb-0"><i class="bi bi-layers me-2"></i>Información del Plan</h5>
                 </div>
                 <div class="card-body p-4">
@@ -48,17 +44,23 @@
                         <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-info-circle me-2"></i>Información Básica</h6>
                         
                         <div class="row g-3 mb-4">
-                            <div class="col-md-8 form-group-animated">
+                            <div class="col-md-6 form-group-animated">
                                 <label asp-for="Name" class="form-label fw-bold">
                                     <i class="bi bi-tag text-primary me-1"></i> Nombre del Plan
                                 </label>
                                 <div class="input-group-animated">
-                                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Ej: Premium, Gold, Platinum" required />
+                                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Ej: Premium, Popular, Free" required />
                                     <div class="input-icon">
                                         <i class="bi bi-tag"></i>
                                     </div>
-                                </div>
                                 <span asp-validation-for="Name" class="text-danger small mt-1"></span>
+                            </div>
+                            <div class="col-md-6 form-group-animated">
+                                <label asp-for="TargetType" class="form-label fw-bold">
+                                    <i class="bi bi-person-badge text-primary me-1"></i> Tipo de Suscriptor
+                                </label>
+                                <select asp-for="TargetType" class="form-select form-select-lg" asp-items="Html.GetEnumSelectList<SubscriptionTargetType>()" required></select>
+                                <span asp-validation-for="TargetType" class="text-danger small mt-1"></span>
                             </div>
                             <div class="col-md-4 form-group-animated">
                                 <label asp-for="DurationDays" class="form-label fw-bold">
@@ -69,7 +71,6 @@
                                     <div class="input-icon">
                                         <i class="bi bi-calendar-range"></i>
                                     </div>
-                                </div>
                                 <span asp-validation-for="DurationDays" class="text-danger small mt-1"></span>
                             </div>
                             <div class="col-12 form-group-animated">
@@ -78,7 +79,6 @@
                                 </label>
                                 <textarea asp-for="Description" class="form-control" rows="3" placeholder="Describe este plan y sus beneficios..."></textarea>
                             </div>
-                        </div>
                         
                         <hr class="my-4" />
                         
@@ -106,7 +106,6 @@
                                 </div>
                                 <span asp-validation-for="AnnualPrice" class="text-danger small mt-1"></span>
                             </div>
-                        </div>
                         
                         <hr class="my-4" />
                         
@@ -123,7 +122,6 @@
                                     <div class="input-icon">
                                         <i class="bi bi-people"></i>
                                     </div>
-                                </div>
                                 <small class="text-muted mt-2 d-block"><i class="bi bi-info-circle me-1"></i>Dejar vacío para ilimitados</small>
                             </div>
                             <div class="col-md-6 form-group-animated">
@@ -135,10 +133,8 @@
                                     <div class="input-icon">
                                         <i class="bi bi-scissors"></i>
                                     </div>
-                                </div>
                                 <small class="text-muted mt-2 d-block"><i class="bi bi-info-circle me-1"></i>Dejar vacío para ilimitados</small>
                             </div>
-                        </div>
                         
                         <hr class="my-4" />
                         
@@ -148,61 +144,106 @@
                         <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
-                                    <input asp-for="IncludeAnalytics" class="form-check-input" />
-                                    <label asp-for="IncludeAnalytics" class="form-check-label fw-semibold">
+                                    <input asp-for="CanReceiveBookings" class="form-check-input" />
+                                    <label asp-for="CanReceiveBookings" class="form-check-label fw-semibold">
+                                        <i class="bi bi-calendar-check text-primary me-2 fs-5"></i> Recibir Reservas
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Permitir que clientes agenden citas</small>
+                                </div>
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="CanAccessAnalytics" class="form-check-input" />
+                                    <label asp-for="CanAccessAnalytics" class="form-check-label fw-semibold">
                                         <i class="bi bi-bar-chart text-primary me-2 fs-5"></i> Analytics
                                     </label>
-                                    <small class="text-muted d-block ms-4">Acceso a reportes y estadísticas</small>
+                                    <small class="text-muted d-block ms-4">Reportes y estadísticas</small>
+                                </div>
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="CanAccessAccounting" class="form-check-input" />
+                                    <label asp-for="CanAccessAccounting" class="form-check-label fw-semibold">
+                                        <i class="bi bi-cash-coin text-primary me-2 fs-5"></i> Contabilidad
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Control de ingresos y gastos</small>
+                                </div>
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="IncludeAnalytics" class="form-check-input" />
+                                    <label asp-for="IncludeAnalytics" class="form-check-label fw-semibold">
+                                        <i class="bi bi-bar-chart-line text-primary me-2 fs-5"></i> Include Analytics (Legacy)
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Campo legacy</small>
+                                </div>
+                            <div class="col-md-6">
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="CanAccessInventory" class="form-check-input" />
+                                    <label asp-for="CanAccessInventory" class="form-check-label fw-semibold">
+                                        <i class="bi bi-box-seam text-primary me-2 fs-5"></i> Inventario
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Gestión de productos</small>
+                                </div>
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="CanPostProducts" class="form-check-input" />
+                                    <label asp-for="CanPostProducts" class="form-check-label fw-semibold">
+                                        <i class="bi bi-shop text-primary me-2 fs-5"></i> Postear Productos
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Vender productos en la plataforma</small>
+                                </div>
+                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
+                                    <input asp-for="CanUseBanners" class="form-check-input" />
+                                    <label asp-for="CanUseBanners" class="form-check-label fw-semibold">
+                                        <i class="bi bi-image text-primary me-2 fs-5"></i> Banners
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Publicidad personalizada</small>
                                 </div>
                                 <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
                                     <input asp-for="PrioritySupport" class="form-check-input" />
                                     <label asp-for="PrioritySupport" class="form-check-label fw-semibold">
                                         <i class="bi bi-headset text-primary me-2 fs-5"></i> Soporte Prioritario
                                     </label>
-                                    <small class="text-muted d-block ms-4">Atención preferencial 24/7</small>
+                                    <small class="text-muted d-block ms-4">Atención preferencial</small>
                                 </div>
-                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
-                                    <input asp-for="CustomBranding" class="form-check-input" />
-                                    <label asp-for="CustomBranding" class="form-check-label fw-semibold">
-                                        <i class="bi bi-palette text-primary me-2 fs-5"></i> Branding Personalizado
-                                    </label>
-                                    <small class="text-muted d-block ms-4">Personaliza colores y logo</small>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
-                                    <input asp-for="AutoReminders" class="form-check-input" />
-                                    <label asp-for="AutoReminders" class="form-check-label fw-semibold">
-                                        <i class="bi bi-bell text-primary me-2 fs-5"></i> Recordatorios Automáticos
-                                    </label>
-                                    <small class="text-muted d-block ms-4">Notificaciones automáticas</small>
-                                </div>
-                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
-                                    <input asp-for="ExportReports" class="form-check-input" />
-                                    <label asp-for="ExportReports" class="form-check-label fw-semibold">
-                                        <i class="bi bi-download text-primary me-2 fs-5"></i> Exportar Reportes
-                                    </label>
-                                    <small class="text-muted d-block ms-4">Descarga reportes en PDF/Excel</small>
-                                </div>
-                                <div class="form-check form-switch mb-3 p-3 rounded-3 bg-light bg-opacity-50">
-                                    <input asp-for="IsDefault" class="form-check-input" />
-                                    <label asp-for="IsDefault" class="form-check-label fw-semibold">
-                                        <i class="bi bi-star text-warning me-2 fs-5"></i> Plan por Defecto
-                                    </label>
-                                    <small class="text-muted d-block ms-4">Se asigna automáticamente a nuevos usuarios</small>
-                                </div>
-                            </div>
                         </div>
                         
                         <hr class="my-4" />
                         
-                        <!-- Active Status -->
-                        <div class="form-check form-switch p-3 rounded-3 bg-success bg-opacity-10 border border-success">
-                            <input asp-for="IsActive" class="form-check-input" checked />
-                            <label asp-for="IsActive" class="form-check-label fw-semibold">
-                                <i class="bi bi-check-circle text-success me-2 fs-5"></i> Plan Activo
-                            </label>
-                            <small class="text-muted d-block ms-4">Los planes activos están disponibles para asignar</small>
+                        <!-- Legacy Features -->
+                        <h6 class="fw-bold mb-3 text-muted"><i class="bi bi-archive me-2"></i>Características Legacy</h6>
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-4">
+                                <div class="form-check form-switch">
+                                    <input asp-for="CustomBranding" class="form-check-input" />
+                                    <label asp-for="CustomBranding" class="form-check-label">Branding Personalizado</label>
+                                </div>
+                            <div class="col-md-4">
+                                <div class="form-check form-switch">
+                                    <input asp-for="AutoReminders" class="form-check-input" />
+                                    <label asp-for="AutoReminders" class="form-check-label">Recordatorios</label>
+                                </div>
+                            <div class="col-md-4">
+                                <div class="form-check form-switch">
+                                    <input asp-for="ExportReports" class="form-check-input" />
+                                    <label asp-for="ExportReports" class="form-check-label">Exportar Reportes</label>
+                                </div>
+                        </div>
+                        
+                        <hr class="my-4" />
+                        
+                        <!-- Status Section -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <div class="form-check form-switch p-3 rounded-3 bg-success bg-opacity-10 border border-success">
+                                    <input asp-for="IsActive" class="form-check-input" checked />
+                                    <label asp-for="IsActive" class="form-check-label fw-semibold">
+                                        <i class="bi bi-check-circle text-success me-2 fs-5"></i> Plan Activo
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Disponible para asignar</small>
+                                </div>
+                            <div class="col-md-6">
+                                <div class="form-check form-switch p-3 rounded-3 bg-warning bg-opacity-10 border border-warning">
+                                    <input asp-for="IsDefault" class="form-check-input" />
+                                    <label asp-for="IsDefault" class="form-check-label fw-semibold">
+                                        <i class="bi bi-star text-warning me-2 fs-5"></i> Plan por Defecto
+                                    </label>
+                                    <small class="text-muted d-block ms-4">Se asigna automáticamente</small>
+                                </div>
                         </div>
                         
                         <hr class="my-4" />
@@ -218,9 +259,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
-    </div>
 </div>
 
 @section Scripts {

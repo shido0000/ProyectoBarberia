@@ -57,7 +57,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
-                    <thead class="bg-success bg-gradient text-white">
+                    <thead class="bg-success bg-gradient text-theme-inverse">
                         <tr>
                             <th class="ps-4">Cliente</th>
                             <th>Email</th>
@@ -91,7 +91,7 @@
                                 <td>
                                     @if (!string.IsNullOrEmpty(client.PhoneNumber))
                                     {
-                                        <span class="badge bg-light text-dark border">
+                                        <span class="badge bg-theme-secondary text-theme-primary border">
                                             <i class="bi bi-phone me-1"></i>@client.PhoneNumber
                                         </span>
                                     }

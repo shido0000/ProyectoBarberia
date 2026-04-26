@@ -1,7 +1,8 @@
 /* home.css - Estilos modernos para la página de inicio de BarberShop Pro */
+/* Adaptado al Manual de Identidad - Modo claro y oscuro */
 
 .hero-section {
-    background: linear-gradient(135deg, #1E2A37 0%, #0D0D0D 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
     position: relative;
     min-height: 85vh;
     display: flex;
@@ -23,7 +24,7 @@
 }
 
 .text-gradient {
-    background: linear-gradient(45deg, #D4AF37, #5A3E2B);
+    background: linear-gradient(45deg, var(--gold), var(--brown));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -69,9 +70,7 @@
     --bs-bg-opacity: 0.1;
 }
 
-.bg-gradient-primary {
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-}
+/* Eliminado bg-gradient-primary hardcodeado - usar .bg-theme-primary del site.css */
 
 .step-number {
     width: 60px;
@@ -99,3 +98,4 @@
         display: none;
     }
 }
+

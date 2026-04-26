@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModels;
+using WebApplication1.Services;
 
 namespace WebApplication1.Controllers
 {
@@ -10,15 +11,18 @@ namespace WebApplication1.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SubscriptionService _subscriptionService;
         
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            SubscriptionService subscriptionService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _subscriptionService = subscriptionService;
         }
         
         [HttpGet]
@@ -96,16 +100,20 @@ namespace WebApplication1.Controllers
                     // Add user to role
                     await _userManager.AddToRoleAsync(user, model.Role);
                     
-                    // If barber, create empty profile
+                    // If barber, create empty profile and assign FREE subscription
                     if (model.Role == "Barber")
                     {
                         var dbContext = HttpContext.RequestServices.GetRequiredService<Data.ApplicationDbContext>();
-                        dbContext.BarberProfiles.Add(new Models.BarberProfile
+                        var barberProfile = new Models.BarberProfile
                         {
                             UserId = user.Id,
                             IsActive = true
-                        });
+                        };
+                        dbContext.BarberProfiles.Add(barberProfile);
                         await dbContext.SaveChangesAsync();
+                        
+                        // Assign FREE subscription automatically
+                        await _subscriptionService.AssignFreeSubscriptionAsync(user.Id);
                     }
                     
                     await _signInManager.SignInAsync(user, isPersistent: false);

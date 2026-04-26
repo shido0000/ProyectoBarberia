@@ -14,8 +14,8 @@
             }
             else
             {
-                <div class="rounded-3 bg-gradient-primary d-flex align-items-center justify-content-center mb-4" style="height: 300px;">
-                    <i class="bi bi-shop display-1 text-white"></i>
+                <div class="rounded-3 bg-theme-primary d-flex align-items-center justify-content-center mb-4" style="height: 300px;">
+                    <i class="bi bi-shop display-1 text-theme-inverse"></i>
                 </div>
             }
             
@@ -63,7 +63,7 @@
                                     <i class="bi bi-x-circle me-1"></i>Cancelar Solicitud
                                 </button>
                             </form>
-                            <span class="badge bg-warning text-dark">
+                            <span class="badge bg-warning text-theme-inverse">
                                 <i class="bi bi-clock me-1"></i>Solicitud Pendiente
                             </span>
                         }
@@ -146,8 +146,8 @@
                         }
                         else
                         {
-                            <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
-                                <span class="text-white fs-4 fw-bold">@Model.Owner.User.FullName.Substring(0, 1).ToUpper()</span>
+                            <div class="rounded-circle bg-theme-primary d-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                <span class="text-theme-inverse fs-4 fw-bold">@Model.Owner.User.FullName.Substring(0, 1).ToUpper()</span>
                             </div>
                         }
                         <div>
@@ -206,8 +206,8 @@
                                             }
                                             else
                                             {
-                                                <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
-                                                    <span class="text-white fs-5 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                <div class="rounded-circle bg-theme-primary d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 60px; height: 60px;">
+                                                    <span class="text-theme-inverse fs-5 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
                                                 </div>
                                             }
                                             <h6 class="mb-1">@member.User.FullName</h6>
@@ -245,7 +245,7 @@
         border-radius: 1rem;
     }
     
-    .bg-gradient-primary {
+    .bg-theme-primary {
         background: linear-gradient(135deg, var(--primary), var(--accent));
     }
 </style>

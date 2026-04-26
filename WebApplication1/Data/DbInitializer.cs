@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.Models;
 
@@ -22,16 +23,16 @@ namespace WebApplication1.Data
                 }
             }
             
-            // Create default subscription plans
+            // Create default subscription plans for BARBERS
             if (!context.SubscriptionPlans.Any())
             {
-                var freePlan = new SubscriptionPlan
+                var freeBarberPlan = new SubscriptionPlan
                 {
-                    Name = "Gratis",
-                    Description = "Plan básico para empezar",
+                    Name = "Free Barber",
+                    Description = "Plan gratuito para barberos independientes. Solo perfil y servicios visibles, sin agenda ni citas.",
                     MonthlyPrice = 0,
                     AnnualPrice = 0,
-                    DurationDays = 30,
+                    DurationDays = 36500, // Practically unlimited
                     MaxBarbers = 1,
                     MaxServicesPerBarber = 5,
                     IncludeAnalytics = false,
@@ -40,17 +41,24 @@ namespace WebApplication1.Data
                     AutoReminders = false,
                     ExportReports = false,
                     IsActive = true,
-                    IsDefault = true
+                    IsDefault = true,
+                    TargetType = SubscriptionTargetType.Barber,
+                    CanReceiveBookings = false,
+                    CanAccessAnalytics = false,
+                    CanAccessAccounting = false,
+                    CanAccessInventory = false,
+                    CanPostProducts = false,
+                    CanUseBanners = false
                 };
                 
-                var premiumPlan = new SubscriptionPlan
+                var popularBarberPlan = new SubscriptionPlan
                 {
-                    Name = "Premium",
-                    Description = "Para barberos profesionales que quieren crecer",
-                    MonthlyPrice = 29.99m,
-                    AnnualPrice = 299.99m,
+                    Name = "Popular Barber",
+                    Description = "Plan popular para barberos: recibe reservas, análisis detallado y contabilidad.",
+                    MonthlyPrice = 19.99m,
+                    AnnualPrice = 199.99m,
                     DurationDays = 30,
-                    MaxBarbers = 5,
+                    MaxBarbers = 1,
                     MaxServicesPerBarber = 20,
                     IncludeAnalytics = true,
                     PrioritySupport = true,
@@ -58,28 +66,124 @@ namespace WebApplication1.Data
                     AutoReminders = true,
                     ExportReports = true,
                     IsActive = true,
-                    IsDefault = false
+                    IsDefault = false,
+                    TargetType = SubscriptionTargetType.Barber,
+                    CanReceiveBookings = true,
+                    CanAccessAnalytics = true,
+                    CanAccessAccounting = true,
+                    CanAccessInventory = false,
+                    CanPostProducts = false,
+                    CanUseBanners = false
                 };
                 
-                var enterprisePlan = new SubscriptionPlan
+                var premiumBarberPlan = new SubscriptionPlan
                 {
-                    Name = "Enterprise",
-                    Description = "Solución completa para negocios grandes",
-                    MonthlyPrice = 99.99m,
-                    AnnualPrice = 999.99m,
+                    Name = "Premium Barber",
+                    Description = "Plan premium con acceso total: productos en venta, banners, inventario y todas las funcionalidades.",
+                    MonthlyPrice = 49.99m,
+                    AnnualPrice = 499.99m,
                     DurationDays = 30,
-                    MaxBarbers = null, // Unlimited
-                    MaxServicesPerBarber = null, // Unlimited
+                    MaxBarbers = null, // Unlimited for independent barber
+                    MaxServicesPerBarber = null,
                     IncludeAnalytics = true,
                     PrioritySupport = true,
                     CustomBranding = true,
                     AutoReminders = true,
                     ExportReports = true,
                     IsActive = true,
-                    IsDefault = false
+                    IsDefault = false,
+                    TargetType = SubscriptionTargetType.Barber,
+                    CanReceiveBookings = true,
+                    CanAccessAnalytics = true,
+                    CanAccessAccounting = true,
+                    CanAccessInventory = true,
+                    CanPostProducts = true,
+                    CanUseBanners = true
                 };
                 
-                context.SubscriptionPlans.AddRange(freePlan, premiumPlan, enterprisePlan);
+                // Create default subscription plans for BARBERSHOPS
+                var basicBarbershopPlan = new SubscriptionPlan
+                {
+                    Name = "Basic Barbershop",
+                    Description = "Plan básico para barberías pequeñas. Hasta 3 barberos.",
+                    MonthlyPrice = 59.99m,
+                    AnnualPrice = 599.99m,
+                    DurationDays = 30,
+                    MaxBarbers = 3,
+                    MaxServicesPerBarber = null,
+                    IncludeAnalytics = true,
+                    PrioritySupport = false,
+                    CustomBranding = false,
+                    AutoReminders = true,
+                    ExportReports = false,
+                    IsActive = true,
+                    IsDefault = false,
+                    TargetType = SubscriptionTargetType.Barbershop,
+                    CanReceiveBookings = true,
+                    CanAccessAnalytics = true,
+                    CanAccessAccounting = true,
+                    CanAccessInventory = false,
+                    CanPostProducts = false,
+                    CanUseBanners = false
+                };
+                
+                var proBarbershopPlan = new SubscriptionPlan
+                {
+                    Name = "Pro Barbershop",
+                    Description = "Plan profesional para barberías en crecimiento. Hasta 10 barberos.",
+                    MonthlyPrice = 129.99m,
+                    AnnualPrice = 1299.99m,
+                    DurationDays = 30,
+                    MaxBarbers = 10,
+                    MaxServicesPerBarber = null,
+                    IncludeAnalytics = true,
+                    PrioritySupport = true,
+                    CustomBranding = true,
+                    AutoReminders = true,
+                    ExportReports = true,
+                    IsActive = true,
+                    IsDefault = false,
+                    TargetType = SubscriptionTargetType.Barbershop,
+                    CanReceiveBookings = true,
+                    CanAccessAnalytics = true,
+                    CanAccessAccounting = true,
+                    CanAccessInventory = true,
+                    CanPostProducts = true,
+                    CanUseBanners = true
+                };
+                
+                var enterpriseBarbershopPlan = new SubscriptionPlan
+                {
+                    Name = "Enterprise Barbershop",
+                    Description = "Solución completa para cadenas de barberías. Barberos ilimitados.",
+                    MonthlyPrice = 299.99m,
+                    AnnualPrice = 2999.99m,
+                    DurationDays = 30,
+                    MaxBarbers = null,
+                    MaxServicesPerBarber = null,
+                    IncludeAnalytics = true,
+                    PrioritySupport = true,
+                    CustomBranding = true,
+                    AutoReminders = true,
+                    ExportReports = true,
+                    IsActive = true,
+                    IsDefault = false,
+                    TargetType = SubscriptionTargetType.Barbershop,
+                    CanReceiveBookings = true,
+                    CanAccessAnalytics = true,
+                    CanAccessAccounting = true,
+                    CanAccessInventory = true,
+                    CanPostProducts = true,
+                    CanUseBanners = true
+                };
+                
+                context.SubscriptionPlans.AddRange(
+                    freeBarberPlan, 
+                    popularBarberPlan, 
+                    premiumBarberPlan,
+                    basicBarbershopPlan,
+                    proBarbershopPlan,
+                    enterpriseBarbershopPlan);
                 await context.SaveChangesAsync();
             }
             
@@ -121,7 +225,11 @@ namespace WebApplication1.Data
                 {
                     await userManager.AddToRoleAsync(barberUser, "Barber");
                     
-                    // Create barber profile
+                    // Get Free Barber plan
+                    var freePlan = await context.SubscriptionPlans
+                        .FirstOrDefaultAsync(p => p.TargetType == SubscriptionTargetType.Barber && p.IsDefault);
+                    
+                    // Create barber profile with FREE subscription
                     var barberProfile = new BarberProfile
                     {
                         UserId = barberUser.Id,
@@ -131,10 +239,24 @@ namespace WebApplication1.Data
                         Phone = "+1234567890",
                         StartTime = new TimeSpan(9, 0, 0),
                         EndTime = new TimeSpan(18, 0, 0),
-                        IsActive = true
+                        IsActive = true,
+                        SubscriptionPlanId = freePlan?.Id
                     };
                     context.BarberProfiles.Add(barberProfile);
                     await context.SaveChangesAsync();
+                    
+                    // Create subscription record for the barber
+                    if (freePlan != null)
+                    {
+                        context.Subscriptions.Add(new Subscription
+                        {
+                            UserId = barberUser.Id,
+                            SubscriptionPlanId = freePlan.Id,
+                            StartDate = DateTime.Now,
+                            EndDate = DateTime.Now.AddDays(freePlan.DurationDays),
+                            IsActive = true
+                        });
+                    }
                     
                     // Create services for this barber
                     var services = new List<Service>

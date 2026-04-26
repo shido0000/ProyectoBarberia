@@ -8,8 +8,8 @@
     <div class="row align-items-center mb-4">
         <div class="col-md-8">
             <div class="d-flex align-items-center gap-3">
-                <div class="bg-gradient-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 70px; height: 70px;">
-                    <i class="bi bi-scissors text-white" style="font-size: 2.5rem;"></i>
+                <div class="bg-theme-primary rounded-circle d-inline-flex align-items-center justify-content-center shadow-glow" style="width: 70px; height: 70px;">
+                    <i class="bi bi-scissors text-theme-inverse" style="font-size: 2.5rem;"></i>
                 </div>
                 <div>
                     <h2 class="fw-bold mb-1 gradient-text">Mis Servicios</h2>
@@ -50,7 +50,7 @@
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <h5 class="card-title fw-bold mb-0 fs-5">@service.Name</h5>
-                                <span class="badge bg-gradient-primary px-3 py-2 fs-6">$@service.Price.ToString("F2")</span>
+                                <span class="badge bg-theme-primary px-3 py-2 fs-6">$@service.Price.ToString("F2")</span>
                             </div>
 
                             @if (!string.IsNullOrEmpty(service.Description))
@@ -88,8 +88,8 @@
     else
     {
         <div class="glass-card p-5 text-center animate-fade-in-up">
-            <div class="bg-gradient-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 120px; height: 120px;">
-                <i class="bi bi-scissors text-muted" style="font-size: 4rem;"></i>
+            <div class="bg-theme-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 120px; height: 120px;">
+                <i class="bi bi-scissors text-theme-inverse" style="font-size: 4rem;"></i>
             </div>
             <h4 class="fw-bold mb-2 gradient-text">No tienes servicios</h4>
             <p class="text-muted mb-4">Crea tu primer servicio para empezar a recibir reservas</p>

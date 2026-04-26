@@ -52,7 +52,7 @@
                                     @{
                                         var badgeClass = appt.Status switch
                                         {
-                                            WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-dark",
+                                            WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-theme-inverse",
                                             WebApplication1.Models.AppointmentStatus.Confirmed => "bg-info",
                                             WebApplication1.Models.AppointmentStatus.InProgress => "bg-primary",
                                             WebApplication1.Models.AppointmentStatus.Completed => "bg-success",
@@ -108,7 +108,7 @@
                         @{
                             var badgeClass = appt.Status switch
                             {
-                                WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-dark",
+                                WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-theme-inverse",
                                 WebApplication1.Models.AppointmentStatus.Confirmed => "bg-info",
                                 WebApplication1.Models.AppointmentStatus.InProgress => "bg-primary",
                                 WebApplication1.Models.AppointmentStatus.Completed => "bg-success",

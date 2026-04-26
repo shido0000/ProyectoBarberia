@@ -55,11 +55,13 @@ namespace WebApplication1.Controllers
             
             model.CreatedAt = DateTime.Now;
             
-            // If this is set as default, unset others
+            // If this is set as default, unset others of same target type
             if (model.IsDefault)
             {
-                var allPlans = await _context.SubscriptionPlans.ToListAsync();
-                foreach (var plan in allPlans)
+                var sameTypePlans = await _context.SubscriptionPlans
+                    .Where(p => p.TargetType == model.TargetType)
+                    .ToListAsync();
+                foreach (var plan in sameTypePlans)
                 {
                     plan.IsDefault = false;
                 }
@@ -105,13 +107,13 @@ namespace WebApplication1.Controllers
                 return NotFound();
             }
             
-            // If this is set as default, unset others
+            // If this is set as default, unset others of same target type
             if (model.IsDefault && !existingPlan.IsDefault)
             {
-                var allPlans = await _context.SubscriptionPlans
-                    .Where(p => p.Id != id)
+                var sameTypePlans = await _context.SubscriptionPlans
+                    .Where(p => p.TargetType == model.TargetType && p.Id != id)
                     .ToListAsync();
-                foreach (var plan in allPlans)
+                foreach (var plan in sameTypePlans)
                 {
                     plan.IsDefault = false;
                 }
@@ -131,6 +133,13 @@ namespace WebApplication1.Controllers
             existingPlan.ExportReports = model.ExportReports;
             existingPlan.IsActive = model.IsActive;
             existingPlan.IsDefault = model.IsDefault;
+            existingPlan.TargetType = model.TargetType;
+            existingPlan.CanReceiveBookings = model.CanReceiveBookings;
+            existingPlan.CanAccessAnalytics = model.CanAccessAnalytics;
+            existingPlan.CanAccessAccounting = model.CanAccessAccounting;
+            existingPlan.CanAccessInventory = model.CanAccessInventory;
+            existingPlan.CanPostProducts = model.CanPostProducts;
+            existingPlan.CanUseBanners = model.CanUseBanners;
             
             await _context.SaveChangesAsync();
             
@@ -216,30 +225,34 @@ namespace WebApplication1.Controllers
                 return RedirectToAction(nameof(Assign));
             }
             
-            // Check if user already has an active subscription
-            var existingSubscription = await _context.Subscriptions
-                .FirstOrDefaultAsync(s => s.UserId == userId && s.IsActive);
+            // Cancel ALL existing active subscriptions for the user
+            var existingSubscriptions = await _context.Subscriptions
+                .Where(s => s.UserId == userId && s.IsActive)
+                .ToListAsync();
             
-            if (existingSubscription != null)
+            foreach (var sub in existingSubscriptions)
             {
-                // Update existing subscription
-                existingSubscription.SubscriptionPlanId = planId;
-                existingSubscription.StartDate = DateTime.Now;
-                existingSubscription.EndDate = DateTime.Now.AddDays(plan.DurationDays * months);
-                existingSubscription.IsActive = true;
+                sub.IsActive = false;
             }
-            else
+            
+            // Create new subscription
+            var newSubscription = new Subscription
             {
-                // Create new subscription
-                var newSubscription = new Subscription
-                {
-                    UserId = userId,
-                    SubscriptionPlanId = planId,
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now.AddDays(plan.DurationDays * months),
-                    IsActive = true
-                };
-                _context.Subscriptions.Add(newSubscription);
+                UserId = userId,
+                SubscriptionPlanId = planId,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(plan.DurationDays * months),
+                IsActive = true
+            };
+            _context.Subscriptions.Add(newSubscription);
+            
+            // Update BarberProfile with new plan reference
+            var barberProfile = await _context.BarberProfiles
+                .FirstOrDefaultAsync(b => b.UserId == userId);
+            
+            if (barberProfile != null)
+            {
+                barberProfile.SubscriptionPlanId = planId;
             }
             
             await _context.SaveChangesAsync();
@@ -273,6 +286,16 @@ namespace WebApplication1.Controllers
             }
             
             subscription.IsActive = false;
+            
+            // Also clear BarberProfile reference
+            var barberProfile = await _context.BarberProfiles
+                .FirstOrDefaultAsync(b => b.UserId == subscription.UserId);
+            
+            if (barberProfile != null)
+            {
+                barberProfile.SubscriptionPlanId = null;
+            }
+            
             await _context.SaveChangesAsync();
             
             TempData["Success"] = "Suscripción cancelada exitosamente";

@@ -28,26 +28,70 @@ namespace WebApplication1.Services
                 var plan = await _context.SubscriptionPlans.FindAsync(planId);
                 if (plan == null) return false;
                 
-                var existingSubscription = await GetActiveSubscriptionAsync(userId);
+                // Cancel ALL existing active subscriptions for the user
+                var existingSubscriptions = await _context.Subscriptions
+                    .Where(s => s.UserId == userId && s.IsActive)
+                    .ToListAsync();
                 
-                if (existingSubscription != null)
+                foreach (var sub in existingSubscriptions)
                 {
-                    // Upgrade existing subscription
-                    existingSubscription.SubscriptionPlanId = planId;
-                    existingSubscription.EndDate = DateTime.Now.AddDays(plan.DurationDays);
+                    sub.IsActive = false;
                 }
-                else
+                
+                // Create new subscription
+                var newSubscription = new Subscription
                 {
-                    // Create new subscription
-                    var newSubscription = new Subscription
-                    {
-                        UserId = userId,
-                        SubscriptionPlanId = planId,
-                        StartDate = DateTime.Now,
-                        EndDate = DateTime.Now.AddDays(plan.DurationDays),
-                        IsActive = true
-                    };
-                    _context.Subscriptions.Add(newSubscription);
+                    UserId = userId,
+                    SubscriptionPlanId = planId,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddDays(plan.DurationDays),
+                    IsActive = true
+                };
+                _context.Subscriptions.Add(newSubscription);
+                
+                // Update BarberProfile with new plan reference
+                var barberProfile = await _context.BarberProfiles
+                    .FirstOrDefaultAsync(b => b.UserId == userId);
+                
+                if (barberProfile != null)
+                {
+                    barberProfile.SubscriptionPlanId = planId;
+                }
+                
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        
+        public async Task<bool> AssignFreeSubscriptionAsync(string userId)
+        {
+            try
+            {
+                var freePlan = await _context.SubscriptionPlans
+                    .FirstOrDefaultAsync(p => p.TargetType == SubscriptionTargetType.Barber && p.IsDefault);
+                
+                if (freePlan == null) return false;
+                
+                var subscription = new Subscription
+                {
+                    UserId = userId,
+                    SubscriptionPlanId = freePlan.Id,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddDays(freePlan.DurationDays),
+                    IsActive = true
+                };
+                _context.Subscriptions.Add(subscription);
+                
+                var barberProfile = await _context.BarberProfiles
+                    .FirstOrDefaultAsync(b => b.UserId == userId);
+                
+                if (barberProfile != null)
+                {
+                    barberProfile.SubscriptionPlanId = freePlan.Id;
                 }
                 
                 await _context.SaveChangesAsync();
@@ -63,14 +107,16 @@ namespace WebApplication1.Services
         {
             try
             {
-                var subscription = await GetActiveSubscriptionAsync(userId);
-                if (subscription != null)
+                var subscriptions = await _context.Subscriptions
+                    .Where(s => s.UserId == userId && s.IsActive)
+                    .ToListAsync();
+                
+                foreach (var sub in subscriptions)
                 {
-                    subscription.IsActive = false;
-                    await _context.SaveChangesAsync();
-                    return true;
+                    sub.IsActive = false;
                 }
-                return false;
+                await _context.SaveChangesAsync();
+                return subscriptions.Any();
             }
             catch
             {
@@ -82,6 +128,19 @@ namespace WebApplication1.Services
         {
             var subscription = await GetActiveSubscriptionAsync(userId);
             return subscription?.SubscriptionPlan;
+        }
+        
+        public async Task<List<SubscriptionPlan>> GetAvailablePlansAsync(SubscriptionTargetType targetType)
+        {
+            return await _context.SubscriptionPlans
+                .Where(p => p.TargetType == targetType && p.IsActive)
+                .ToListAsync();
+        }
+        
+        public async Task<bool> HasFeatureAsync(string userId, Func<SubscriptionPlan, bool> featureCheck)
+        {
+            var plan = await GetCurrentPlanAsync(userId);
+            return plan != null && featureCheck(plan);
         }
     }
 }

@@ -40,10 +40,10 @@ namespace WebApplication1.Models
         public bool IsActive { get; set; } = true;
         
         /// <summary>
-        /// Plan de suscripción actual del barbero. Determina las funcionalidades disponibles.
+        /// ID del plan de suscripción actual del barbero. Determina las funcionalidades disponibles.
         /// </summary>
         [Display(Name = "Plan de Suscripción")]
-        public SubscriptionTier SubscriptionPlan { get; set; } = SubscriptionTier.Free;
+        public int? SubscriptionPlanId { get; set; }
         
         /// <summary>
         /// ID de la barbería a la que pertenece este barbero (null si es independiente).
@@ -55,6 +55,7 @@ namespace WebApplication1.Models
         
         // Navigation properties
         public virtual ApplicationUser User { get; set; } = null!;
+        public virtual SubscriptionPlan? SubscriptionPlan { get; set; }
         public virtual ICollection<Service> Services { get; set; } = new List<Service>();
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
         public virtual ICollection<BarberAvailability> Availability { get; set; } = new List<BarberAvailability>();
@@ -68,26 +69,5 @@ namespace WebApplication1.Models
         public virtual ICollection<Rating> ReceivedRatings { get; set; } = new List<Rating>();
         public virtual ICollection<Product> Products { get; set; } = new List<Product>();
         public virtual ICollection<Banner> Banners { get; set; } = new List<Banner>();
-    }
-    
-    /// <summary>
-    /// Niveles de suscripción que determinan las funcionalidades disponibles para cada barbero.
-    /// </summary>
-    public enum SubscriptionTier
-    {
-        /// <summary>
-        /// Plan gratuito: Solo perfil y servicios visibles. Sin agenda ni citas.
-        /// </summary>
-        Free = 1,
-        
-        /// <summary>
-        /// Plan intermedio: Agenda completa, citas y estadísticas básicas de caja.
-        /// </summary>
-        Media = 2,
-        
-        /// <summary>
-        /// Plan premium: Todas las funcionalidades incluyendo CRM, inventario, señas y múltiples agendas.
-        /// </summary>
-        Premium = 3
     }
 }

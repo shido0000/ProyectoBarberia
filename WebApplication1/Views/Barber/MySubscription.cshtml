@@ -1,0 +1,127 @@
+@model WebApplication1.Models.Subscription
+@{
+    ViewData["Title"] = "Mi Suscripción";
+    var availablePlans = ViewBag.AvailablePlans as List<WebApplication1.Models.SubscriptionPlan> ?? new();
+    var currentPlanId = ViewBag.CurrentPlanId as int?;
+    string currentCardClass = "border-secondary";
+    string currentHeaderClass = "bg-secondary";
+    string planName = "Sin Plan";
+    string endDateText = "Sin fecha de expiración";
+    string monthlyPriceText = "$0.00";
+    string descriptionText = "";
+    string bookingsClass = "bg-secondary", bookingsText = "NO";
+    string analyticsClass = "bg-secondary", analyticsText = "NO";
+    string accountingClass = "bg-secondary", accountingText = "NO";
+    string inventoryClass = "bg-secondary", inventoryText = "NO";
+    string productsClass = "bg-secondary", productsText = "NO";
+    string bannersClass = "bg-secondary", bannersText = "NO";
+    if (Model?.SubscriptionPlan != null)
+    {
+        var p = Model.SubscriptionPlan;
+        planName = p.Name;
+        monthlyPriceText = "$" + p.MonthlyPrice.ToString("F2");
+        descriptionText = p.Description ?? "";
+        endDateText = Model.EndDate?.ToString("dd/MM/yyyy") ?? "Sin fecha de expiración";
+        if (planName.Contains("Free")) { currentCardClass = "border-warning"; currentHeaderClass = "bg-warning"; }
+        else if (planName.Contains("Popular")) { currentCardClass = "border-info"; currentHeaderClass = "bg-info"; }
+        else if (planName.Contains("Premium")) { currentCardClass = "border-success"; currentHeaderClass = "bg-success"; }
+        bookingsClass = p.CanReceiveBookings ? "bg-success" : "bg-secondary"; bookingsText = p.CanReceiveBookings ? "SI" : "NO";
+        analyticsClass = p.CanAccessAnalytics ? "bg-success" : "bg-secondary"; analyticsText = p.CanAccessAnalytics ? "SI" : "NO";
+        accountingClass = p.CanAccessAccounting ? "bg-success" : "bg-secondary"; accountingText = p.CanAccessAccounting ? "SI" : "NO";
+        inventoryClass = p.CanAccessInventory ? "bg-success" : "bg-secondary"; inventoryText = p.CanAccessInventory ? "SI" : "NO";
+        productsClass = p.CanPostProducts ? "bg-success" : "bg-secondary"; productsText = p.CanPostProducts ? "SI" : "NO";
+        bannersClass = p.CanUseBanners ? "bg-success" : "bg-secondary"; bannersText = p.CanUseBanners ? "SI" : "NO";
+    }
+    string alertsHtml = "";
+    if (TempData["Success"] != null)
+        alertsHtml += @"<div class=""alert alert-success alert-dismissible fade show"" role=""alert""><i class=""bi bi-check-circle me-2""></i>" + Html.Encode(TempData["Success"]) + @"<button type=""button"" class=""btn-close"" data-bs-dismiss=""alert""></button></div>";
+    if (TempData["Error"] != null)
+        alertsHtml += @"<div class=""alert alert-danger alert-dismissible fade show"" role=""alert""><i class=""bi bi-exclamation-circle me-2""></i>" + Html.Encode(TempData["Error"]) + @"<button type=""button"" class=""btn-close"" data-bs-dismiss=""alert""></button></div>";
+    string currentPlanBody = "";
+    if (Model?.SubscriptionPlan != null)
+    {
+        currentPlanBody += @"<div class=""text-center mb-4""><h3 class=""display-6 fw-bold mb-0"">" + monthlyPriceText + @"</h3><small class=""text-muted"">/mes</small></div>";
+        currentPlanBody += @"<p class=""text-muted text-center"">" + Html.Encode(descriptionText) + @"</p>";
+        currentPlanBody += @"<div class=""list-group list-group-flush mb-3"">";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-calendar-check me-2""></i>Recibir Reservas</span><span class=""badge " + bookingsClass + @""">" + bookingsText + @"</span></div>";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-bar-chart me-2""></i>Analytics</span><span class=""badge " + analyticsClass + @""">" + analyticsText + @"</span></div>";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-cash-coin me-2""></i>Contabilidad</span><span class=""badge " + accountingClass + @""">" + accountingText + @"</span></div>";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-box-seam me-2""></i>Inventario</span><span class=""badge " + inventoryClass + @""">" + inventoryText + @"</span></div>";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-shop me-2""></i>Postear Productos</span><span class=""badge " + productsClass + @""">" + productsText + @"</span></div>";
+        currentPlanBody += @"<div class=""list-group-item d-flex justify-content-between align-items-center""><span><i class=""bi bi-image me-2""></i>Banners</span><span class=""badge " + bannersClass + @""">" + bannersText + @"</span></div>";
+        currentPlanBody += @"</div>";
+        currentPlanBody += @"<div class=""text-center text-muted small""><i class=""bi bi-clock me-1""></i>Vigente hasta: " + endDateText + @"</div>";
+    }
+    else
+    {
+        currentPlanBody += @"<div class=""text-center py-4""><i class=""bi bi-exclamation-circle display-4 text-muted""></i><p class=""text-muted mt-3"">No tienes una suscripcion activa</p></div>";
+    }
+    string plansHtml = "";
+    foreach (var plan in availablePlans)
+    {
+        var borderClass = (plan.Id == currentPlanId) ? "border-primary border-2" : "";
+        var rIcon = plan.CanReceiveBookings ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        var aIcon = plan.CanAccessAnalytics ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        var acIcon = plan.CanAccessAccounting ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        var iIcon = plan.CanAccessInventory ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        var pIcon = plan.CanPostProducts ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        var bIcon = plan.CanUseBanners ? "bi-check-circle-fill text-success" : "bi-x-circle-fill text-muted";
+        string headerHtml = "";
+        if (plan.Id == currentPlanId)
+            headerHtml = @"<div class=""card-header bg-primary text-theme-inverse text-center py-2""><small><i class=""bi bi-check-circle me-1""></i>Plan Actual</small></div>";
+        string buttonHtml = "";
+        if (plan.Id == currentPlanId)
+            buttonHtml = @"<button class=""btn btn-outline-primary w-75"" disabled><i class=""bi bi-check-lg me-1""></i>Actual</button>";
+        else
+            buttonHtml = @"<form asp-action=""ChangeSubscription"" method=""post"" onsubmit=""return confirm('¿Estas seguro de cambiar a este plan?');""><input type=""hidden"" name=""planId"" value=""" + plan.Id + @"""><button type=""submit"" class=""btn btn-primary w-75""><i class=""bi bi-arrow-repeat me-1""></i>Cambiar Plan</button></form>";
+        plansHtml += @"<div class=""col-md-4""><div class=""card h-100 shadow-sm border-0 " + borderClass + @""">" + headerHtml;
+        plansHtml += @"<div class=""card-body text-center""><h5 class=""card-title fw-bold"">" + Html.Encode(plan.Name) + @"</h5>";
+        plansHtml += @"<h3 class=""display-6 fw-bold text-primary"">$" + plan.MonthlyPrice.ToString("F2") + @"</h3>";
+        plansHtml += @"<small class=""text-muted d-block mb-3"">/mes</small>";
+        plansHtml += @"<p class=""text-muted small"">" + Html.Encode(plan.Description) + @"</p><hr>";
+        plansHtml += @"<ul class=""list-unstyled text-start small mb-4"">";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + rIcon + @" me-2""></i>Recibir Reservas</li>";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + aIcon + @" me-2""></i>Analytics</li>";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + acIcon + @" me-2""></i>Contabilidad</li>";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + iIcon + @" me-2""></i>Inventario</li>";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + pIcon + @" me-2""></i>Postear Productos</li>";
+        plansHtml += @"<li class=""mb-2""><i class=""bi " + bIcon + @" me-2""></i>Banners</li>";
+        plansHtml += @"</ul></div>";
+        plansHtml += @"<div class=""card-footer bg-transparent border-0 pb-4 text-center"">" + buttonHtml + @"</div>";
+        plansHtml += @"</div>";
+    }
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <h2 class="fw-bold mb-2"><i class="bi bi-credit-card me-2"></i>Mi Suscripcion</h2>
+        <p class="text-muted">Gestiona tu plan y descubre las ventajas de cada nivel</p>
+    </div>
+</div>
+
+@Html.Raw(alertsHtml)
+
+<div class="row mb-5">
+    <div class="col-lg-6 mx-auto">
+        <div class="card shadow border-0 @currentCardClass">
+            <div class="card-header text-theme-inverse @currentHeaderClass">
+                <h5 class="mb-0"><i class="bi bi-star-fill me-2"></i>Plan Actual: @planName</h5>
+            </div>
+            <div class="card-body">
+                @Html.Raw(currentPlanBody)
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="fw-bold mb-4"><i class="bi bi-grid-3x3-gap me-2"></i>Planes Disponibles</h4>
+
+<div class="row g-4">
+    @Html.Raw(plansHtml)
+</div>
+
+<div class="mt-5">
+    <a asp-action="Dashboard" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i>Volver al Dashboard
+    </a>
+</div>

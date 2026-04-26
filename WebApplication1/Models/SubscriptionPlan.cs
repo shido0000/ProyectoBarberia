@@ -3,6 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
+    public enum SubscriptionTargetType
+    {
+        [Display(Name = "Barbero")]
+        Barber = 1,
+        [Display(Name = "Barbería")]
+        Barbershop = 2
+    }
+
     public class SubscriptionPlan
     {
         [Key]
@@ -56,6 +64,28 @@ namespace WebApplication1.Models
         
         [Display(Name = "Es Plan por Defecto")]
         public bool IsDefault { get; set; }
+
+        [Required]
+        [Display(Name = "Tipo de Suscriptor")]
+        public SubscriptionTargetType TargetType { get; set; } = SubscriptionTargetType.Barber;
+
+        [Display(Name = "Permite Postear Productos")]
+        public bool CanPostProducts { get; set; }
+
+        [Display(Name = "Permite Recibir Reservas")]
+        public bool CanReceiveBookings { get; set; }
+
+        [Display(Name = "Acceso a Analytics")]
+        public bool CanAccessAnalytics { get; set; }
+
+        [Display(Name = "Acceso a Contabilidad")]
+        public bool CanAccessAccounting { get; set; }
+
+        [Display(Name = "Acceso a Inventario")]
+        public bool CanAccessInventory { get; set; }
+
+        [Display(Name = "Permite Banners")]
+        public bool CanUseBanners { get; set; }
         
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         

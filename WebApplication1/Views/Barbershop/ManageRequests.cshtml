@@ -68,8 +68,8 @@
                                             }
                                             else
                                             {
-                                                <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                    <span class="text-white fs-6 fw-bold">@request.Barber.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                <div class="rounded-circle bg-theme-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                    <span class="text-theme-inverse fs-6 fw-bold">@request.Barber.User.FullName.Substring(0, 1).ToUpper()</span>
                                                 </div>
                                             }
                                             <span>@request.Barber.User.FullName</span>
@@ -170,7 +170,7 @@
                                         }
                                         else if (request.Status == MembershipRequestStatus.Cancelled)
                                         {
-                                            <span class="badge bg-warning text-dark"><i class="bi bi-slash-circle me-1"></i>Cancelado</span>
+                                            <span class="badge bg-warning text-theme-inverse"><i class="bi bi-slash-circle me-1"></i>Cancelado</span>
                                         }
                                     </td>
                                     <td>@request.ResponseDate?.ToString("dd/MM/yyyy HH:mm")</td>
@@ -212,7 +212,7 @@
         border-radius: 1rem;
     }
     
-    .bg-gradient-primary {
+    .bg-theme-primary {
         background: linear-gradient(135deg, var(--primary), var(--accent));
     }
 </style>

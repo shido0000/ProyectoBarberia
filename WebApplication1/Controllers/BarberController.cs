@@ -39,6 +39,7 @@ namespace WebApplication1.Controllers
         {
             var userId = _userManager.GetUserId(User);
             var barberProfile = await _context.BarberProfiles
+                .Include(b => b.SubscriptionPlan)
                 .FirstOrDefaultAsync(b => b.UserId == userId);
             
             if (barberProfile == null)
@@ -73,6 +74,59 @@ namespace WebApplication1.Controllers
             };
             
             return View(viewModel);
+        }
+        
+        // ===== SUBSCRIPTION MANAGEMENT =====
+        
+        [HttpGet]
+        public async Task<IActionResult> MySubscription()
+        {
+            var userId = _userManager.GetUserId(User);
+            var subscription = await _subscriptionService.GetActiveSubscriptionAsync(userId);
+            var barberProfile = await _context.BarberProfiles
+                .Include(b => b.SubscriptionPlan)
+                .FirstOrDefaultAsync(b => b.UserId == userId);
+            
+            if (barberProfile == null)
+            {
+                return NotFound();
+            }
+            
+            var availablePlans = await _subscriptionService.GetAvailablePlansAsync(SubscriptionTargetType.Barber);
+            
+            ViewBag.AvailablePlans = availablePlans;
+            ViewBag.CurrentPlanId = subscription?.SubscriptionPlanId;
+            
+            return View(subscription);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeSubscription(int planId)
+        {
+            var userId = _userManager.GetUserId(User);
+            
+            var plan = await _context.SubscriptionPlans
+                .FirstOrDefaultAsync(p => p.Id == planId && p.TargetType == SubscriptionTargetType.Barber && p.IsActive);
+            
+            if (plan == null)
+            {
+                TempData["Error"] = "Plan de suscripción no válido";
+                return RedirectToAction(nameof(MySubscription));
+            }
+            
+            var success = await _subscriptionService.UpgradeSubscriptionAsync(userId, planId);
+            
+            if (success)
+            {
+                TempData["Success"] = $"Suscripción cambiada exitosamente a {plan.Name}";
+            }
+            else
+            {
+                TempData["Error"] = "Error al cambiar la suscripción";
+            }
+            
+            return RedirectToAction(nameof(MySubscription));
         }
         
         // Services Management
@@ -230,6 +284,7 @@ namespace WebApplication1.Controllers
             var userId = _userManager.GetUserId(User);
             var barberProfile = await _context.BarberProfiles
                 .Include(b => b.User)
+                .Include(b => b.SubscriptionPlan)
                 .FirstOrDefaultAsync(b => b.UserId == userId);
             
             if (barberProfile == null)

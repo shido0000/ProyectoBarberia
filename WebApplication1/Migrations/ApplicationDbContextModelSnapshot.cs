@@ -410,7 +410,7 @@ namespace WebApplication1.Migrations
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
-                    b.Property<int>("SubscriptionPlan")
+                    b.Property<int?>("SubscriptionPlanId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -420,6 +420,8 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CurrentBarbershopId");
+
+                    b.HasIndex("SubscriptionPlanId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
@@ -1112,6 +1114,24 @@ namespace WebApplication1.Migrations
                     b.Property<bool>("AutoReminders")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("CanAccessAccounting")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanAccessAnalytics")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanAccessInventory")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanPostProducts")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanReceiveBookings")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanUseBanners")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -1153,6 +1173,9 @@ namespace WebApplication1.Migrations
 
                     b.Property<bool>("PrioritySupport")
                         .HasColumnType("bit");
+
+                    b.Property<int>("TargetType")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1277,6 +1300,11 @@ namespace WebApplication1.Migrations
                         .HasForeignKey("CurrentBarbershopId")
                         .OnDelete(DeleteBehavior.SetNull);
 
+                    b.HasOne("WebApplication1.Models.SubscriptionPlan", "SubscriptionPlan")
+                        .WithMany()
+                        .HasForeignKey("SubscriptionPlanId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("WebApplication1.Models.ApplicationUser", "User")
                         .WithOne("BarberProfile")
                         .HasForeignKey("WebApplication1.Models.BarberProfile", "UserId")
@@ -1284,6 +1312,8 @@ namespace WebApplication1.Migrations
                         .IsRequired();
 
                     b.Navigation("CurrentBarbershop");
+
+                    b.Navigation("SubscriptionPlan");
 
                     b.Navigation("User");
                 });

@@ -116,6 +116,13 @@ namespace WebApplication1.Data
                 .HasForeignKey(b => b.CurrentBarbershopId)
                 .OnDelete(DeleteBehavior.SetNull);
             
+            // NEW: BarberProfile to SubscriptionPlan relationship
+            builder.Entity<BarberProfile>()
+                .HasOne(b => b.SubscriptionPlan)
+                .WithMany()
+                .HasForeignKey(b => b.SubscriptionPlanId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
             builder.Entity<BarbershopMembershipRequest>()
                 .HasOne(r => r.Barbershop)
                 .WithMany(bs => bs.MembershipRequests)
@@ -206,10 +213,10 @@ namespace WebApplication1.Data
                 .HasForeignKey(b => b.BarberId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            // Configuración para ClientNote
+            // Configuracin para ClientNote
             builder.Entity<ClientNote>()
                      .HasOne(cn => cn.BarberProfile)
-                    .WithMany(bp => bp.ClientNotes) // Ajusta el nombre de la colección si existe
+                    .WithMany(bp => bp.ClientNotes) // Ajusta el nombre de la coleccin si existe
                     .HasForeignKey(cn => cn.BarberProfileId)
                     .OnDelete(DeleteBehavior.Restrict); // ? Evita la cascada
         }

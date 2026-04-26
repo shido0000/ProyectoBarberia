@@ -1,13 +1,13 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="BarberShop Pro - Sistema profesional de reservaciones para barber√≠as" />
+    <meta name="description" content="BarberShop Pro - Sistema profesional de reservaciones para barberÌas" />
     <title>@ViewData["Title"] | BarberShop Pro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -54,7 +54,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="Barber" asp-action="Dashboard">
                                     <i class="bi bi-briefcase"></i>
-                                    <span>Mi Barber√≠a</span>
+                                    <span>Mi BarberÌa</span>
                                 </a>
                             </li>
                         }
@@ -81,7 +81,7 @@
                                 <ul class="dropdown-menu dropdown-menu-end shadow glass-card" style="min-width: 350px;" id="notifications-menu">
                                     <li class="dropdown-header d-flex justify-content-between align-items-center">
                                         <span><i class="bi bi-bell me-1"></i>Notificaciones</span>
-                                        <a href="#" class="small text-decoration-none" onclick="markAllAsRead(); return false;">Marcar todas como le√≠das</a>
+                                        <a href="#" class="small text-decoration-none" onclick="markAllAsRead(); return false;">Marcar todas como leÌdas</a>
                                     </li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li id="notifications-loading" class="text-center py-3">
@@ -108,7 +108,6 @@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
-            </div>
         </nav>
     </header>
 
@@ -119,14 +118,14 @@
     <footer class="footer">
         <div class="container">
             <div class="row g-4 py-5">
-                <!-- Columna 1: Brand & Descripci√≥n -->
+                <!-- Columna 1: Brand & DescripciÛn -->
                 <div class="col-md-4">
                     <div class="d-flex align-items-center gap-2 mb-3">
                         <i class="bi bi-scissors fs-2" style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;"></i>
                         <span class="fw-bold fs-5">BarberShop Pro</span>
                     </div>
                     <p class="small text-secondary">
-                        La plataforma moderna para reservar y gestionar barber√≠as. Tecnolog√≠a de punta para potenciar tu negocio.
+                        La plataforma moderna para reservar y gestionar barberÌas. TecnologÌa de punta para potenciar tu negocio.
                     </p>
                     <div class="d-flex gap-3 mt-3">
                         <a href="#" class="text-secondary-hover" aria-label="Facebook"><i class="bi bi-facebook fs-5"></i></a>
@@ -134,14 +133,13 @@
                         <a href="#" class="text-secondary-hover" aria-label="WhatsApp"><i class="bi bi-whatsapp fs-5"></i></a>
                         <a href="#" class="text-secondary-hover" aria-label="TikTok"><i class="bi bi-tiktok fs-5"></i></a>
                     </div>
-                </div>
 
-                <!-- Columna 2: Enlaces r√°pidos -->
+                <!-- Columna 2: Enlaces r·pidos -->
                 <div class="col-md-2">
                     <h6 class="fw-bold mb-3">Producto</h6>
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a asp-controller="Booking" asp-action="Index" class="text-decoration-none">Reservar</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Features" class="text-decoration-none">Caracter√≠sticas</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Features" class="text-decoration-none">CaracterÌsticas</a></li>
                         <li class="mb-2"><a asp-controller="Home" asp-action="Pricing" class="text-decoration-none">Precios</a></li>
                         <li class="mb-2"><a asp-controller="Home" asp-action="Testimonials" class="text-decoration-none">Testimonios</a></li>
                     </ul>
@@ -154,25 +152,24 @@
                         <li class="mb-2"><a asp-controller="Home" asp-action="Help" class="text-decoration-none">Centro de ayuda</a></li>
                         <li class="mb-2"><a asp-controller="Home" asp-action="Contact" class="text-decoration-none">Contacto</a></li>
                         <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-decoration-none">Privacidad</a></li>
-                        <li class="mb-2"><a asp-controller="Home" asp-action="Terms" class="text-decoration-none">T√©rminos</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Terms" class="text-decoration-none">TÈrminos</a></li>
                     </ul>
                 </div>
 
                 <!-- Columna 4: Newsletter / Contacto -->
                 <div class="col-md-4">
-                    <h6 class="fw-bold mb-3">Suscr√≠bete</h6>
+                    <h6 class="fw-bold mb-3">SuscrÌbete</h6>
                     <p class="small text-secondary">Recibe novedades y ofertas exclusivas.</p>
                     <div class="input-group">
-                        <input type="email" class="form-control form-control-sm bg-transparent border-secondary" placeholder="Tu correo electr√≥nico">
+                        <input type="email" class="form-control form-control-sm bg-transparent border-secondary" placeholder="Tu correo electrÛnico">
                         <button class="btn btn-primary btn-sm" type="button">
                             <i class="bi bi-send"></i>
                         </button>
                     </div>
-                    <p class="small text-muted mt-2">Promociones, nuevos barberos y mucho m√°s.</p>
+                    <p class="small text-muted mt-2">Promociones, nuevos barberos y mucho m·s.</p>
                 </div>
-            </div>
 
-            <!-- L√≠nea divisoria y copyright -->
+            <!-- LÌnea divisoria y copyright -->
             <div class="row pt-3 pb-4 border-top border-secondary-subtle">
                 <div class="col-12 text-center">
                     <p class="mb-0 small text-secondary">
@@ -180,7 +177,6 @@
                         <strong>BarberShop Pro</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.
                     </p>
                 </div>
-            </div>
         </div>
     </footer>
 

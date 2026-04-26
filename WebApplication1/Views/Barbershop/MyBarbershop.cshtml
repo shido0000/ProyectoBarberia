@@ -163,8 +163,8 @@
                                                         }
                                                         else
                                                         {
-                                                            <div class="rounded-circle bg-gradient-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                                                                <span class="text-white fs-6 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                            <div class="rounded-circle bg-theme-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                                <span class="text-theme-inverse fs-6 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
                                                             </div>
                                                         }
                                                         <span>@member.User.FullName</span>
@@ -174,7 +174,7 @@
                                                 <td>
                                                     @if (member.Id == Model.OwnerBarberId)
                                                     {
-                                                        <span class="badge bg-warning text-dark">
+                                                        <span class="badge bg-warning text-theme-inverse">
                                                             <i class="bi bi-crown me-1"></i>Dueño
                                                         </span>
                                                     }
@@ -205,7 +205,7 @@
         border-radius: 1rem;
     }
     
-    .bg-gradient-primary {
+    .bg-theme-primary {
         background: linear-gradient(135deg, var(--primary), var(--accent));
     }
 </style>

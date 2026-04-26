@@ -1,14 +1,14 @@
 /* ============================================
-   BarberShop Pro - NEW DESIGN SYSTEM 2026
-   Colores Premium & Tipografía Poppins
+   BarberShop Pro - MANUAL DE IDENTIDAD
+   Colores Premium & Tipografia Poppins
    ============================================ */
 
-/* ===== IMPORTAR POPPINS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ===== IMPORTAR POPPINS - TODOS LOS PESOS DEL MANUAL ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
 
-/* ===== CSS CUSTOM PROPERTIES - NUEVA PALETA ===== */
+/* ===== CSS CUSTOM PROPERTIES - PALETA MANUAL ===== */
 :root {
-    /* Colores principales */
+    /* Colores principales: Dorado 40%, Negro 30%, Blanco/Gris claro 20%, Gris oscuro 10% */
     --gold: #D4AF37;
     --black: #0D0D0D;
     --white: #FFFFFF;
@@ -51,7 +51,7 @@
     --accent-glow: rgba(90, 62, 43, 0.4);
     --accent-gradient: linear-gradient(135deg, var(--brown) 0%, var(--gold) 100%);
     
-    /* Colores semánticos */
+    /* Colores semanticos */
     --success: #059669;
     --success-bg: rgba(5, 150, 105, 0.12);
     --warning: var(--gold);
@@ -176,34 +176,70 @@ main.main-content {
     z-index: 1;
 }
 
-/* ===== TYPOGRAPHY ===== */
+/* ===== TYPOGRAPHY - JERARQUIA MANUAL ===== */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
     line-height: 1.3;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+/* H1 - Poppins Bold (32 / 40 px) */
+h1 { 
+    font-size: 2rem;        /* 32px */
+    font-weight: 700; 
+    line-height: 2.5rem;    /* 40px */
+}
+
+/* H2 - Poppins SemiBold (24 / 32 px) */
+h2 { 
+    font-size: 1.5rem;      /* 24px */
+    font-weight: 600; 
+    line-height: 2rem;      /* 32px */
+}
+
+/* H3 - Poppins Medium (20 / 28 px) */
+h3 { 
+    font-size: 1.25rem;     /* 20px */
+    font-weight: 500; 
+    line-height: 1.75rem;   /* 28px */
+}
+
+/* H4 - Poppins Medium (16 / 24 px) */
+h4 { 
+    font-size: 1rem;        /* 16px */
+    font-weight: 500; 
+    line-height: 1.5rem;    /* 24px */
+}
+
+h5 { 
+    font-size: 0.875rem;    /* 14px */
+    font-weight: 500; 
+    line-height: 1.375rem;
+}
+
+h6 { 
+    font-size: 0.75rem;     /* 12px */
+    font-weight: 500; 
+    line-height: 1.25rem;
+}
+
+/* Cuerpo - Poppins Regular (14 / 22 px) */
+p, span, div, li, td, th, label, input, textarea, select, button {
+    font-family: 'Poppins', sans-serif;
+}
 
 p {
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: var(--text-secondary);
-    line-height: 1.8;
+    line-height: 1.375rem;  /* 22px */
+    font-size: 0.875rem;    /* 14px */
 }
 
 a {
     color: var(--primary);
     text-decoration: none;
     transition: color var(--transition-fast);
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
@@ -211,12 +247,50 @@ a:hover {
     color: var(--primary-dark);
 }
 
-/* Text weights utilities */
-.text-light { font-weight: 300 !important; }
-.text-regular { font-weight: 400 !important; }
-.text-medium { font-weight: 500 !important; }
-.text-semibold { font-weight: 600 !important; }
-.text-bold { font-weight: 700 !important; }
+/* Text weights utilities - Todos los pesos del manual */
+.font-thin { font-weight: 100 !important; }
+.font-extralight { font-weight: 200 !important; }
+.font-light { font-weight: 300 !important; }
+.font-regular { font-weight: 400 !important; }
+.font-medium { font-weight: 500 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold { font-weight: 700 !important; }
+.font-extrabold { font-weight: 800 !important; }
+
+/* ===== THEME ADAPTIVE UTILITIES ===== */
+/* Reemplazan text-white, text-dark, bg-gradient-primary hardcodeados */
+.bg-theme-primary {
+    background: var(--primary-gradient) !important;
+}
+
+.bg-theme-accent {
+    background: var(--accent-gradient) !important;
+}
+
+.text-theme-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-theme-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-theme-inverse {
+    color: var(--text-inverse) !important;
+}
+
+/* Iconos dentro de circulos theme-adaptive */
+.icon-theme-box {
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-theme-box i {
+    color: var(--text-inverse);
+}
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -244,7 +318,6 @@ header {
 
 .navbar-brand {
     color: var(--text-primary) !important;
-    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 1.35rem;
     display: flex;
@@ -265,7 +338,6 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 
@@ -308,7 +380,7 @@ header {
 }
 
 #theme-toggle:hover i {
-    color: white !important;
+    color: var(--text-inverse) !important;
 }
 
 #theme-toggle i {
@@ -325,7 +397,6 @@ header {
     box-shadow: var(--shadow-xl);
     padding: 0.5rem;
     z-index: 1055 !important;
-    font-family: 'Poppins', sans-serif;
 }
 
 .navbar .dropdown-menu {
@@ -354,7 +425,6 @@ header {
     align-items: center;
     gap: 0.5rem;
     transition: all var(--transition-fast);
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
@@ -368,7 +438,6 @@ header {
 }
 
 .dropdown-header {
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -458,7 +527,6 @@ header {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    font-family: 'Poppins', sans-serif;
 }
 
 .stat-label {
@@ -467,7 +535,6 @@ header {
     letter-spacing: 0.05em;
     color: var(--text-muted);
     margin-top: 0.5rem;
-    font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
 
@@ -499,9 +566,10 @@ header {
     box-shadow: var(--shadow-md);
 }
 
+/* FIX: Iconos dentro de feature-icon usan text-inverse para dark mode */
 .feature-icon i {
     font-size: 1.75rem;
-    color: white;
+    color: var(--text-inverse);
 }
 
 .testimonial-card {
@@ -538,7 +606,6 @@ header {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    font-family: 'Poppins', sans-serif;
 }
 
 .btn-primary {
@@ -603,7 +670,6 @@ header {
     border-radius: var(--radius-lg);
     padding: 0.75rem 1rem;
     transition: all var(--transition-fast);
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
@@ -622,7 +688,6 @@ header {
     color: var(--text-primary);
     font-weight: 600;
     margin-bottom: 0.5rem;
-    font-family: 'Poppins', sans-serif;
 }
 
 .form-check-input {
@@ -645,7 +710,6 @@ header {
 .footer h6 {
     color: var(--text-primary);
     margin-bottom: 1rem;
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
 
@@ -653,7 +717,6 @@ header {
     color: var(--text-secondary);
     transition: all var(--transition-fast);
     display: inline-block;
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
@@ -721,7 +784,7 @@ header {
 
 /* ===== TABLES ===== */
 .table {
-    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
 }
 
 .table thead th {
@@ -737,7 +800,6 @@ header {
 
 /* ===== BADGES ===== */
 .badge {
-    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     border-radius: var(--radius-full);
     padding: 0.35rem 0.75rem;
@@ -761,7 +823,6 @@ header {
 
 /* ===== ALERTS ===== */
 .alert {
-    font-family: 'Poppins', sans-serif;
     border-radius: var(--radius-lg);
     border: none;
 }
@@ -792,7 +853,6 @@ header {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-2xl);
-    font-family: 'Poppins', sans-serif;
 }
 
 .modal-header {
@@ -800,7 +860,6 @@ header {
 }
 
 .modal-title {
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -820,7 +879,6 @@ header {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
     transition: all var(--transition-base);
-    font-family: 'Poppins', sans-serif;
 }
 
 .card:hover {
@@ -830,19 +888,16 @@ header {
 .card-header {
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--border-color);
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .card-title {
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .card-text {
-    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: var(--text-secondary);
 }
@@ -892,7 +947,6 @@ header {
 
 /* ===== PAGINATION ===== */
 .pagination .page-link {
-    font-family: 'Poppins', sans-serif;
     color: var(--text-primary);
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
@@ -927,7 +981,6 @@ header {
 
 /* ===== LIST GROUP ===== */
 .list-group-item {
-    font-family: 'Poppins', sans-serif;
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
@@ -946,7 +999,6 @@ header {
 
 /* ===== TOOLTIPS & POPOVERS ===== */
 .tooltip-inner {
-    font-family: 'Poppins', sans-serif;
     background: var(--navy);
     border-radius: var(--radius-md);
 }
@@ -958,7 +1010,6 @@ header {
 
 /* ===== NAVS & TABS ===== */
 .nav-tabs .nav-link {
-    font-family: 'Poppins', sans-serif;
     color: var(--text-secondary);
     border: none;
     border-bottom: 2px solid transparent;
@@ -978,7 +1029,6 @@ header {
 /* ===== BREADCRUMBS ===== */
 .breadcrumb-item a {
     color: var(--text-secondary);
-    font-family: 'Poppins', sans-serif;
 }
 
 .breadcrumb-item.active {
@@ -991,9 +1041,9 @@ header {
 
 /* ===== RESPONSIVE ADJUSTMENTS ===== */
 @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.5rem; }
+    h1 { font-size: 1.75rem; line-height: 2.25rem; }
+    h2 { font-size: 1.25rem; line-height: 1.75rem; }
+    h3 { font-size: 1.125rem; line-height: 1.5rem; }
     
     .navbar-brand {
         font-size: 1.15rem;
@@ -1020,6 +1070,46 @@ header {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
+}
+
+/* ===== BOOTSTRAP THEME OVERRIDES ===== */
+/* Sobrescribir clases Bootstrap para que usen variables del Manual de Identidad */
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-info {
+    color: var(--info) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+/* Bootstrap 5.3 subtle colors override */
+.bg-primary-subtle {
+    background-color: var(--primary-glow) !important;
+}
+
+.bg-body-tertiary {
+    background-color: var(--bg-tertiary) !important;
+}
+
+.text-body-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-body-tertiary {
+    color: var(--text-muted) !important;
 }
 
 /* ===== SELECTION COLOR ===== */
