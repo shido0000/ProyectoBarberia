@@ -477,6 +477,27 @@ header {
     margin-right: -50vw;
     padding: 4rem 0;
     overflow: hidden;
+    background-image: url('../images/logo/Fondo de Pantalla 2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(250, 247, 242, 0.95) 0%, rgba(240, 230, 210, 0.9) 100%);
+    z-index: 0;
+}
+
+[data-theme="dark"] .hero-section {
+    background-image: url('../images/logo/Fondo de Pantalla.png');
+}
+
+[data-theme="dark"] .hero-section::before {
+    background: linear-gradient(135deg, rgba(30, 42, 55, 0.95) 0%, rgba(13, 13, 13, 0.9) 100%);
 }
 
 .hero-section .container {
@@ -490,9 +511,10 @@ header {
     inset: 0;
     background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(90, 62, 43, 0.1) 0%, transparent 50%);
-    opacity: 0.6;
+    opacity: 0.4;
     z-index: 0;
     animation: gradientPulse 8s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes gradientPulse {

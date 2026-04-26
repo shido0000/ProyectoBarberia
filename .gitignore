@@ -1,9 +1,9 @@
-```
 # Compiled and build artifacts
 *.pyc
 __pycache__/
 *.o
 *.obj
+*.class
 *.exe
 *.dll
 *.so
@@ -18,46 +18,30 @@ venv/
 .env.local
 .env.*
 
-# Logs and temp files
+# Build directories
+dist/
+build/
+target/
+
+# Logs and temporary files
 *.log
 *.tmp
 *.swp
-
-# Editors
-.vscode/
-.idea/
+*.swo
 
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# Build outputs
-dist/
-build/
-target/
-.gradle/
 
 # Coverage reports
 coverage/
 htmlcov/
 .coverage
 
+# Editors
+.vscode/
+.idea/
+
 # Python specific
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-.installed.cfg
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.eggs/
-bin/
-obj/
-```
+.mypy_cache/
+.pytest_cache/
