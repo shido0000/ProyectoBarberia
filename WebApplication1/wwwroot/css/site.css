@@ -486,7 +486,7 @@ header {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(250, 247, 242, 0.7);
+    background: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 0;
@@ -497,7 +497,7 @@ header {
 }
 
 [data-theme="dark"] .hero-section::before {
-    background: rgba(30, 42, 55, 0.7);
+    background: transparent;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
