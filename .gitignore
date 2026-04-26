@@ -1,33 +1,63 @@
 ```
-# Build outputs
-bin/
-obj/
-publish/
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
 # Dependencies
-packages/
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+.env.*
 
-# Logs
+# Logs and temp files
 *.log
+*.tmp
+*.swp
 
-# Environment specific files
-.vs/
-.vshost/
-.userprefs
-.user
+# Editors
+.vscode/
+.idea/
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# User-specific files
-*.user
-*.userosscache
-*.suo
-*.userprefs
+# Build outputs
+dist/
+build/
+target/
+.gradle/
 
-# Web specific
-wwwroot/lib/
-wwwroot/dist/
-wwwroot/build/
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Python specific
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.eggs/
+bin/
+obj/
 ```

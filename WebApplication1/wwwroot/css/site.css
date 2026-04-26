@@ -324,10 +324,35 @@ header {
     align-items: center;
     gap: 0.5rem;
     transition: transform var(--transition-fast);
+    padding: 0;
 }
 
 .navbar-brand:hover {
     transform: scale(1.05);
+}
+
+/* Logo styles - CitaCorte brand */
+.navbar-logo-isotipo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transition: all var(--transition-fast);
+}
+
+.navbar-logo-text {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+    transition: all var(--transition-fast);
+}
+
+@media (max-width: 768px) {
+    .navbar-logo-isotipo {
+        height: 35px;
+    }
+    .navbar-logo-text {
+        height: 28px;
+    }
 }
 
 .navbar .nav-link {
@@ -488,6 +513,21 @@ header {
     .stats-section {
         margin-top: 2rem;
     }
+}
+
+/* Hero dashboard image styling */
+.hero-dashboard-image {
+    background: var(--bg-glass);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-2xl);
+}
+
+.hero-dashboard-image img {
+    transition: transform var(--transition-slow);
+}
+
+.hero-dashboard-image:hover img {
+    transform: scale(1.02);
 }
 
 /* ===== CARDS & GLASSMORPHISM ===== */
@@ -733,6 +773,40 @@ header {
 .text-secondary-hover:hover {
     color: var(--primary);
     transform: translateY(-2px);
+}
+
+/* Footer logo styles - CitaCorte brand */
+.footer-brand {
+    align-items: center;
+}
+
+.footer-logo-isotipo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-logo-text {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.footer-icon {
+    height: 20px;
+    width: auto;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .footer-logo-isotipo {
+        height: 40px;
+    }
+    .footer-logo-text {
+        height: 32px;
+    }
 }
 
 .footer .input-group .form-control {
@@ -1121,4 +1195,34 @@ header {
 ::-moz-selection {
     background: var(--primary);
     color: var(--white);
+}
+
+/* ===== AUTH PAGES LOGO STYLES ===== */
+.brand-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-brand-logo {
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    transition: transform var(--transition-slow);
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.auth-brand-logo:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .auth-brand-logo {
+        max-width: 160px;
+    }
 }

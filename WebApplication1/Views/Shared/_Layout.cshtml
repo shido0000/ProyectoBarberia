@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="BarberShop Pro - Sistema profesional de reservaciones para barberías" />
-    <title>@ViewData["Title"] | BarberShop Pro</title>
+    <meta name="description" content="CitaCorte - Sistema profesional de reservaciones para barberías" />
+    <title>@ViewData["Title"] | CitaCorte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,9 +19,8 @@
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <i class="bi bi-scissors"></i>
-                    <span class="d-none d-sm-inline">BarberShop Pro</span>
-                    <span class="d-inline d-sm-none">BSP</span>
+                    <img src="~/images/logo/Isotipo.png" alt="CitaCorte" class="navbar-logo-isotipo" />
+                    <img src="~/images/logo/Logotipo.png" alt="CitaCorte" class="navbar-logo-text" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -120,9 +119,9 @@
             <div class="row g-4 py-5">
                 <!-- Columna 1: Brand & Descripción -->
                 <div class="col-md-4">
-                    <div class="d-flex align-items-center gap-2 mb-3">
-                        <i class="bi bi-scissors fs-2" style="background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent;"></i>
-                        <span class="fw-bold fs-5">BarberShop Pro</span>
+                    <div class="d-flex align-items-center gap-2 mb-3 footer-brand">
+                        <img src="~/images/logo/Isotipo.png" alt="CitaCorte" class="footer-logo-isotipo" />
+                        <img src="~/images/logo/Logotipo.png" alt="CitaCorte" class="footer-logo-text" />
                     </div>
                     <p class="small text-secondary">
                         La plataforma moderna para reservar y gestionar barberías. Tecnología de punta para potenciar tu negocio.
@@ -173,8 +172,8 @@
             <div class="row pt-3 pb-4 border-top border-secondary-subtle">
                 <div class="col-12 text-center">
                     <p class="mb-0 small text-secondary">
-                        <i class="bi bi-scissors me-1"></i>
-                        <strong>BarberShop Pro</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.
+                        <img src="~/images/logo/Icono.png" alt="CitaCorte" class="footer-icon" />
+                        <strong>CitaCorte</strong> &copy; @DateTime.Now.Year. Todos los derechos reservados.
                     </p>
                 </div>
         </div>
