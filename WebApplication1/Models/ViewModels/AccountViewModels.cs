@@ -29,6 +29,43 @@ namespace WebApplication1.Models.ViewModels
         public string Role { get; set; } = "Client"; // Barber, Client
     }
     
+    public class RegisterBarbershopViewModel
+    {
+        [Required(ErrorMessage = "El nombre del propietario es requerido")]
+        [Display(Name = "Nombre Completo")]
+        public string FullName { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "El email es requerido")]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "La contraseña es requerida")]
+        [StringLength(100, ErrorMessage = "La {0} debe tener al menos {2} caracteres.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; } = string.Empty;
+        
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "Las contraseñas no coinciden")]
+        public string ConfirmPassword { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "El nombre de la barbería es requerido")]
+        [Display(Name = "Nombre de la Barbería")]
+        public string BarbershopName { get; set; } = string.Empty;
+        
+        [Display(Name = "Descripción de la Barbería")]
+        public string? BarbershopDescription { get; set; }
+        
+        [Display(Name = "Dirección")]
+        public string? BarbershopAddress { get; set; }
+        
+        [Display(Name = "Teléfono")]
+        [Phone]
+        public string? BarbershopPhone { get; set; }
+    }
+    
     public class LoginViewModel
     {
         [Required(ErrorMessage = "El email es requerido")]
