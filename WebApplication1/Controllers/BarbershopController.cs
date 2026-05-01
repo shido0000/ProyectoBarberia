@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Models;
 using Microsoft.AspNetCore.Identity;
+using WebApplication1.Models.ViewModels;
 
 namespace WebApplication1.Controllers
 {
@@ -544,6 +545,7 @@ namespace WebApplication1.Controllers
             var barbershop = await _context.Barbershops
                 .Include(b => b.Plan)
                 .Include(b => b.Members)
+                    .ThenInclude(m => m.User)
                 .Include(b => b.MembershipRequests)
                     .ThenInclude(r => r.Barber)
                         .ThenInclude(b => b.User)
@@ -554,7 +556,48 @@ namespace WebApplication1.Controllers
                 return View("NoBarbershop");
             }
             
-            return View(barbershop);
+            // Get upcoming appointments for all barbers in the shop
+            var teamMemberIds = barbershop.Members.Select(m => m.Id).ToList();
+            var upcomingAppointments = await _context.Appointments
+                .Include(a => a.Client)
+                .Include(a => a.Service)
+                .Include(a => a.BarberProfile)
+                .Where(a => teamMemberIds.Contains(a.BarberProfileId) &&
+                           a.Date >= DateTime.Now &&
+                           a.Status != AppointmentStatus.Cancelled)
+                .OrderBy(a => a.Date)
+                .Take(10)
+                .ToListAsync();
+            
+            // Calculate stats for this month
+            var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var totalAppointmentsThisMonth = await _context.Appointments
+                .CountAsync(a => teamMemberIds.Contains(a.BarberProfileId) &&
+                                a.Date >= startOfMonth &&
+                                a.Status != AppointmentStatus.Cancelled);
+            
+            var totalRevenueThisMonth = await _context.Appointments
+                .Where(a => teamMemberIds.Contains(a.BarberProfileId) &&
+                           a.Date >= startOfMonth &&
+                           a.Status == AppointmentStatus.Completed)
+                .SumAsync(a => a.Service.Price);
+            
+            var pendingRequests = barbershop.MembershipRequests
+                .Where(r => r.Status == MembershipRequestStatus.Pending)
+                .ToList();
+            
+            var viewModel = new BarbershopOwnerDashboardViewModel
+            {
+                Barbershop = barbershop,
+                TeamMembers = barbershop.Members.ToList(),
+                PendingRequests = pendingRequests,
+                UpcomingAppointments = upcomingAppointments,
+                SubscriptionPlan = barbershop.Plan,
+                TotalAppointmentsThisMonth = totalAppointmentsThisMonth,
+                TotalRevenueThisMonth = totalRevenueThisMonth
+            };
+            
+            return View("OwnerDashboard", viewModel);
         }
     }
 }

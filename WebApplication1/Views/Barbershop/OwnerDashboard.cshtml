@@ -1,0 +1,395 @@
+@model WebApplication1.Models.ViewModels.BarbershopOwnerDashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard de Barbería";
+}
+
+<!-- Dashboard Header with Modern Design -->
+<div class="container py-4 animate-fade-in-up">
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="glass-card p-4 p-md-5">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-theme-primary rounded-circle d-flex align-items-center justify-content-center shadow-glow" 
+                             style="width: 80px; height: 80px; min-width: 80px;">
+                            <i class="bi bi-shop text-theme-inverse" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <div>
+                            <h1 class="fw-bold mb-1 gradient-text display-6">@Model.Barbershop.Name</h1>
+                            <p class="text-muted mb-0 fs-5"><i class="bi bi-geo-alt me-1"></i>@Model.Barbershop.Address</p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="glass-card px-4 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-crown-fill text-warning"></i>
+                            @Model.SubscriptionPlan.Name
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-md animate-fade-in-down" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>@TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <!-- Stats Cards with Glassmorphism -->
+    <div class="row g-4 mb-5">
+        <div class="col-6 col-lg-3">
+            <div class="glass-card stat-card h-100 p-4 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="stat-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" 
+                         style="width: 56px; height: 56px;">
+                        <i class="bi bi-people" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-primary fw-bold display-6">@Model.TeamMembers.Count</div>
+                <div class="stat-label text-muted text-uppercase small fw-semibold">Barberos en Equipo</div>
+                @if (Model.SubscriptionPlan.MaxBarbers.HasValue)
+                {
+                    <small class="text-muted">Máx: @Model.SubscriptionPlan.MaxBarbers</small>
+                }
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="glass-card stat-card h-100 p-4 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="stat-icon bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" 
+                         style="width: 56px; height: 56px;">
+                        <i class="bi bi-currency-dollar" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-success fw-bold display-6">$@Model.TotalRevenueThisMonth.ToString("F0")</div>
+                <div class="stat-label text-muted text-uppercase small fw-semibold">Ingresos del Mes</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="glass-card stat-card h-100 p-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="stat-icon bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center" 
+                         style="width: 56px; height: 56px;">
+                        <i class="bi bi-calendar-check" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-info fw-bold display-6">@Model.TotalAppointmentsThisMonth</div>
+                <div class="stat-label text-muted text-uppercase small fw-semibold">Citas del Mes</div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="glass-card stat-card h-100 p-4 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div class="stat-icon bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center" 
+                         style="width: 56px; height: 56px;">
+                        <i class="bi bi-inbox" style="font-size: 1.5rem;"></i>
+                    </div>
+                </div>
+                <div class="stat-value text-warning fw-bold display-6">@Model.PendingRequests.Count</div>
+                <div class="stat-label text-muted text-uppercase small fw-semibold">Solicitudes Pendientes</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Pending Membership Requests -->
+        <div class="col-lg-6">
+            <div class="glass-card border-0 h-100 animate-fade-in-up" style="animation-delay: 0.5s;">
+                <div class="card-header bg-transparent border-0 p-4 pb-0">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="bi bi-inbox text-warning me-2"></i>Solicitudes de Unión
+                        </h5>
+                        @if (Model.PendingRequests.Any())
+                        {
+                            <a asp-controller="Barbershop" asp-action="ManageRequests" asp-route-id="@Model.Barbershop.Id" class="btn btn-animated btn-outline-warning btn-sm">
+                                <i class="bi bi-gear me-1"></i>Gestionar Todas
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    @if (Model.PendingRequests.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var request in Model.PendingRequests.Take(5))
+                            {
+                                <div class="list-group-item p-3 mb-3 glass-card border-0 hover-lift">
+                                    <div class="row align-items-center g-3">
+                                        <div class="col-auto">
+                                            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                                                <span class="text-white fw-bold">@request.Barber.User.FullName.Substring(0, 1).ToUpper()</span>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <strong class="d-block fs-6">@request.Barber.User.FullName</strong>
+                                            <small class="text-muted">@request.Barber.User.Email</small>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="btn-group" role="group">
+                                                <form asp-controller="Barbershop" asp-action="AcceptRequest" method="post" class="d-inline">
+                                                    <input type="hidden" name="requestId" value="@request.Id" />
+                                                    <button class="btn btn-success btn-sm" title="Aceptar">
+                                                        <i class="bi bi-check-lg"></i>
+                                                    </button>
+                                                </form>
+                                                <form asp-controller="Barbershop" asp-action="RejectRequest" method="post" class="d-inline">
+                                                    <input type="hidden" name="requestId" value="@request.Id" />
+                                                    <button class="btn btn-danger btn-sm" title="Rechazar">
+                                                        <i class="bi bi-x-lg"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto" 
+                                 style="width: 100px; height: 100px;">
+                                <i class="bi bi-check-circle text-success" style="font-size: 3rem;"></i>
+                            </div>
+                            <h6 class="text-muted mb-2">¡No hay solicitudes pendientes!</h6>
+                            <p class="text-muted mb-0 small">Tu equipo está completo por ahora</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Appointments -->
+        <div class="col-lg-6">
+            <div class="glass-card border-0 h-100 animate-fade-in-up" style="animation-delay: 0.6s;">
+                <div class="card-header bg-transparent border-0 p-4 pb-0">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                        <h5 class="mb-0 fw-bold">
+                            <i class="bi bi-calendar-event text-info me-2"></i>Próximas Citas
+                        </h5>
+                        <a asp-controller="Booking" asp-action="Index" class="btn btn-animated btn-outline-info btn-sm">
+                            <i class="bi bi-calendar3 me-1"></i>Ver Calendario
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    @if (Model.UpcomingAppointments.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var appt in Model.UpcomingAppointments.Take(5))
+                            {
+                                <div class="list-group-item p-3 mb-3 glass-card border-0 hover-lift">
+                                    <div class="row align-items-center g-3">
+                                        <div class="col-auto">
+                                            <span class="badge bg-theme-primary fs-6 py-2 px-3 rounded-pill">
+                                                @appt.Time.ToString(@"hh\:mm")
+                                            </span>
+                                        </div>
+                                        <div class="col">
+                                            <strong class="d-block fs-6">@appt.Client.FullName</strong>
+                                            <small class="text-muted">
+                                                <i class="bi bi-scissors me-1"></i>@appt.Service.Name
+                                                <span class="mx-2">•</span>
+                                                <i class="bi bi-person me-1"></i>@appt.BarberProfile.User.FullName
+                                            </small>
+                                        </div>
+                                        <div class="col-auto">
+                                            @{
+                                                var badgeClass = appt.Status switch
+                                                {
+                                                    WebApplication1.Models.AppointmentStatus.Pending => "bg-warning text-theme-inverse",
+                                                    WebApplication1.Models.AppointmentStatus.Confirmed => "bg-info",
+                                                    WebApplication1.Models.AppointmentStatus.InProgress => "bg-primary",
+                                                    WebApplication1.Models.AppointmentStatus.Completed => "bg-success",
+                                                    WebApplication1.Models.AppointmentStatus.Cancelled => "bg-secondary",
+                                                    _ => "bg-secondary"
+                                                };
+                                            }
+                                            <span class="badge @badgeClass px-3 py-2 rounded-pill">
+                                                @appt.Status
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto" 
+                                 style="width: 100px; height: 100px;">
+                                <i class="bi bi-calendar-x text-muted" style="font-size: 3rem;"></i>
+                            </div>
+                            <h6 class="text-muted mb-2">No hay citas próximas</h6>
+                            <p class="text-muted mb-0 small">Disfruta el tiempo libre o promociona tus servicios</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-4 mt-4">
+        <div class="col-12">
+            <div class="glass-card border-0 animate-fade-in-up" style="animation-delay: 0.7s;">
+                <div class="card-header bg-transparent border-0 p-4 pb-0">
+                    <h6 class="mb-0 fw-bold">
+                        <i class="bi bi-lightning-charge-fill text-warning me-2"></i>Acciones Rápidas
+                    </h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-3 col-sm-6">
+                            <a asp-action="Details" asp-route-id="@Model.Barbershop.Id" class="btn btn-animated btn-outline-primary w-100 h-100 py-3">
+                                <i class="bi bi-eye d-block mb-2" style="font-size: 1.5rem;"></i>
+                                <span class="d-block small">Ver Página Pública</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <a asp-action="Edit" asp-route-id="@Model.Barbershop.Id" class="btn btn-animated btn-outline-secondary w-100 h-100 py-3">
+                                <i class="bi bi-pencil d-block mb-2" style="font-size: 1.5rem;"></i>
+                                <span class="d-block small">Editar Información</span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <a asp-action="ManageRequests" asp-route-id="@Model.Barbershop.Id" class="btn btn-animated btn-outline-info w-100 h-100 py-3">
+                                <i class="bi bi-inbox d-block mb-2" style="font-size: 1.5rem;"></i>
+                                <span class="d-block small">Gestionar Solicitudes</span>
+                                @if (Model.PendingRequests.Any())
+                                {
+                                    <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">@Model.PendingRequests.Count</span>
+                                }
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <a asp-controller="Admin" asp-action="SubscriptionPlans" class="btn btn-animated btn-outline-success w-100 h-100 py-3">
+                                <i class="bi bi-credit-card d-block mb-2" style="font-size: 1.5rem;"></i>
+                                <span class="d-block small">Cambiar Suscripción</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Members -->
+    <div class="row g-4 mt-4">
+        <div class="col-12">
+            <div class="glass-card border-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+                <div class="card-header bg-transparent border-0 p-4 pb-0">
+                    <h5 class="mb-0 fw-bold">
+                        <i class="bi bi-people-fill text-primary me-2"></i>Equipo de Trabajo (@Model.TeamMembers.Count)
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    @if (!Model.TeamMembers.Any())
+                    {
+                        <div class="text-center py-4">
+                            <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
+                            <p class="text-muted mt-3 mb-0">Aún no tienes barberos en tu equipo. Comparte la página de tu barbería para recibir solicitudes.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 50px;"></th>
+                                        <th>Barbero</th>
+                                        <th>Email</th>
+                                        <th>Rol</th>
+                                        <th style="width: 100px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var member in Model.TeamMembers)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(member.ProfilePhoto))
+                                                {
+                                                    <img src="@member.ProfilePhoto" alt="@member.User.FullName" class="rounded-circle" width="40" height="40" style="object-fit: cover;" />
+                                                }
+                                                else
+                                                {
+                                                    <div class="rounded-circle bg-theme-primary d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                        <span class="text-theme-inverse fs-6 fw-bold">@member.User.FullName.Substring(0, 1).ToUpper()</span>
+                                                    </div>
+                                                }
+                                            </td>
+                                            <td>
+                                                <strong>@member.User.FullName</strong>
+                                            </td>
+                                            <td>@member.User.Email</td>
+                                            <td>
+                                                @if (member.Id == Model.Barbershop.OwnerBarberId)
+                                                {
+                                                    <span class="badge bg-warning text-theme-inverse">
+                                                        <i class="bi bi-crown me-1"></i>Dueño
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">Miembro</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="mailto:@member.User.Email" class="btn btn-sm btn-outline-primary" title="Enviar Email">
+                                                    <i class="bi bi-envelope"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+    .glass-card {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+    }
+    
+    .bg-theme-primary {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+    }
+    
+    .stat-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .gradient-text {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .shadow-glow {
+        box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4);
+    }
+</style>
+}
