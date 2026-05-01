@@ -44,6 +44,9 @@ namespace WebApplication1.Models
         [Display(Name = "Dueño/Propietario")]
         public int OwnerBarberId { get; set; }
         
+        [NotMapped]
+        public bool IsOwner => false; // This will be set in the view model or controller
+        
         [Display(Name = "Activo")]
         public bool IsActive { get; set; } = true;
         

@@ -140,4 +140,15 @@ namespace WebApplication1.Models.ViewModels
         [Display(Name = "Duración (minutos)")]
         public int DurationMinutes { get; set; }
     }
+    
+    public class BarbershopOwnerDashboardViewModel
+    {
+        public Barbershop Barbershop { get; set; } = null!;
+        public List<BarberProfile> TeamMembers { get; set; } = new();
+        public List<BarbershopMembershipRequest> PendingRequests { get; set; } = new();
+        public List<Appointment> UpcomingAppointments { get; set; } = new();
+        public BarbershopSubscriptionPlan SubscriptionPlan { get; set; } = null!;
+        public int TotalAppointmentsThisMonth { get; set; }
+        public decimal TotalRevenueThisMonth { get; set; }
+    }
 }
