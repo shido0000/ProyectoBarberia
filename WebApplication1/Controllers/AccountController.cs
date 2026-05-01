@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Models.ViewModels;
 using WebApplication1.Services;
@@ -23,6 +24,106 @@ namespace WebApplication1.Controllers
             _signInManager = signInManager;
             _roleManager = roleManager;
             _subscriptionService = subscriptionService;
+        }
+        
+        [HttpGet]
+        public IActionResult RegisterBarbershop()
+        {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterBarbershop(RegisterBarbershopViewModel model, string? returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            
+            if (ModelState.IsValid)
+            {
+                // Create user with Barber role
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                    Role = "Barber",
+                    CreatedAt = DateTime.Now
+                };
+                
+                var result = await _userManager.CreateAsync(user, model.Password);
+                
+                if (result.Succeeded)
+                {
+                    // Add user to Barber role
+                    await _userManager.AddToRoleAsync(user, "Barber");
+                    
+                    var dbContext = HttpContext.RequestServices.GetRequiredService<Data.ApplicationDbContext>();
+                    
+                    // Create barber profile
+                    var barberProfile = new Models.BarberProfile
+                    {
+                        UserId = user.Id,
+                        IsActive = true
+                    };
+                    dbContext.BarberProfiles.Add(barberProfile);
+                    await dbContext.SaveChangesAsync();
+                    
+                    // Assign FREE subscription to barber
+                    await _subscriptionService.AssignFreeSubscriptionAsync(user.Id);
+                    
+                    // Get the first available barbershop subscription plan (or create one if none exists)
+                    var barbershopPlan = await dbContext.BarbershopSubscriptionPlans
+                        .FirstOrDefaultAsync(p => p.IsActive);
+                    
+                    if (barbershopPlan == null)
+                    {
+                        // Create a default plan if none exists
+                        barbershopPlan = new Models.BarbershopSubscriptionPlan
+                        {
+                            Name = "Plan Básico",
+                            Description = "Plan básico para barberías",
+                            MonthlyPrice = 29.99m,
+                            MaxBarbers = 3,
+                            IsActive = true,
+                            CreatedAt = DateTime.Now
+                        };
+                        dbContext.BarbershopSubscriptionPlans.Add(barbershopPlan);
+                        await dbContext.SaveChangesAsync();
+                    }
+                    
+                    // Create the barbershop
+                    var barbershop = new Models.Barbershop
+                    {
+                        Name = model.BarbershopName,
+                        Description = model.BarbershopDescription,
+                        Address = model.BarbershopAddress,
+                        Phone = model.BarbershopPhone,
+                        BarbershopSubscriptionPlanId = barbershopPlan.Id,
+                        OwnerBarberId = barberProfile.Id,
+                        IsActive = true,
+                        CreatedAt = DateTime.Now
+                    };
+                    dbContext.Barbershops.Add(barbershop);
+                    await dbContext.SaveChangesAsync();
+                    
+                    // Sign in the user
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    
+                    TempData["Success"] = $"¡Cuenta de barbería creada exitosamente! Bienvenido a {model.BarbershopName}";
+                    return RedirectToAction("MyBarbershop", "Barbershop", new { id = barbershop.Id });
+                }
+                
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+            
+            return View(model);
         }
         
         [HttpGet]

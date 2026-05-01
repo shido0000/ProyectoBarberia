@@ -1,6 +1,6 @@
-@model WebApplication1.Models.ViewModels.RegisterViewModel
+@model WebApplication1.Models.ViewModels.RegisterBarbershopViewModel
 @{
-    ViewData["Title"] = "Crear Cuenta";
+    ViewData["Title"] = "Crear Cuenta de Barbería";
 }
 
 <!-- Page Background with Animation -->
@@ -14,7 +14,7 @@
     
     <div class="container py-5">
         <div class="row justify-content-center align-items-center min-vh-80">
-            <div class="col-sm-10 col-md-8 col-lg-7 col-xl-6">
+            <div class="col-sm-10 col-md-10 col-lg-9 col-xl-8">
                 <!-- Card con animación de entrada -->
                 <div class="card auth-card shadow-2xl border-0 animate-fade-in-up">
                     <div class="card-body p-0">
@@ -23,12 +23,12 @@
                             <div class="brand-logo-wrapper mb-4">
                                 <img src="~/images/logo/Logotipo 1.png" alt="CitaCorte" class="auth-brand-logo" />
                             </div>
-                            <h2 class="fw-bold mb-2 gradient-text">Crear Cuenta</h2>
-                            <p class="text-muted mb-0">Únete a CitaCorte hoy mismo</p>
+                            <h2 class="fw-bold mb-2 gradient-text">Crear Cuenta de Barbería</h2>
+                            <p class="text-muted mb-0">Registra tu barbería y comienza a ofrecer servicios</p>
                         </div>
                         
                         <div class="p-5 pt-4">
-                            <form asp-action="Register" method="post" class="auth-form">
+                            <form asp-action="RegisterBarbershop" method="post" class="auth-form">
                                 @{
                                     var hasErrors = ViewData.ModelState.ErrorCount > 0;
                                     var displayStyle = hasErrors ? "flex" : "none";
@@ -38,13 +38,16 @@
                                     <span></span>
                                 </div>
                                 
+                                <h5 class="fw-semibold mb-3 text-theme-primary">
+                                    <i class="bi bi-person-circle me-2"></i>Datos del Propietario
+                                </h5>
+                                
                                 <div class="mb-4 form-group-animated">
                                     <label asp-for="FullName" class="form-label fw-semibold">
                                         <i class="bi bi-person text-primary me-2"></i> Nombre Completo
                                     </label>
                                     <div class="input-group-animated">
                                         <input asp-for="FullName" class="form-control form-control-lg" placeholder="Juan Pérez" autofocus />
-                                         
                                     </div>
                                     <span asp-validation-for="FullName" class="text-danger small mt-1"></span>
                                 </div>
@@ -55,7 +58,6 @@
                                     </label>
                                     <div class="input-group-animated">
                                         <input asp-for="Email" type="email" class="form-control form-control-lg" placeholder="tu@email.com" autocomplete="email" />
-                                        
                                     </div>
                                     <span asp-validation-for="Email" class="text-danger small mt-1"></span>
                                 </div>
@@ -66,7 +68,6 @@
                                     </label>
                                     <div class="input-group-animated">
                                         <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Mínimo 6 caracteres" autocomplete="new-password" />
-                                         
                                     </div>
                                     <span asp-validation-for="Password" class="text-danger small mt-1"></span>
                                 </div>
@@ -77,35 +78,58 @@
                                     </label>
                                     <div class="input-group-animated">
                                         <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg" placeholder="Repite tu contraseña" autocomplete="new-password" />
-                                        
                                     </div>
                                     <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1"></span>
                                 </div>
                                 
+                                <hr class="my-4" />
+                                
+                                <h5 class="fw-semibold mb-3 text-theme-primary">
+                                    <i class="bi bi-shop me-2"></i>Datos de la Barbería
+                                </h5>
+                                
                                 <div class="mb-4 form-group-animated">
-                                    <label asp-for="Role" class="form-label fw-semibold">
-                                        <i class="bi bi-briefcase text-primary me-2"></i> Tipo de Usuario
+                                    <label asp-for="BarbershopName" class="form-label fw-semibold">
+                                        <i class="bi bi-signpost-2 text-primary me-2"></i> Nombre de la Barbería
                                     </label>
                                     <div class="input-group-animated">
-                                        <select asp-for="Role" class="form-select form-select-lg">
-                                            <option value="">-- Selecciona una opción --</option>
-                                            <option value="Client">🙋 Cliente - Quiero reservar citas</option>
-                                            <option value="Barber">💈 Barbero - Quiero ofrecer servicios</option>
-                                        </select>
-                                        
+                                        <input asp-for="BarbershopName" class="form-control form-control-lg" placeholder="Ej: Barbería El Clásico" />
                                     </div>
-                                    <span asp-validation-for="Role" class="text-danger small mt-1"></span>
+                                    <span asp-validation-for="BarbershopName" class="text-danger small mt-1"></span>
                                 </div>
                                 
-                                <div class="alert alert-info mb-4">
-                                    <i class="bi bi-shop me-2"></i>
-                                    <strong>¿Quieres crear una barbería?</strong><br/>
-                                    Si eres dueño de una barbería y quieres registrar tu negocio, 
-                                    <a asp-action="RegisterBarbershop" class="alert-link">haz clic aquí</a>.
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="BarbershopDescription" class="form-label fw-semibold">
+                                        <i class="bi bi-card-text text-primary me-2"></i> Descripción
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <textarea asp-for="BarbershopDescription" class="form-control form-control-lg" rows="3" placeholder="Describe tu barbería..."></textarea>
+                                    </div>
+                                    <span asp-validation-for="BarbershopDescription" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="BarbershopAddress" class="form-label fw-semibold">
+                                        <i class="bi bi-geo-alt text-primary me-2"></i> Dirección
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="BarbershopAddress" class="form-control form-control-lg" placeholder="Dirección completa de la barbería" />
+                                    </div>
+                                    <span asp-validation-for="BarbershopAddress" class="text-danger small mt-1"></span>
+                                </div>
+                                
+                                <div class="mb-4 form-group-animated">
+                                    <label asp-for="BarbershopPhone" class="form-label fw-semibold">
+                                        <i class="bi bi-telephone text-primary me-2"></i> Teléfono
+                                    </label>
+                                    <div class="input-group-animated">
+                                        <input asp-for="BarbershopPhone" type="tel" class="form-control form-control-lg" placeholder="Teléfono de contacto" />
+                                    </div>
+                                    <span asp-validation-for="BarbershopPhone" class="text-danger small mt-1"></span>
                                 </div>
                                 
                                 <button type="submit" class="btn btn-primary btn-lg w-100 mb-4 shadow-glow btn-animated">
-                                    <i class="bi bi-check-circle"></i> Crear Cuenta
+                                    <i class="bi bi-check-circle"></i> Crear Barbería
                                 </button>
                             </form>
                             
@@ -122,31 +146,39 @@
                             <!-- Beneficios -->
                             <div class="benefits-box mt-5 p-4 rounded-3 border animate-fade-in">
                                 <h6 class="fw-bold mb-3 text-center">
-                                    <i class="bi bi-stars text-warning me-2"></i>Beneficios de unirte
+                                    <i class="bi bi-stars text-warning me-2"></i>Beneficios de registrar tu barbería
                                 </h6>
                                 <div class="benefits-list">
                                     <div class="benefit-item">
                                         <div class="benefit-icon">
-                                            <i class="bi bi-calendar-check text-primary"></i>
+                                            <i class="bi bi-people text-primary"></i>
                                         </div>
                                         <div class="benefit-text">
-                                            <strong>Reserva fácil:</strong> Agenda citas en segundos
+                                            <strong>Múltiples barberos:</strong> Invita a otros profesionales a unirse
                                         </div>
                                     </div>
                                     <div class="benefit-item">
                                         <div class="benefit-icon">
-                                            <i class="bi bi-geo-alt text-success"></i>
+                                            <i class="bi bi-graph-up text-success"></i>
                                         </div>
                                         <div class="benefit-text">
-                                            <strong>Cerca de ti:</strong> Encuentra barberos en tu zona
+                                            <strong>Gestión completa:</strong> Administra citas, servicios y membresías
                                         </div>
                                     </div>
                                     <div class="benefit-item">
                                         <div class="benefit-icon">
-                                            <i class="bi bi-shield-check text-info"></i>
+                                            <i class="bi bi-piggy-bank text-info"></i>
                                         </div>
                                         <div class="benefit-text">
-                                            <strong>Seguro:</strong> Tus datos siempre protegidos
+                                            <strong>Plan gratuito:</strong> Comienza sin costo y escala cuando crezcas
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <div class="benefit-icon">
+                                            <i class="bi bi-shield-check text-warning"></i>
+                                        </div>
+                                        <div class="benefit-text">
+                                            <strong>Plataforma segura:</strong> Tus datos y los de tus clientes protegidos
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +196,7 @@
     <script>
         // Animaciones adicionales al cargar
         document.addEventListener('DOMContentLoaded', function() {
-            const inputs = document.querySelectorAll('.form-control, .form-select');
+            const inputs = document.querySelectorAll('.form-control, .form-select, textarea');
             inputs.forEach(input => {
                 input.addEventListener('focus', function() {
                     this.parentElement.classList.add('focused');
